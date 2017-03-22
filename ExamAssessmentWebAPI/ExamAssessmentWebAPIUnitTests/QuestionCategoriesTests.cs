@@ -8,6 +8,7 @@ using LMS1701.EA.Controllers;
 
 namespace LMS1701.EA.UnitTests
 {
+    [TestFixture]
     class QuestionCategoriesTests
     {
         [SetUp]
