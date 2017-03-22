@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 
-namespace ExamAssessmentWebAPI
+namespace LMS1701.EA
+
 {
     public static class WebApiConfig
     {
