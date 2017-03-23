@@ -5,7 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
-namespace ExamAssessmentWebAPI.Controllers
+namespace LMS1701.EA.Controllers
 {
     public class SubquestionController : ApiController
     {

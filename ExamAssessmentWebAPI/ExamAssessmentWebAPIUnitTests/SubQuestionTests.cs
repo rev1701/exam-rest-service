@@ -9,7 +9,7 @@ using LMS1701.EA.Controllers;
 namespace LMS1701.EA.UnitTests
 {
     [TestFixture]
-    class QuestionCategoriesTests
+    class SubQuestionTests
     {
         [SetUp]
         protected void SetUpMockData()
@@ -17,8 +17,9 @@ namespace LMS1701.EA.UnitTests
 
         }
         [Test]
-        public void ValidCategory()
+        public void ValidSubQuestion()
         {
+
 
         }
     }
