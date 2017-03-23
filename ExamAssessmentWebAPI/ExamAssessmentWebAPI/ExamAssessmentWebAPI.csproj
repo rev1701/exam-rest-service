@@ -123,6 +123,14 @@
   <ItemGroup>
     <Compile Include="App_Start\NLogConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AnswerController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\ExamQuestionController.cs" />
+    <Compile Include="Controllers\ExamSettingsController.cs" />
+    <Compile Include="Controllers\ExamTemplateController.cs" />
+    <Compile Include="Controllers\SubjectController.cs" />
+    <Compile Include="Controllers\SubquestionController.cs" />
+    <Compile Include="Controllers\SubtopicController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
