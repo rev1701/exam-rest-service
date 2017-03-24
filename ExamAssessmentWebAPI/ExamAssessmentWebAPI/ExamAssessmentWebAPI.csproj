@@ -134,6 +134,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Answer.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\ExamQuestion.cs" />
+    <Compile Include="Models\ExamTemplate.cs" />
+    <Compile Include="Models\ExamType.cs" />
+    <Compile Include="Models\LanguageType.cs" />
+    <Compile Include="Models\QuestionType.cs" />
+    <Compile Include="Models\Subject.cs" />
+    <Compile Include="Models\SubQuestion.cs" />
+    <Compile Include="Models\Subtopic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -156,7 +166,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
