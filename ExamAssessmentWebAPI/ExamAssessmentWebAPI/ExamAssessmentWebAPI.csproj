@@ -145,6 +145,7 @@
     <Compile Include="Models\Answer.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\ExamQuestion.cs" />
+    <Compile Include="Models\ExamSettings.cs" />
     <Compile Include="Models\ExamTemplate.cs" />
     <Compile Include="Models\ExamType.cs" />
     <Compile Include="Models\LanguageType.cs" />
