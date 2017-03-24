@@ -17,7 +17,7 @@ namespace LMS1701.EA.Controllers
         }
 
         // GET: api/Subquestion/5
-        public string Get(int id)
+        public string Get(int Subquestionid)
         {
             return "value";
         }
@@ -28,12 +28,12 @@ namespace LMS1701.EA.Controllers
         }
 
         // PUT: api/Subquestion/5
-        public void Put(int id, [FromBody]string value)
+        public void Put(int SubquestionId, [FromBody]string value)
         {
         }
 
         // DELETE: api/Subquestion/5
-        public void Delete(int id)
+        public void Delete(int SubquestionId)
         {
         }
     }

@@ -17,23 +17,30 @@ namespace LMS1701.EA.Controllers
         }
 
         // GET: api/Category/5
-        public string Get(int id)
+        public string Get(int CategoryId)
         {
             return "value";
         }
 
         // POST: api/Category
-        public void Post([FromBody]string value)
+        public void Post([FromBody]string value, int SubjectId)
         {
         }
 
-        // PUT: api/Category/5
-        public void Put(int id, [FromBody]string value)
+        // PUT: api/Category/
+        [ActionName("AddSubtopic")]
+        public void Put(int CategoryId, [FromBody]string value)
+        {
+        }
+
+        // PUT: api/Category/
+        [ActionName("RemoveSubtopic")]
+        public void Put(int CategoryId, [FromBody]string value)
         {
         }
 
         // DELETE: api/Category/5
-        public void Delete(int id)
+        public void Delete(int CategoryId)
         {
         }
     }
