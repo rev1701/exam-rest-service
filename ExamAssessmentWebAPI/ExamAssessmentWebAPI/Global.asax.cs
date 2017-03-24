@@ -5,8 +5,9 @@ using System.Web;
 using System.Web.Http;
 using System.Net.Http.Formatting;
 using System.Web.Routing;
+using LMS1701.EA;
 
-namespace LMS1701.EA
+namespace ExamAssessmentWebAPI
 {
     public class WebApiApplication : System.Web.HttpApplication
     {

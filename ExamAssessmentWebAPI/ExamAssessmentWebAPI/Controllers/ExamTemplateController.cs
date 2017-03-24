@@ -5,25 +5,28 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using LMS1701.EA.Models;
 namespace LMS1701.EA.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class ExamTemplateController : ApiController
-    {
-        // GET: api/ExamTemplate
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+    { 
 
         // GET: api/ExamTemplate/5
-        public string Get(int id)
+        public ExamTemplate Get(int id)
         {
-            return "value";
+            return new ExamTemplate();
+        }
+        //     // GETapi/ExamTemplate/GetExamSubjects/id
+        [ActionName("GetExamSubjects")]
+        public List<Subject> GetExamSubjects(int id)
+        {
+            return new List<Subject>();
         }
 
+
         // POST: api/ExamTemplate
-        public void Post([FromBody]string value)
+        public void Post([FromBody]ExamTemplate exam)
         {
         }
 
