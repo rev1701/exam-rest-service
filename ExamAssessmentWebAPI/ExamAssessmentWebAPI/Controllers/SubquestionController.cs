@@ -4,11 +4,12 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-
+using System.Web.Http.Cors;
 namespace LMS1701.EA.Controllers
 {
     public class SubquestionController : ApiController
     {
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         // GET: api/Subquestion
         public IEnumerable<string> Get()
         {
