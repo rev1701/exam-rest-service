@@ -13,7 +13,7 @@ namespace LMS1701.EA.Controllers
     public class SubjectController : ApiController
     {
         // GET: api/Subject
-        public IEnumerable<string> Get()
+        public IEnumerable<Subject> Get()
         {
             return new List<Subject>();
         }
@@ -25,13 +25,13 @@ namespace LMS1701.EA.Controllers
 
         // PUT:
         [ActionName("AddCategory")]
-        public void Put(int SubjectId, [FromBody]string value)
+        public void AddCategory(int SubjectId, [FromBody]string value)
         {
         }
 
         // PUT:
         [ActionName("RemoveCategory")]
-        public void Put(int SubjectId, [FromBody]string value)
+        public void RemoveCategory(int SubjectId, [FromBody]string value)
         {
         }
 
