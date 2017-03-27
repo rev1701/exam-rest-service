@@ -14,7 +14,7 @@ namespace LMS1701.EA.Controllers
         [EnableCors(origins: "*", headers: "*", methods: "*")]
 
         // GET: api/Subtopic/
-        public string Get()
+        public List<Subtopic> Get()
         {
             return new List<Subtopic>();
         }
