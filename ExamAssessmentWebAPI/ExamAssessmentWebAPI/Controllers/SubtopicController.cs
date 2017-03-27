@@ -10,27 +10,24 @@ namespace LMS1701.EA.Controllers
     public class SubtopicController : ApiController
     {
         [EnableCors(origins: "*", headers: "*", methods: "*")]
-        // GET: api/Subtopic
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
 
-        // GET: api/Subtopic/5
-        public string Get(int Subtopicid)
+        // GET: api/Subtopic/
+        public string Get()
         {
-            return "value";
+            return new List<Subtopic>();
         }
 
         // POST: api/Subtopic
         public void Post([FromBody]string value, int CategoryId)
         {
+
         }
 
         // DELETE: api/Subtopic/5
         
         public void Delete(int SubtopicId)
         {
+            
         }
     }
 }

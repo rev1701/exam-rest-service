@@ -11,29 +11,12 @@ namespace LMS1701.EA.Controllers
     {
         [EnableCors(origins: "*", headers: "*", methods: "*")]
         // GET: api/Subquestion
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
         // GET: api/Subquestion/5
-        public string Get(int Subquestionid)
-        {
-            return "value";
-        }
 
-        // POST: api/Subquestion
-        public void Post([FromBody]string value)
-        {
-        }
 
-        // PUT: api/Subquestion/5
+
+        // PUT: api/Subquestion/
         public void Put(int SubquestionId, [FromBody]string value)
-        {
-        }
-
-        // DELETE: api/Subquestion/5
-        public void Delete(int SubquestionId)
         {
         }
     }

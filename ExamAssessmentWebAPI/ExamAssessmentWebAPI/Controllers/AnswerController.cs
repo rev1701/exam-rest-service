@@ -11,17 +11,12 @@ namespace LMS1701.EA.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class AnswerController : ApiController
     {
-        // GET: api/Answer
-        public IEnumerable<string> Get()
+        // GET: api/Answer/id
+        public IEnumerable<string> Get(int SubquestionID)
         {
-            return new string[] { "value1", "value2" };
+            return new List<Answer>();
         }
 
-        // GET: api/Answer/5
-        public string Get(int id)
-        {
-            return "value";
-        }
 
         // POST: api/Answer
         public void Post([FromBody]string value)
