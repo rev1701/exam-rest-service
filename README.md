@@ -47,8 +47,8 @@ REST web service to manage exams and questions.
  |	GET |	api/Category/{id} |	none |	none | List of Categories |		return all categories |
  |	PUT |	api/Category/AddSubtopic/{id} |	CategoryId |	subtopic | none | add subtopic to category |
  |	DELETE |	api/Category/{id} |	CategoryId	none | none |		delete category |
- |	PUT |	api/Category/RemoveSubtopic/{id} |	CategoryId |	subtopic| none		remove subtopic from category |
- |	POST |	api/Subtopic/{id} |	CategoryId |	subtopic | none |	Subtopic and Category attached to	create new subtopic |
+ |	PUT |	api/Category/RemoveSubtopic/{id} |	CategoryId |	subtopic| none |		remove subtopic from category |
+ |	POST |	api/Subtopic/{id} |	CategoryId |	subtopic | none | none |	Subtopic and Category attached to	create new subtopic |
  |	GET |	api/Subtopic |	none |	none |	List of Subtopics |	return all subtopics |
  |	DELETE |	api/Subtopic/{id} |	int SubtopicId |	none |	Subtopic that was deleted | delete subtopic |
 ---
