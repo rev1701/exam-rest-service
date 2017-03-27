@@ -13,7 +13,7 @@ namespace LMS1701.EA.Controllers
     public class AnswerController : ApiController
     {
         // GET: api/Answer/id
-        public IEnumerable<string> Get(int SubquestionID)
+        public IEnumerable<Answer> Get(int SubquestionID)
         {
             return new List<Answer>();
         }

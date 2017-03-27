@@ -13,7 +13,7 @@ namespace LMS1701.EA.Controllers
     public class CategoryController : ApiController
     {
         // GET: api/Category
-        public IEnumerable<string> Get()
+        public IEnumerable<Category> Get()
         {
             return new List <Category> ();  
         }
