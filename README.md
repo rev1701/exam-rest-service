@@ -42,7 +42,7 @@ REST web service to manage exams and questions.
  |	GET |	api/Subject |	none |	none | List of Subjects | return all subjects |
  |	PUT |	api/AddCategory/{id} |	SubjectId |	Category | none | add category to subject |
  |	PUT |	api/RemoveCategory/{id} |	SubjectId |	Category | none |		remove category from subject |
- |	DELETE |	api/Subject/{id} |	SubjectId |	none | none		delete subtopic |
+ |	DELETE |	api/Subject/{id} |	SubjectId |	none | none| 		delete subtopic |
  |	POST |	api/Category |	SubjectId |	Category | none |		create new category |
  |	GET |	api/Category/{id} |	none |	none | List of Categories |		return all categories |
  |	PUT |	api/Category/AddSubtopic/{id} |	CategoryId |	subtopic | none | add subtopic to category |
