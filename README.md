@@ -20,7 +20,7 @@ REST web service to manage exams and questions.
 
 ---
 # EndPoints
-
+|Controller|HTTP Method|
 ---
 # license
 Apache 2.0 (https://github.com/rev1701/exam-rest-service/blob/master/LICENSE)
