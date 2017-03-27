@@ -31,13 +31,15 @@ namespace LMS1701.EA.Controllers
         }
 
         // PUT: api/ExamTemplate/5
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id, [FromBody] ExamQuestion question)
         {
+
         }
 
         // DELETE: api/ExamTemplate/5
         public void Delete(int id)
         {
+
         }
     }
 }

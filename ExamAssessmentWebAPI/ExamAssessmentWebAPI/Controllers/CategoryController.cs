@@ -29,13 +29,13 @@ namespace LMS1701.EA.Controllers
 
         // PUT: api/Category/
         [ActionName("AddSubtopic")]
-        public void Put(int CategoryId, [FromBody]string value)
+        public void AddSubtopic(int CategoryId, [FromBody]string value)
         {
         }
 
         // PUT: api/Category/
         [ActionName("RemoveSubtopic")]
-        public void Put(int CategoryId, [FromBody]string value)
+        public void RemoveSubtopic(int CategoryId, [FromBody]string value)
         {
         }
 
