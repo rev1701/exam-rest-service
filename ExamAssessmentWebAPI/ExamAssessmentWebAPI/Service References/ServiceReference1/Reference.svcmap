@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="cfb066dc-959a-4404-8e7e-226f602d6ce6" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:61751/ExamassessmentWCF" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ExamassessmentWCF.disco" MetadataType="Disco" ID="eac25afe-223a-4062-8091-278bdc2302ec" SourceId="1" SourceUrl="http://localhost:61751/ExamassessmentWCF?disco" />
+    <MetadataFile FileName="ExamassessmentWCF.xsd" MetadataType="Schema" ID="2bc495ae-48ed-466d-9b4b-062df3e99164" SourceId="1" SourceUrl="http://localhost:61751/ExamassessmentWCF?xsd=xsd3" />
+    <MetadataFile FileName="ExamassessmentWCF1.xsd" MetadataType="Schema" ID="6389d102-9b1b-455d-8630-a58238986eea" SourceId="1" SourceUrl="http://localhost:61751/ExamassessmentWCF?xsd=xsd0" />
+    <MetadataFile FileName="ExamassessmentWCF2.xsd" MetadataType="Schema" ID="6ae60db8-ff84-4f7c-91d1-a9a85c319070" SourceId="1" SourceUrl="http://localhost:61751/ExamassessmentWCF?xsd=xsd1" />
+    <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="abc32d3d-8ff7-484f-bd62-c7dd16e6b070" SourceId="1" SourceUrl="http://localhost:61751/ExamassessmentWCF?wsdl" />
+    <MetadataFile FileName="ExamassessmentWCF3.xsd" MetadataType="Schema" ID="faea3b0d-fda7-49df-b8ba-01a3ee318c5e" SourceId="1" SourceUrl="http://localhost:61751/ExamassessmentWCF?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

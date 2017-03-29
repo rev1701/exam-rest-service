@@ -9,6 +9,6 @@ namespace LMS1701.EA.Models
     {
         public int PKID { get; set; }
         public string SubjectName { get; set; }
-        public List<Category> MyProperty { get; set; }
+        public List<Category> CategoryList { get; set; }
     }
 }
