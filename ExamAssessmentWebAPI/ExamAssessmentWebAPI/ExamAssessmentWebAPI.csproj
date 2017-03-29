@@ -128,9 +128,37 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Service References\ExamWCF\ExamAssessmentWebAPI.ExamWCF.Answers.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ExamWCF\ExamAssessmentWebAPI.ExamWCF.ExamTemplate.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ExamWCF\ExamAssessmentWebAPI.ExamWCF.Subject.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ExamWCF\ExamAssessmentWebAPI.ExamWCF.SubTopic.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\ExamWCF\Service1.wsdl" />
+    <None Include="Service References\ExamWCF\Service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ExamWCF\Service11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ExamWCF\Service12.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\ServiceReference1\ExamassessmentWCF.disco" />
     <None Include="Service References\ServiceReference1\configuration91.svcinfo" />
     <None Include="Service References\ServiceReference1\configuration.svcinfo" />
+    <None Include="Service References\ExamWCF\configuration91.svcinfo" />
+    <None Include="Service References\ExamWCF\configuration.svcinfo" />
+    <None Include="Service References\ExamWCF\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Service References\ServiceReference1\ExamAssessmentWebAPI.ServiceReference1.Answers.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -170,6 +198,11 @@
     <Compile Include="Models\SubQuestion.cs" />
     <Compile Include="Models\Subtopic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\ExamWCF\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\ServiceReference1\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -214,6 +247,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ExamWCF\" />
     <WCFMetadataStorage Include="Service References\ServiceReference1\" />
   </ItemGroup>
   <PropertyGroup>

@@ -8,14 +8,16 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 using LMS1701.EA.Models;
 using Newtonsoft.Json;
+using WCF = ExamAssessmentWebAPI.ExamWCF;
+
 
 namespace LMS1701.EA.Controllers
 { 
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
-public class SubtopicController : ApiController
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    
+    public class SubtopicController : ApiController
     {
-
-
+        WCF.Service1Client client = new WCF.Service1Client();
         private MediaTypeWithQualityHeaderValue jsonMediaType = new MediaTypeWithQualityHeaderValue("application/json");
         HttpClient client = new HttpClient(); 
                                           // GET: api/Subtopic/
