@@ -66,8 +66,8 @@ namespace LMS1701.EA.Controllers
                 q1.QuestionList.Add(sq);
                 cat.Categoryname = "C#";
                 cat.PKID = i;
-                sub.PKID = i;
-                sub.SubtopicName = "ADO.NET";
+                sub.Subtopic_ID = i;
+                sub.Subtopic_Name = "ADO.NET";
                 cat.SubTopics = new List<Subtopic>();
                 cat.SubTopics.Add(sub);
                 q1.QuestionCategories = new List<Category>();
