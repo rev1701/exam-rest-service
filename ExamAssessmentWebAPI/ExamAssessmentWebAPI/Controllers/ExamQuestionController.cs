@@ -18,9 +18,14 @@ namespace LMS1701.EA.Controllers
 
         // GET: api/ExamQuestion/GetQuestionSubjects/id
         [ActionName("GetQuestionSubjects")]
-        public IEnumerable<Subject> GetQuestionSubjects(string questionID)
+        public List <WCF.Subject> GetQuestionSubjects(string questionID)
         {
-            return new List<Subject>();
+            List <WCF.Subject> Subjects = new List <WCF.Subject>();
+        
+            //var results = client.();
+
+            // return results.ToList<WCF.Subject>();
+            return new List<WCF.Subject>();
         }
         // GET: api/ExamQuestion
         public IEnumerable<ExamQuestion> Get()
@@ -37,6 +42,7 @@ namespace LMS1701.EA.Controllers
         // POST: api/ExamQuestion
         public void Post([FromBody]ExamQuestion question)
         {
+
         }
 
         // PUT: api/ExamQuestion/ChangeCorrectAnswer/id

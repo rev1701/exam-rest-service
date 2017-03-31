@@ -17,9 +17,10 @@ namespace LMS1701.EA.Controllers
         // GET: api/ExamTemplate/5
         [HttpGet]
         [ActionName("GetExam")]
-        public ExamTemplate Get(int id)
+        public WCF.ExamTemplate Get(string id)
         {
-            //Mock Data Exam Template
+            //Mock Data Exam Template 
+            /*
             ExamTemplate ex = new ExamTemplate();
             ex.ExamTemplateID = "Training_1";
             ex.ExamTemplateName = "Training Test";
@@ -77,13 +78,19 @@ namespace LMS1701.EA.Controllers
                 ex.ExamQuestions.Add(q1);
                 }
             return ex;
+            */
+            var result =client.getExamTemplate(id);
+            return result;
         }
 
         //     // GETapi/ExamTemplate/GetExamSubjects/id
         [ActionName("GetExamSubjects")]
         public List<Subject> GetExamSubjects(int id)
         {
-            return new List<Subject>();
+
+            var results = client.GetAllSubject();
+            
+            return results;
         }
 
 
