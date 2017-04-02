@@ -89,7 +89,9 @@
   </xs:element>
   <xs:element name="spAddExistingCategoryResponse">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="spAddExistingCategoryResult" type="xs:int" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="spAddExistingSubtopicToCategory">
@@ -102,7 +104,9 @@
   </xs:element>
   <xs:element name="spAddExistingSubtopicToCategoryResponse">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="spAddExistingSubtopicToCategoryResult" type="xs:int" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="spAddNewCategoryType">
@@ -115,7 +119,9 @@
   </xs:element>
   <xs:element name="spAddNewCategoryTypeResponse">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="spAddNewCategoryTypeResult" type="xs:int" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="spAddQuestionAsExamQuestion">
@@ -130,7 +136,9 @@
   </xs:element>
   <xs:element name="spAddQuestionAsExamQuestionResponse">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="spAddQuestionAsExamQuestionResult" type="xs:int" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="spAddQuestionCategories">
@@ -143,7 +151,9 @@
   </xs:element>
   <xs:element name="spAddQuestionCategoriesResponse">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="spAddQuestionCategoriesResult" type="xs:int" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="spAddQuestionToAnswer">
@@ -157,7 +167,9 @@
   </xs:element>
   <xs:element name="spAddQuestionToAnswerResponse">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="spAddQuestionToAnswerResult" type="xs:int" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="spAddQuestionToExam">
@@ -171,7 +183,9 @@
   </xs:element>
   <xs:element name="spAddQuestionToExamResponse">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="spAddQuestionToExamResult" type="xs:int" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="spAddSubtopicType">
@@ -184,70 +198,9 @@
   </xs:element>
   <xs:element name="spAddSubtopicTypeResponse">
     <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="spDeleteQuestionCategory">
-    <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="Categories" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="ExamID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="spAddSubtopicTypeResult" type="xs:int" />
       </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="spDeleteQuestionCategoryResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="spRemoveAnswerFromQuestion">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="QuestionID" type="xs:int" />
-        <xs:element minOccurs="0" name="AnswerID" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="spRemoveAnswerFromQuestionResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="spRemoveCategory">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="CategoryName" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="spRemoveCategoryResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="spRemoveQuestionAsExamQuestion">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="ExamQuestionID" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="spRemoveQuestionAsExamQuestionResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="spRemoveQuestionFromExam">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="ExamQuestionID" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="QuestionID" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="spRemoveQuestionFromExamResponse">
-    <xs:complexType>
-      <xs:sequence />
     </xs:complexType>
   </xs:element>
 </xs:schema>

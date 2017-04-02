@@ -16,9 +16,29 @@ namespace LMS1701.EA.Controllers
         WCF.Service1Client client = new WCF.Service1Client();
 
         // GET: api/Category
-        public IEnumerable<Category> Get()
+        public List <WCF.Category> Get()
         {
-            return new List <Category> ();  
+            var info = client.GetAllSubject();
+            List <WCF.Category> Cat = new List<WCF.Category>();
+            
+            foreach (WCF.Subject item in info)
+            {
+                foreach (WCF.Category catx in item.listCat)
+                {
+                    foreach(WCF.Category caty in Cat)
+                    {
+                        if (caty.Categories_Name.Equals(catx.Categories_Name)){
+                            continue;
+                        }
+                        else
+                        {
+                            Cat.Add(catx);
+                        }
+                        
+                    }
+                }
+            }
+            return Cat;
         }
 
         // POST: api/Category

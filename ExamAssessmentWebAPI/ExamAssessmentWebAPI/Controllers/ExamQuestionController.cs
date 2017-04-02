@@ -18,15 +18,36 @@ namespace LMS1701.EA.Controllers
 
         // GET: api/ExamQuestion/GetQuestionSubjects/id
         [ActionName("GetQuestionSubjects")]
-        public IEnumerable<Subject> GetQuestionSubjects(string questionID)
+        public List <Subject> GetQuestionSubjects(string questionID)
         {
+           /*var ques = client.GetAllQuestions().ToList(); not the right client call but will be implemented
+            List<Subject> sub = new List<Subject>();
+            foreach(var item in ques)
+            {
+                //Subject c = new Subject();
+                //c.SubjectName = item.
+            }
+            */
             return new List<Subject>();
         }
         // GET: api/ExamQuestion
-        public IEnumerable<WCF.Question> Get()
+        public IEnumerable<ExamQuestion> Get()
         {
+            /* Get all Exam Questions implementations needed var exques = client.().ToList();
+            List<ExamQuestion> exqueslist = new List<ExamQuestion>();
+            foreach (WCF.ExamQuestion item in exques)
+            {
+                Answer a = new Models.Answer();
+                a.DisplayedAnswer = item.Answer1;
+                a.IsCorrect = item.correct.isCorrect;
+                a.PKID = item.PKID;
+                //a.ProgrammingLanguage = item    to be implemented
+                ans.Add(a);
+            }
 
-            return client.GetAllQuestions().ToList();
+    */
+
+            return new List<ExamQuestion>();
         }
 
         // GET: api/ExamQuestion/5
@@ -38,6 +59,7 @@ namespace LMS1701.EA.Controllers
         // POST: api/ExamQuestion
         public void Post([FromBody]ExamQuestion question)
         {
+
         }
 
         // PUT: api/ExamQuestion/ChangeCorrectAnswer/id

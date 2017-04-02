@@ -84,10 +84,16 @@ namespace ExamAssessmentWebAPI.ExamWCF {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AddLanguageTypeIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string Answer1Field;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int PKIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ExamAssessmentWebAPI.ExamWCF.Correct correctField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -96,6 +102,19 @@ namespace ExamAssessmentWebAPI.ExamWCF {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string AddLanguageTypeID {
+            get {
+                return this.AddLanguageTypeIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AddLanguageTypeIDField, value) != true)) {
+                    this.AddLanguageTypeIDField = value;
+                    this.RaisePropertyChanged("AddLanguageTypeID");
+                }
             }
         }
         
@@ -121,6 +140,64 @@ namespace ExamAssessmentWebAPI.ExamWCF {
                 if ((this.PKIDField.Equals(value) != true)) {
                     this.PKIDField = value;
                     this.RaisePropertyChanged("PKID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public ExamAssessmentWebAPI.ExamWCF.Correct correct {
+            get {
+                return this.correctField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.correctField, value) != true)) {
+                    this.correctField = value;
+                    this.RaisePropertyChanged("correct");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Correct", Namespace="http://schemas.datacontract.org/2004/07/LMS1701.EA.SOAPAPI")]
+    [System.SerializableAttribute()]
+    public partial class Correct : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool isCorrectField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool isCorrect {
+            get {
+                return this.isCorrectField;
+            }
+            set {
+                if ((this.isCorrectField.Equals(value) != true)) {
+                    this.isCorrectField = value;
+                    this.RaisePropertyChanged("isCorrect");
                 }
             }
         }
@@ -770,51 +847,6 @@ namespace ExamAssessmentWebAPI.ExamWCF {
         }
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Correct", Namespace="http://schemas.datacontract.org/2004/07/LMS1701.EA.SOAPAPI")]
-    [System.SerializableAttribute()]
-    public partial class Correct : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool isCorrectField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool isCorrect {
-            get {
-                return this.isCorrectField;
-            }
-            set {
-                if ((this.isCorrectField.Equals(value) != true)) {
-                    this.isCorrectField = value;
-                    this.RaisePropertyChanged("isCorrect");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ExamWCF.IService1")]
     public interface IService1 {
@@ -856,82 +888,52 @@ namespace ExamAssessmentWebAPI.ExamWCF {
         System.Threading.Tasks.Task<ExamAssessmentWebAPI.ExamWCF.Question[]> GetAllQuestionsAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/spAddExistingCategory", ReplyAction="http://tempuri.org/IService1/spAddExistingCategoryResponse")]
-        void spAddExistingCategory(string subject, string category);
+        int spAddExistingCategory(string subject, string category);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/spAddExistingCategory", ReplyAction="http://tempuri.org/IService1/spAddExistingCategoryResponse")]
-        System.Threading.Tasks.Task spAddExistingCategoryAsync(string subject, string category);
+        System.Threading.Tasks.Task<int> spAddExistingCategoryAsync(string subject, string category);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/spAddExistingSubtopicToCategory", ReplyAction="http://tempuri.org/IService1/spAddExistingSubtopicToCategoryResponse")]
-        void spAddExistingSubtopicToCategory(string subtopic, string category);
+        int spAddExistingSubtopicToCategory(string subtopic, string category);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/spAddExistingSubtopicToCategory", ReplyAction="http://tempuri.org/IService1/spAddExistingSubtopicToCategoryResponse")]
-        System.Threading.Tasks.Task spAddExistingSubtopicToCategoryAsync(string subtopic, string category);
+        System.Threading.Tasks.Task<int> spAddExistingSubtopicToCategoryAsync(string subtopic, string category);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/spAddNewCategoryType", ReplyAction="http://tempuri.org/IService1/spAddNewCategoryTypeResponse")]
-        void spAddNewCategoryType(string subject, string category);
+        int spAddNewCategoryType(string subject, string category);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/spAddNewCategoryType", ReplyAction="http://tempuri.org/IService1/spAddNewCategoryTypeResponse")]
-        System.Threading.Tasks.Task spAddNewCategoryTypeAsync(string subject, string category);
+        System.Threading.Tasks.Task<int> spAddNewCategoryTypeAsync(string subject, string category);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/spAddQuestionAsExamQuestion", ReplyAction="http://tempuri.org/IService1/spAddQuestionAsExamQuestionResponse")]
-        void spAddQuestionAsExamQuestion(string ExamQuestionID, int QuestionID, string name, int QuestionType);
+        int spAddQuestionAsExamQuestion(string ExamQuestionID, int QuestionID, string name, int QuestionType);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/spAddQuestionAsExamQuestion", ReplyAction="http://tempuri.org/IService1/spAddQuestionAsExamQuestionResponse")]
-        System.Threading.Tasks.Task spAddQuestionAsExamQuestionAsync(string ExamQuestionID, int QuestionID, string name, int QuestionType);
+        System.Threading.Tasks.Task<int> spAddQuestionAsExamQuestionAsync(string ExamQuestionID, int QuestionID, string name, int QuestionType);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/spAddQuestionCategories", ReplyAction="http://tempuri.org/IService1/spAddQuestionCategoriesResponse")]
-        void spAddQuestionCategories(string ExamQuestionID, int PKID);
+        int spAddQuestionCategories(string ExamQuestionID, int PKID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/spAddQuestionCategories", ReplyAction="http://tempuri.org/IService1/spAddQuestionCategoriesResponse")]
-        System.Threading.Tasks.Task spAddQuestionCategoriesAsync(string ExamQuestionID, int PKID);
+        System.Threading.Tasks.Task<int> spAddQuestionCategoriesAsync(string ExamQuestionID, int PKID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/spAddQuestionToAnswer", ReplyAction="http://tempuri.org/IService1/spAddQuestionToAnswerResponse")]
-        void spAddQuestionToAnswer(int QuestionID, int AnswerID, bool isCorrect);
+        int spAddQuestionToAnswer(int QuestionID, int AnswerID, bool isCorrect);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/spAddQuestionToAnswer", ReplyAction="http://tempuri.org/IService1/spAddQuestionToAnswerResponse")]
-        System.Threading.Tasks.Task spAddQuestionToAnswerAsync(int QuestionID, int AnswerID, bool isCorrect);
+        System.Threading.Tasks.Task<int> spAddQuestionToAnswerAsync(int QuestionID, int AnswerID, bool isCorrect);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/spAddQuestionToExam", ReplyAction="http://tempuri.org/IService1/spAddQuestionToExamResponse")]
-        void spAddQuestionToExam(string ExamID, string ExamQuestionID, int weight);
+        int spAddQuestionToExam(string ExamID, string ExamQuestionID, int weight);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/spAddQuestionToExam", ReplyAction="http://tempuri.org/IService1/spAddQuestionToExamResponse")]
-        System.Threading.Tasks.Task spAddQuestionToExamAsync(string ExamID, string ExamQuestionID, int weight);
+        System.Threading.Tasks.Task<int> spAddQuestionToExamAsync(string ExamID, string ExamQuestionID, int weight);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/spAddSubtopicType", ReplyAction="http://tempuri.org/IService1/spAddSubtopicTypeResponse")]
-        void spAddSubtopicType(string Subtopics, string Category);
+        int spAddSubtopicType(string Subtopics, string Category);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/spAddSubtopicType", ReplyAction="http://tempuri.org/IService1/spAddSubtopicTypeResponse")]
-        System.Threading.Tasks.Task spAddSubtopicTypeAsync(string Subtopics, string Category);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/spDeleteQuestionCategory", ReplyAction="http://tempuri.org/IService1/spDeleteQuestionCategoryResponse")]
-        void spDeleteQuestionCategory(string Categories, string ExamID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/spDeleteQuestionCategory", ReplyAction="http://tempuri.org/IService1/spDeleteQuestionCategoryResponse")]
-        System.Threading.Tasks.Task spDeleteQuestionCategoryAsync(string Categories, string ExamID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/spRemoveAnswerFromQuestion", ReplyAction="http://tempuri.org/IService1/spRemoveAnswerFromQuestionResponse")]
-        void spRemoveAnswerFromQuestion(int QuestionID, int AnswerID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/spRemoveAnswerFromQuestion", ReplyAction="http://tempuri.org/IService1/spRemoveAnswerFromQuestionResponse")]
-        System.Threading.Tasks.Task spRemoveAnswerFromQuestionAsync(int QuestionID, int AnswerID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/spRemoveCategory", ReplyAction="http://tempuri.org/IService1/spRemoveCategoryResponse")]
-        void spRemoveCategory(string CategoryName);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/spRemoveCategory", ReplyAction="http://tempuri.org/IService1/spRemoveCategoryResponse")]
-        System.Threading.Tasks.Task spRemoveCategoryAsync(string CategoryName);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/spRemoveQuestionAsExamQuestion", ReplyAction="http://tempuri.org/IService1/spRemoveQuestionAsExamQuestionResponse")]
-        void spRemoveQuestionAsExamQuestion(string ExamQuestionID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/spRemoveQuestionAsExamQuestion", ReplyAction="http://tempuri.org/IService1/spRemoveQuestionAsExamQuestionResponse")]
-        System.Threading.Tasks.Task spRemoveQuestionAsExamQuestionAsync(string ExamQuestionID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/spRemoveQuestionFromExam", ReplyAction="http://tempuri.org/IService1/spRemoveQuestionFromExamResponse")]
-        void spRemoveQuestionFromExam(string ExamQuestionID, string QuestionID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/spRemoveQuestionFromExam", ReplyAction="http://tempuri.org/IService1/spRemoveQuestionFromExamResponse")]
-        System.Threading.Tasks.Task spRemoveQuestionFromExamAsync(string ExamQuestionID, string QuestionID);
+        System.Threading.Tasks.Task<int> spAddSubtopicTypeAsync(string Subtopics, string Category);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1009,108 +1011,68 @@ namespace ExamAssessmentWebAPI.ExamWCF {
             return base.Channel.GetAllQuestionsAsync();
         }
         
-        public void spAddExistingCategory(string subject, string category) {
-            base.Channel.spAddExistingCategory(subject, category);
+        public int spAddExistingCategory(string subject, string category) {
+            return base.Channel.spAddExistingCategory(subject, category);
         }
         
-        public System.Threading.Tasks.Task spAddExistingCategoryAsync(string subject, string category) {
+        public System.Threading.Tasks.Task<int> spAddExistingCategoryAsync(string subject, string category) {
             return base.Channel.spAddExistingCategoryAsync(subject, category);
         }
         
-        public void spAddExistingSubtopicToCategory(string subtopic, string category) {
-            base.Channel.spAddExistingSubtopicToCategory(subtopic, category);
+        public int spAddExistingSubtopicToCategory(string subtopic, string category) {
+            return base.Channel.spAddExistingSubtopicToCategory(subtopic, category);
         }
         
-        public System.Threading.Tasks.Task spAddExistingSubtopicToCategoryAsync(string subtopic, string category) {
+        public System.Threading.Tasks.Task<int> spAddExistingSubtopicToCategoryAsync(string subtopic, string category) {
             return base.Channel.spAddExistingSubtopicToCategoryAsync(subtopic, category);
         }
         
-        public void spAddNewCategoryType(string subject, string category) {
-            base.Channel.spAddNewCategoryType(subject, category);
+        public int spAddNewCategoryType(string subject, string category) {
+            return base.Channel.spAddNewCategoryType(subject, category);
         }
         
-        public System.Threading.Tasks.Task spAddNewCategoryTypeAsync(string subject, string category) {
+        public System.Threading.Tasks.Task<int> spAddNewCategoryTypeAsync(string subject, string category) {
             return base.Channel.spAddNewCategoryTypeAsync(subject, category);
         }
         
-        public void spAddQuestionAsExamQuestion(string ExamQuestionID, int QuestionID, string name, int QuestionType) {
-            base.Channel.spAddQuestionAsExamQuestion(ExamQuestionID, QuestionID, name, QuestionType);
+        public int spAddQuestionAsExamQuestion(string ExamQuestionID, int QuestionID, string name, int QuestionType) {
+            return base.Channel.spAddQuestionAsExamQuestion(ExamQuestionID, QuestionID, name, QuestionType);
         }
         
-        public System.Threading.Tasks.Task spAddQuestionAsExamQuestionAsync(string ExamQuestionID, int QuestionID, string name, int QuestionType) {
+        public System.Threading.Tasks.Task<int> spAddQuestionAsExamQuestionAsync(string ExamQuestionID, int QuestionID, string name, int QuestionType) {
             return base.Channel.spAddQuestionAsExamQuestionAsync(ExamQuestionID, QuestionID, name, QuestionType);
         }
         
-        public void spAddQuestionCategories(string ExamQuestionID, int PKID) {
-            base.Channel.spAddQuestionCategories(ExamQuestionID, PKID);
+        public int spAddQuestionCategories(string ExamQuestionID, int PKID) {
+            return base.Channel.spAddQuestionCategories(ExamQuestionID, PKID);
         }
         
-        public System.Threading.Tasks.Task spAddQuestionCategoriesAsync(string ExamQuestionID, int PKID) {
+        public System.Threading.Tasks.Task<int> spAddQuestionCategoriesAsync(string ExamQuestionID, int PKID) {
             return base.Channel.spAddQuestionCategoriesAsync(ExamQuestionID, PKID);
         }
         
-        public void spAddQuestionToAnswer(int QuestionID, int AnswerID, bool isCorrect) {
-            base.Channel.spAddQuestionToAnswer(QuestionID, AnswerID, isCorrect);
+        public int spAddQuestionToAnswer(int QuestionID, int AnswerID, bool isCorrect) {
+            return base.Channel.spAddQuestionToAnswer(QuestionID, AnswerID, isCorrect);
         }
         
-        public System.Threading.Tasks.Task spAddQuestionToAnswerAsync(int QuestionID, int AnswerID, bool isCorrect) {
+        public System.Threading.Tasks.Task<int> spAddQuestionToAnswerAsync(int QuestionID, int AnswerID, bool isCorrect) {
             return base.Channel.spAddQuestionToAnswerAsync(QuestionID, AnswerID, isCorrect);
         }
         
-        public void spAddQuestionToExam(string ExamID, string ExamQuestionID, int weight) {
-            base.Channel.spAddQuestionToExam(ExamID, ExamQuestionID, weight);
+        public int spAddQuestionToExam(string ExamID, string ExamQuestionID, int weight) {
+            return base.Channel.spAddQuestionToExam(ExamID, ExamQuestionID, weight);
         }
         
-        public System.Threading.Tasks.Task spAddQuestionToExamAsync(string ExamID, string ExamQuestionID, int weight) {
+        public System.Threading.Tasks.Task<int> spAddQuestionToExamAsync(string ExamID, string ExamQuestionID, int weight) {
             return base.Channel.spAddQuestionToExamAsync(ExamID, ExamQuestionID, weight);
         }
         
-        public void spAddSubtopicType(string Subtopics, string Category) {
-            base.Channel.spAddSubtopicType(Subtopics, Category);
+        public int spAddSubtopicType(string Subtopics, string Category) {
+            return base.Channel.spAddSubtopicType(Subtopics, Category);
         }
         
-        public System.Threading.Tasks.Task spAddSubtopicTypeAsync(string Subtopics, string Category) {
+        public System.Threading.Tasks.Task<int> spAddSubtopicTypeAsync(string Subtopics, string Category) {
             return base.Channel.spAddSubtopicTypeAsync(Subtopics, Category);
-        }
-        
-        public void spDeleteQuestionCategory(string Categories, string ExamID) {
-            base.Channel.spDeleteQuestionCategory(Categories, ExamID);
-        }
-        
-        public System.Threading.Tasks.Task spDeleteQuestionCategoryAsync(string Categories, string ExamID) {
-            return base.Channel.spDeleteQuestionCategoryAsync(Categories, ExamID);
-        }
-        
-        public void spRemoveAnswerFromQuestion(int QuestionID, int AnswerID) {
-            base.Channel.spRemoveAnswerFromQuestion(QuestionID, AnswerID);
-        }
-        
-        public System.Threading.Tasks.Task spRemoveAnswerFromQuestionAsync(int QuestionID, int AnswerID) {
-            return base.Channel.spRemoveAnswerFromQuestionAsync(QuestionID, AnswerID);
-        }
-        
-        public void spRemoveCategory(string CategoryName) {
-            base.Channel.spRemoveCategory(CategoryName);
-        }
-        
-        public System.Threading.Tasks.Task spRemoveCategoryAsync(string CategoryName) {
-            return base.Channel.spRemoveCategoryAsync(CategoryName);
-        }
-        
-        public void spRemoveQuestionAsExamQuestion(string ExamQuestionID) {
-            base.Channel.spRemoveQuestionAsExamQuestion(ExamQuestionID);
-        }
-        
-        public System.Threading.Tasks.Task spRemoveQuestionAsExamQuestionAsync(string ExamQuestionID) {
-            return base.Channel.spRemoveQuestionAsExamQuestionAsync(ExamQuestionID);
-        }
-        
-        public void spRemoveQuestionFromExam(string ExamQuestionID, string QuestionID) {
-            base.Channel.spRemoveQuestionFromExam(ExamQuestionID, QuestionID);
-        }
-        
-        public System.Threading.Tasks.Task spRemoveQuestionFromExamAsync(string ExamQuestionID, string QuestionID) {
-            return base.Channel.spRemoveQuestionFromExamAsync(ExamQuestionID, QuestionID);
         }
     }
 }
