@@ -79,18 +79,19 @@ namespace LMS1701.EA.Controllers
                 }
             return ex;
             */
-            var result =client.getExamTemplate(id);
-            return result;
+            var result = client.getExamTemplate(id);
+            return result; result.ExamQuestions.
         }
 
-        //     // GETapi/ExamTemplate/GetExamSubjects/id
+               // GETapi/ExamTemplate/GetExamSubjects/id
         [ActionName("GetExamSubjects")]
         public List<Subject> GetExamSubjects(int id)
         {
 
-            var results = client.GetAllSubject();
+            //var results = client.GetAllSubject();
             
-            return results;
+            return null;
+            
         }
 
 

@@ -18,8 +18,8 @@ namespace LMS1701.EA.Controllers
         public IEnumerable<WCF.Subject> Get()
         {
             List<WCF.Subject> test = new List<WCF.Subject>();
-
-            foreach(var item in client.GetAllSubject())
+            var allsubjects = client.GetAllSubject();
+            foreach(var item in allsubjects)
             {
                 test.Add(item);
             }

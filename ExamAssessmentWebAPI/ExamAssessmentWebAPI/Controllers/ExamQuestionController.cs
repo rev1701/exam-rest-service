@@ -18,18 +18,35 @@ namespace LMS1701.EA.Controllers
 
         // GET: api/ExamQuestion/GetQuestionSubjects/id
         [ActionName("GetQuestionSubjects")]
-        public List <WCF.Subject> GetQuestionSubjects(string questionID)
+        public List <Subject> GetQuestionSubjects(string questionID)
         {
-            List <WCF.Subject> Subjects = new List <WCF.Subject>();
-        
-            //var results = client.();
-
-            // return results.ToList<WCF.Subject>();
-            return new List<WCF.Subject>();
+           /*var ques = client.GetAllQuestions().ToList(); not the right client call but will be implemented
+            List<Subject> sub = new List<Subject>();
+            foreach(var item in ques)
+            {
+                //Subject c = new Subject();
+                //c.SubjectName = item.
+            }
+            */
+            return new List<Subject>();
         }
         // GET: api/ExamQuestion
         public IEnumerable<ExamQuestion> Get()
         {
+            /* Get all Exam Questions implementations needed var exques = client.().ToList();
+            List<ExamQuestion> exqueslist = new List<ExamQuestion>();
+            foreach (WCF.ExamQuestion item in exques)
+            {
+                Answer a = new Models.Answer();
+                a.DisplayedAnswer = item.Answer1;
+                a.IsCorrect = item.correct.isCorrect;
+                a.PKID = item.PKID;
+                //a.ProgrammingLanguage = item    to be implemented
+                ans.Add(a);
+            }
+
+    */
+
             return new List<ExamQuestion>();
         }
 
