@@ -19,21 +19,11 @@ namespace LMS1701.EA.Controllers
     {
         WCF.Service1Client client = new WCF.Service1Client();
         private MediaTypeWithQualityHeaderValue jsonMediaType = new MediaTypeWithQualityHeaderValue("application/json");
-        HttpClient client = new HttpClient(); 
+
                                           // GET: api/Subtopic/
     public List<Subtopic> Get()
         {
-            List<Subtopic> test = new List<Subtopic>();
-            client.BaseAddress = new Uri(WebApiConfig.baseUrl);
-            client.DefaultRequestHeaders.Accept.Add(jsonMediaType);
-            HttpResponseMessage response = client.GetAsync("api/subtopics").Result;
-
-            if (response.IsSuccessStatusCode)
-            {
-                var obj = response.Content.ReadAsStringAsync().Result;
-                test = JsonConvert.DeserializeObject<List<Subtopic>>(obj);
-            }
-            return test;
+            return null;
         }
 
         // POST: api/Subtopic

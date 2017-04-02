@@ -134,41 +134,19 @@
     <Content Include="Service References\ExamWCF\ExamAssessmentWebAPI.ExamWCF.ExamTemplate.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\ExamWCF\ExamAssessmentWebAPI.ExamWCF.Question.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Service References\ExamWCF\ExamAssessmentWebAPI.ExamWCF.Subject.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\ExamWCF\ExamAssessmentWebAPI.ExamWCF.SubTopic.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <None Include="Service References\ExamWCF\Service1.wsdl" />
-    <None Include="Service References\ExamWCF\Service1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ExamWCF\Service11.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ExamWCF\Service12.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ServiceReference1\ExamassessmentWCF.disco" />
-    <None Include="Service References\ServiceReference1\configuration91.svcinfo" />
-    <None Include="Service References\ServiceReference1\configuration.svcinfo" />
+    <None Include="Service References\ExamWCF\Service1.disco" />
     <None Include="Service References\ExamWCF\configuration91.svcinfo" />
     <None Include="Service References\ExamWCF\configuration.svcinfo" />
     <None Include="Service References\ExamWCF\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <Content Include="Service References\ServiceReference1\ExamAssessmentWebAPI.ServiceReference1.Answers.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\ServiceReference1\ExamAssessmentWebAPI.ServiceReference1.Subject.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\ServiceReference1\ExamAssessmentWebAPI.ServiceReference1.SubTopic.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Service References\ServiceReference1\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -203,11 +181,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\ServiceReference1\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -220,19 +193,16 @@
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference1\ExamassessmentWCF.xsd">
+    <None Include="Service References\ExamWCF\Service1.wsdl" />
+    <None Include="Service References\ExamWCF\Service1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference1\ExamassessmentWCF1.xsd">
+    <None Include="Service References\ExamWCF\Service11.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference1\ExamassessmentWCF2.xsd">
+    <None Include="Service References\ExamWCF\Service12.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference1\ExamassessmentWCF3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ServiceReference1\Service1.wsdl" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -248,7 +218,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\ExamWCF\" />
-    <WCFMetadataStorage Include="Service References\ServiceReference1\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

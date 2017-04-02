@@ -23,9 +23,10 @@ namespace LMS1701.EA.Controllers
             return new List<Subject>();
         }
         // GET: api/ExamQuestion
-        public IEnumerable<ExamQuestion> Get()
+        public IEnumerable<WCF.Question> Get()
         {
-            return new List<ExamQuestion>();
+
+            return client.GetAllQuestions().ToList();
         }
 
         // GET: api/ExamQuestion/5
