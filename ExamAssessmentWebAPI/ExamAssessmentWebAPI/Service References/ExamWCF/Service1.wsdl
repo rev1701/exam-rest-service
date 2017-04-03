@@ -43,6 +43,12 @@
   <wsdl:message name="IService1_GetAllQuestions_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllQuestionsResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_GetAllExamQuestion_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllExamQuestion" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAllExamQuestion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllExamQuestionResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_spAddExistingCategory_InputMessage">
     <wsdl:part name="parameters" element="tns:spAddExistingCategory" />
   </wsdl:message>
@@ -103,12 +109,6 @@
   <wsdl:message name="IService1_spRemoveAnswerFromQuestion_OutputMessage">
     <wsdl:part name="parameters" element="tns:spRemoveAnswerFromQuestionResponse" />
   </wsdl:message>
-  <wsdl:message name="IService1_spRemoveCategory_InputMessage">
-    <wsdl:part name="parameters" element="tns:spRemoveCategory" />
-  </wsdl:message>
-  <wsdl:message name="IService1_spRemoveCategory_OutputMessage">
-    <wsdl:part name="parameters" element="tns:spRemoveCategoryResponse" />
-  </wsdl:message>
   <wsdl:message name="IService1_spRemoveQuestionAsExamQuestion_InputMessage">
     <wsdl:part name="parameters" element="tns:spRemoveQuestionAsExamQuestion" />
   </wsdl:message>
@@ -120,6 +120,54 @@
   </wsdl:message>
   <wsdl:message name="IService1_spRemoveQuestionFromExam_OutputMessage">
     <wsdl:part name="parameters" element="tns:spRemoveQuestionFromExamResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddSubject_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddSubject" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddSubject_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddSubjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteSubtopic_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSubtopic" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteSubtopic_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSubtopicResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_RemoveSubtopicFromCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveSubtopicFromCategory" />
+  </wsdl:message>
+  <wsdl:message name="IService1_RemoveSubtopicFromCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveSubtopicFromCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCategory" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddAnswer_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddAnswer" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddAnswer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddAnswerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteAnswer_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteAnswer" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteAnswer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteAnswerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_RemoveCategoryFromSubject_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveCategoryFromSubject" />
+  </wsdl:message>
+  <wsdl:message name="IService1_RemoveCategoryFromSubject_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveCategoryFromSubjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteSubject_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSubject" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteSubject_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSubjectResponse" />
   </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetData">
@@ -145,6 +193,10 @@
     <wsdl:operation name="GetAllQuestions">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAllQuestions" message="tns:IService1_GetAllQuestions_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAllQuestionsResponse" message="tns:IService1_GetAllQuestions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllExamQuestion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAllExamQuestion" message="tns:IService1_GetAllExamQuestion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAllExamQuestionResponse" message="tns:IService1_GetAllExamQuestion_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="spAddExistingCategory">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/spAddExistingCategory" message="tns:IService1_spAddExistingCategory_InputMessage" />
@@ -186,10 +238,6 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/spRemoveAnswerFromQuestion" message="tns:IService1_spRemoveAnswerFromQuestion_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/spRemoveAnswerFromQuestionResponse" message="tns:IService1_spRemoveAnswerFromQuestion_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="spRemoveCategory">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/spRemoveCategory" message="tns:IService1_spRemoveCategory_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/spRemoveCategoryResponse" message="tns:IService1_spRemoveCategory_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="spRemoveQuestionAsExamQuestion">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/spRemoveQuestionAsExamQuestion" message="tns:IService1_spRemoveQuestionAsExamQuestion_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/spRemoveQuestionAsExamQuestionResponse" message="tns:IService1_spRemoveQuestionAsExamQuestion_OutputMessage" />
@@ -197,6 +245,38 @@
     <wsdl:operation name="spRemoveQuestionFromExam">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/spRemoveQuestionFromExam" message="tns:IService1_spRemoveQuestionFromExam_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/spRemoveQuestionFromExamResponse" message="tns:IService1_spRemoveQuestionFromExam_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddSubject">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/AddSubject" message="tns:IService1_AddSubject_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AddSubjectResponse" message="tns:IService1_AddSubject_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSubtopic">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/DeleteSubtopic" message="tns:IService1_DeleteSubtopic_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/DeleteSubtopicResponse" message="tns:IService1_DeleteSubtopic_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveSubtopicFromCategory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/RemoveSubtopicFromCategory" message="tns:IService1_RemoveSubtopicFromCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/RemoveSubtopicFromCategoryResponse" message="tns:IService1_RemoveSubtopicFromCategory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCategory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/DeleteCategory" message="tns:IService1_DeleteCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/DeleteCategoryResponse" message="tns:IService1_DeleteCategory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddAnswer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/AddAnswer" message="tns:IService1_AddAnswer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AddAnswerResponse" message="tns:IService1_AddAnswer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAnswer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/DeleteAnswer" message="tns:IService1_DeleteAnswer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/DeleteAnswerResponse" message="tns:IService1_DeleteAnswer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveCategoryFromSubject">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/RemoveCategoryFromSubject" message="tns:IService1_RemoveCategoryFromSubject_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/RemoveCategoryFromSubjectResponse" message="tns:IService1_RemoveCategoryFromSubject_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSubject">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/DeleteSubject" message="tns:IService1_DeleteSubject_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/DeleteSubjectResponse" message="tns:IService1_DeleteSubject_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -248,6 +328,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllQuestions">
       <soap:operation soapAction="http://tempuri.org/IService1/GetAllQuestions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllExamQuestion">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetAllExamQuestion" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -345,15 +434,6 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="spRemoveCategory">
-      <soap:operation soapAction="http://tempuri.org/IService1/spRemoveCategory" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="spRemoveQuestionAsExamQuestion">
       <soap:operation soapAction="http://tempuri.org/IService1/spRemoveQuestionAsExamQuestion" style="document" />
       <wsdl:input>
@@ -365,6 +445,78 @@
     </wsdl:operation>
     <wsdl:operation name="spRemoveQuestionFromExam">
       <soap:operation soapAction="http://tempuri.org/IService1/spRemoveQuestionFromExam" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddSubject">
+      <soap:operation soapAction="http://tempuri.org/IService1/AddSubject" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSubtopic">
+      <soap:operation soapAction="http://tempuri.org/IService1/DeleteSubtopic" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveSubtopicFromCategory">
+      <soap:operation soapAction="http://tempuri.org/IService1/RemoveSubtopicFromCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCategory">
+      <soap:operation soapAction="http://tempuri.org/IService1/DeleteCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddAnswer">
+      <soap:operation soapAction="http://tempuri.org/IService1/AddAnswer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAnswer">
+      <soap:operation soapAction="http://tempuri.org/IService1/DeleteAnswer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveCategoryFromSubject">
+      <soap:operation soapAction="http://tempuri.org/IService1/RemoveCategoryFromSubject" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSubject">
+      <soap:operation soapAction="http://tempuri.org/IService1/DeleteSubject" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
