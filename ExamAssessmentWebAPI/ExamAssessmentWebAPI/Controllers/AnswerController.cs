@@ -17,14 +17,14 @@ namespace LMS1701.EA.Controllers
 
         // GET: api/Answer/id
         public List<Answer> Get(int SubquestionID)
-        {
+        { 
             var results = client.GetAnswersQuestion(SubquestionID).ToList();
             List<Answer> ans = new List<Answer>();
             foreach(WCF.Answers item in results)
             {
                 Answer a = new Models.Answer();
                 a.DisplayedAnswer = item.Answer1;
-                //a.IsCorrect = item.Correct.IsCorrect;     UPDATE SERVICE REFEREENCE
+                a.IsCorrect = item.correct.isCorrect;    //UPDATE SERVICE REFEREENCE
                 a.PKID = item.PKID;
                 ans.Add(a);
             }

@@ -17,7 +17,7 @@ namespace LMS1701.EA.Controllers
         
         
         // GET: api/ExamTemplate/Training_1
-        [HttpGet]
+    /*    [HttpGet]
         [ActionName("GetExam")]
         public ExamTemplate Get()
         {
@@ -85,9 +85,9 @@ namespace LMS1701.EA.Controllers
             #endregion
             
         }
+        */
 
-
-        /*
+        
         [HttpGet]
         [ActionName("GetExam")]
         public WCF.ExamTemplate Get(string id)
@@ -96,7 +96,7 @@ namespace LMS1701.EA.Controllers
             WCF.ExamTemplate template = client.getExamTemplate(id);
             return template;
         }
-        */
+        
 
           // GETapi/ExamTemplate/GetExamSubjects/id
         [ActionName("GetExamSubjects")]
