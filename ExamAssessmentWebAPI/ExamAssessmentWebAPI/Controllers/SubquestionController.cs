@@ -51,8 +51,9 @@ namespace LMS1701.EA.Controllers
 
 
         // PUT: api/Subquestion/
-        public void Put(int SubquestionId, [FromBody]string value)
+        public void Put(int SubquestionId, [FromBody]Answer value)
         {
+            client.spAddQuestionToAnswer(SubquestionId, value.PKID, value.IsCorrect);
         }
     }
 }

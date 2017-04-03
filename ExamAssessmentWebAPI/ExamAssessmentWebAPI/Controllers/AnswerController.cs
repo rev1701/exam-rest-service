@@ -33,9 +33,9 @@ namespace LMS1701.EA.Controllers
 
 
         // POST: api/Answer
-        public void Post([FromBody]string value)
+        public void Post(int QuestionID, [FromBody]string value)
         {
-           //client.AddAnswer(QuestionID, Answer, IsCorrect);  Calls the delete answer Update The Service Reference 
+           //client.AddAnswer(QuestionID, Answer);  Calls the delete answer Update The Service Reference 
         }
 
         // PUT: api/Answer/5
