@@ -17,8 +17,8 @@ namespace LMS1701.EA.Controllers
         WCF.Service1Client client = new WCF.Service1Client();
 
         // GET: api/ExamQuestion/GetQuestionSubjects/id
-        [ActionName("GetQuestionSubjects")]
-        public List <Subject> GetQuestionSubjects(string questionID)
+        [ActionName("GetQuestionCategories")]
+        public List <Subject> GetQuestionCategories(string questionID)
         {
            /*var ques = client.GetAllQuestions().ToList(); not the right client call but will be implemented
             List<Subject> sub = new List<Subject>();

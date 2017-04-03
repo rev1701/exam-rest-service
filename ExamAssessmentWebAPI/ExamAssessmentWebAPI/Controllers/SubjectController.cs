@@ -49,7 +49,7 @@ namespace LMS1701.EA.Controllers
         // DELETE: api/Subject/5
         public void Delete(string SubjectName)
         {
-            client.DelteSubject(SubjectName);
+            client.DeleteSubject(SubjectName);
         }
     }
 }
