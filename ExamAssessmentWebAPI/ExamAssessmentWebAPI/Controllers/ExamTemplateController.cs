@@ -118,21 +118,21 @@ namespace LMS1701.EA.Controllers
 
 
         // POST: api/ExamTemplate
-        public void Post([FromBody]ExamTemplate exam)
+        public void Post([FromBody]WCF.ExamTemplate exam)
         {
-
+            //client.AddNewExam(exam.ExamTemplateName, exam.ExamTemplateID, exam.ExamType.ExamTypeName);
         }
 
         // PUT: api/ExamTemplate/5
-        public void Put(int id, [FromBody] ExamQuestion question)
+        public void Put(string extid, int weight, [FromBody] WCF.ExamQuestion exques)
         {
-
+            client.spAddQuestionToExam(extid, exques.ExamQuestionID, weight);
         }
-
+        
         // DELETE: api/ExamTemplate/5
-        public void Delete(int id)
+        public void Delete(string ETID)
         {
-
+            //client.DeleteExam(ETID);
         }
     }
 }
