@@ -24,9 +24,8 @@ namespace LMS1701.EA.Controllers
             {
                 Answer a = new Models.Answer();
                 a.DisplayedAnswer = item.Answer1;
-             //   a.IsCorrect = item.correct.isCorrect;
+                //a.IsCorrect = item.Correct.IsCorrect;     UPDATE SERVICE REFEREENCE
                 a.PKID = item.PKID;
-                //a.ProgrammingLanguage = item    to be implemented
                 ans.Add(a);
             }
             return ans;
@@ -36,16 +35,19 @@ namespace LMS1701.EA.Controllers
         // POST: api/Answer
         public void Post([FromBody]string value)
         {
+           //client.AddAnswer(QuestionID, Answer, IsCorrect);  Calls the delete answer Update The Service Reference 
         }
 
         // PUT: api/Answer/5
         public void Put(int id, [FromBody]string value)
         {
+            
         }
 
         // DELETE: api/Answer/5
         public void Delete(int id)
         {
+            //client.DeleteAnswer(answerdesc);   Calls the delete answer Update the Service Reference
         }
     }
 }

@@ -19,7 +19,7 @@ namespace LMS1701.EA.Controllers
         [ActionName("GetExam")]
         public WCF.ExamTemplate Get(string id)
         {
-            #region
+            #region newMap
             //Mock Data Exam Template 
             /*
             ExamTemplate ex = new ExamTemplate();
@@ -82,17 +82,37 @@ namespace LMS1701.EA.Controllers
             */
             #endregion
             var result = client.getExamTemplate(id);
-            return result; 
+            WCF.ExamTemplate template = client.getExamTemplate(id);
+            return template;
         }
-
-               // GETapi/ExamTemplate/GetExamSubjects/id
+          // GETapi/ExamTemplate/GetExamSubjects/id
         [ActionName("GetExamSubjects")]
-        public List<Subject> GetExamSubjects(int id)
+        public List<WCF.Subject> GetExamSubjects(String id)
         {
 
             //var results = client.GetAllSubject();
-            
-            return null;
+
+            List<WCF.Subject> sub = new List<WCF.Subject>();
+            List<WCF.Subject> result = new List<WCF.Subject>();
+            sub = client.GetAllSubject().ToList();
+            WCF.ExamTemplate template = client.getExamTemplate(id);
+            for (int i =0; i < template.ExamQuestions.Count(); i++ )
+            {
+                for(int j =0; j < template.ExamQuestions.ElementAt(i).ExamQuestion_Categories.Count(); j++)
+                {
+                    for(int k =0; k < sub.Count(); k++)
+                    {
+                        if(sub.ElementAt(k).listCat.Contains(template.ExamQuestions.ElementAt(i).ExamQuestion_Categories.ElementAt(j)))
+                        {
+                            if(!result.Contains(sub.ElementAt(k)))
+                            {
+                                result.Add(sub.ElementAt(k));
+                            }
+                        }
+                    }
+                }
+            }
+            return result;
             
         }
 
@@ -100,6 +120,7 @@ namespace LMS1701.EA.Controllers
         // POST: api/ExamTemplate
         public void Post([FromBody]ExamTemplate exam)
         {
+
         }
 
         // PUT: api/ExamTemplate/5

@@ -182,6 +182,9 @@
     <Content Include="Service References\ExamWCF\ExamAssessmentWebAPI.ExamWCF.Answers.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\ExamWCF\ExamAssessmentWebAPI.ExamWCF.ExamQuestion.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Service References\ExamWCF\ExamAssessmentWebAPI.ExamWCF.ExamTemplate.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
