@@ -145,7 +145,8 @@ namespace LMS1701.EA.Controllers
         // DELETE: api/ExamTemplate/5
         public void Delete(string ETID)
         {
-            //client.DeleteExam(ETID);
+         //   client.DeleteExam(ETID);
+            
         }
     }
 }
