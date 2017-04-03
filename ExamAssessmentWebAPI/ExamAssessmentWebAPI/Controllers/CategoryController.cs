@@ -48,12 +48,16 @@ namespace LMS1701.EA.Controllers
         }
 
         // PUT: api/Category/
-        [ActionName("AddSubtopic")]
-        public void AddSubtopic(string CategoryName, [FromBody]string SubtopicName)
+        [ActionName("AddNewSubtopic")]
+        public void AddNewSubtopic(string CategoryName, [FromBody]string SubtopicName)
         {
             client.spAddNewCategoryType(SubtopicName, CategoryName);
         }
-
+        [ActionName("AddExistingSubtopic")]
+        public void AddExistingSubtopic(string CategoryName, [FromBody]string SubtopicName)
+        {
+            client.spAddExistingSubtopicToCategory(SubtopicName, CategoryName);
+        }
         // PUT: api/Category/
         [ActionName("RemoveSubtopic")]
         public void RemoveSubtopic(string CategoryName, [FromBody]string SubtopicName)
