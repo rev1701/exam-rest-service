@@ -57,7 +57,7 @@ namespace LMS1701.EA.Controllers
         
         public void Delete(string subtopicName)
         {
-         //   client.DeleteSubtopic(subtopicName);
+            client.DeleteSubtopic(subtopicName);
         }
     }
 }
