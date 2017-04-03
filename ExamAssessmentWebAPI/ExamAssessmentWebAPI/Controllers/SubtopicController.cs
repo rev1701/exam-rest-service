@@ -53,17 +53,11 @@ namespace LMS1701.EA.Controllers
             return Sub;
         }
 
-        // POST: api/Subtopic
-        public void Post([FromBody]string value, int CategoryId)
-        {
-
-        }
-
         // DELETE: api/Subtopic/5
         
-        public void Delete(int SubtopicId)
+        public void Delete(string subtopicName)
         {
-            
+         //   client.DeleteSubtopic(subtopicName);
         }
     }
 }

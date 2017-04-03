@@ -24,7 +24,7 @@ namespace LMS1701.EA.Controllers
             {
                 Answer a = new Models.Answer();
                 a.DisplayedAnswer = item.Answer1;
-                a.IsCorrect = item.correct.isCorrect;
+             //   a.IsCorrect = item.correct.isCorrect;
                 a.PKID = item.PKID;
                 //a.ProgrammingLanguage = item    to be implemented
                 ans.Add(a);

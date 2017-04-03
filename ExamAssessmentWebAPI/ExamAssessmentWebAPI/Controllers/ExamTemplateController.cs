@@ -19,6 +19,7 @@ namespace LMS1701.EA.Controllers
         [ActionName("GetExam")]
         public WCF.ExamTemplate Get(string id)
         {
+            #region
             //Mock Data Exam Template 
             /*
             ExamTemplate ex = new ExamTemplate();
@@ -79,8 +80,9 @@ namespace LMS1701.EA.Controllers
                 }
             return ex;
             */
+            #endregion
             var result = client.getExamTemplate(id);
-            return result; result.ExamQuestions.
+            return result; 
         }
 
                // GETapi/ExamTemplate/GetExamSubjects/id

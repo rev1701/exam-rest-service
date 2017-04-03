@@ -42,29 +42,29 @@ namespace LMS1701.EA.Controllers
         }
 
         // POST: api/Category
-        public void Post([FromBody]string value, int SubjectId)
+        public void Post([FromBody]string subjectName, string categoryName)
         {
-
+            client.spAddNewCategoryType(subjectName, categoryName);
         }
 
         // PUT: api/Category/
         [ActionName("AddSubtopic")]
-        public void AddSubtopic(int CategoryId, [FromBody]string value)
+        public void AddSubtopic(string CategoryName, [FromBody]string SubtopicName)
         {
-
+            client.spAddNewCategoryType(SubtopicName, CategoryName);
         }
 
         // PUT: api/Category/
         [ActionName("RemoveSubtopic")]
-        public void RemoveSubtopic(int CategoryId, [FromBody]string value)
+        public void RemoveSubtopic(string CategoryName, [FromBody]string SubtopicName)
         {
-
+            client.RemoveSubtopicFromCategory( SubtopicName,  CategoryName);
         }
 
         // DELETE: api/Category/5
-        public void Delete(int CategoryId)
+        public void Delete(string CategoryName)
         {
-
+            client.DeleteCategory(CategoryName);
         }
     }
 }
