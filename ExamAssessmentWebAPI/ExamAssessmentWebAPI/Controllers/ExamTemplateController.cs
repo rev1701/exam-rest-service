@@ -14,14 +14,16 @@ namespace LMS1701.EA.Controllers
     public class ExamTemplateController : ApiController
     {
         WCF.Service1Client client = new WCF.Service1Client();
-        // GET: api/ExamTemplate/5
+        
+        
+        // GET: api/ExamTemplate/Training_1
         [HttpGet]
         [ActionName("GetExam")]
-        public WCF.ExamTemplate Get(string id)
+        public ExamTemplate Get()
         {
             #region newMap
             //Mock Data Exam Template 
-            /*
+            
             ExamTemplate ex = new ExamTemplate();
             ex.ExamTemplateID = "Training_1";
             ex.ExamTemplateName = "Training Test";
@@ -79,12 +81,23 @@ namespace LMS1701.EA.Controllers
                 ex.ExamQuestions.Add(q1);
                 }
             return ex;
-            */
+            
             #endregion
+            
+        }
+
+
+        /*
+        [HttpGet]
+        [ActionName("GetExam")]
+        public WCF.ExamTemplate Get(string id)
+        {
             var result = client.getExamTemplate(id);
             WCF.ExamTemplate template = client.getExamTemplate(id);
             return template;
         }
+        */
+
           // GETapi/ExamTemplate/GetExamSubjects/id
         [ActionName("GetExamSubjects")]
         public List<WCF.Subject> GetExamSubjects(String id)
