@@ -89,9 +89,6 @@ namespace ExamAssessmentWebAPI.ExamWCF {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int PKIDField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ExamAssessmentWebAPI.ExamWCF.Correct correctField;
-        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -124,64 +121,6 @@ namespace ExamAssessmentWebAPI.ExamWCF {
                 if ((this.PKIDField.Equals(value) != true)) {
                     this.PKIDField = value;
                     this.RaisePropertyChanged("PKID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public ExamAssessmentWebAPI.ExamWCF.Correct correct {
-            get {
-                return this.correctField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.correctField, value) != true)) {
-                    this.correctField = value;
-                    this.RaisePropertyChanged("correct");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Correct", Namespace="http://schemas.datacontract.org/2004/07/LMS1701.EA.SOAPAPI")]
-    [System.SerializableAttribute()]
-    public partial class Correct : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool isCorrectField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool isCorrect {
-            get {
-                return this.isCorrectField;
-            }
-            set {
-                if ((this.isCorrectField.Equals(value) != true)) {
-                    this.isCorrectField = value;
-                    this.RaisePropertyChanged("isCorrect");
                 }
             }
         }
@@ -831,6 +770,51 @@ namespace ExamAssessmentWebAPI.ExamWCF {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Correct", Namespace="http://schemas.datacontract.org/2004/07/LMS1701.EA.SOAPAPI")]
+    [System.SerializableAttribute()]
+    public partial class Correct : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool isCorrectField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool isCorrect {
+            get {
+                return this.isCorrectField;
+            }
+            set {
+                if ((this.isCorrectField.Equals(value) != true)) {
+                    this.isCorrectField = value;
+                    this.RaisePropertyChanged("isCorrect");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ExamWCF.IService1")]
     public interface IService1 {
@@ -870,12 +854,6 @@ namespace ExamAssessmentWebAPI.ExamWCF {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllQuestions", ReplyAction="http://tempuri.org/IService1/GetAllQuestionsResponse")]
         System.Threading.Tasks.Task<ExamAssessmentWebAPI.ExamWCF.Question[]> GetAllQuestionsAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllExamQuestion", ReplyAction="http://tempuri.org/IService1/GetAllExamQuestionResponse")]
-        ExamAssessmentWebAPI.ExamWCF.ExamQuestion[] GetAllExamQuestion();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllExamQuestion", ReplyAction="http://tempuri.org/IService1/GetAllExamQuestionResponse")]
-        System.Threading.Tasks.Task<ExamAssessmentWebAPI.ExamWCF.ExamQuestion[]> GetAllExamQuestionAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/spAddExistingCategory", ReplyAction="http://tempuri.org/IService1/spAddExistingCategoryResponse")]
         void spAddExistingCategory(string subject, string category);
@@ -954,18 +932,6 @@ namespace ExamAssessmentWebAPI.ExamWCF {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/spRemoveQuestionFromExam", ReplyAction="http://tempuri.org/IService1/spRemoveQuestionFromExamResponse")]
         System.Threading.Tasks.Task spRemoveQuestionFromExamAsync(string ExamQuestionID, string QuestionID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteSubtopic", ReplyAction="http://tempuri.org/IService1/DeleteSubtopicResponse")]
-        void DeleteSubtopic(string SubtopicName);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteSubtopic", ReplyAction="http://tempuri.org/IService1/DeleteSubtopicResponse")]
-        System.Threading.Tasks.Task DeleteSubtopicAsync(string SubtopicName);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddAnswer", ReplyAction="http://tempuri.org/IService1/AddAnswerResponse")]
-        void AddAnswer(int QuestionID, string Answer, bool IC);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddAnswer", ReplyAction="http://tempuri.org/IService1/AddAnswerResponse")]
-        System.Threading.Tasks.Task AddAnswerAsync(int QuestionID, string Answer, bool IC);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1041,14 +1007,6 @@ namespace ExamAssessmentWebAPI.ExamWCF {
         
         public System.Threading.Tasks.Task<ExamAssessmentWebAPI.ExamWCF.Question[]> GetAllQuestionsAsync() {
             return base.Channel.GetAllQuestionsAsync();
-        }
-        
-        public ExamAssessmentWebAPI.ExamWCF.ExamQuestion[] GetAllExamQuestion() {
-            return base.Channel.GetAllExamQuestion();
-        }
-        
-        public System.Threading.Tasks.Task<ExamAssessmentWebAPI.ExamWCF.ExamQuestion[]> GetAllExamQuestionAsync() {
-            return base.Channel.GetAllExamQuestionAsync();
         }
         
         public void spAddExistingCategory(string subject, string category) {
@@ -1153,22 +1111,6 @@ namespace ExamAssessmentWebAPI.ExamWCF {
         
         public System.Threading.Tasks.Task spRemoveQuestionFromExamAsync(string ExamQuestionID, string QuestionID) {
             return base.Channel.spRemoveQuestionFromExamAsync(ExamQuestionID, QuestionID);
-        }
-        
-        public void DeleteSubtopic(string SubtopicName) {
-            base.Channel.DeleteSubtopic(SubtopicName);
-        }
-        
-        public System.Threading.Tasks.Task DeleteSubtopicAsync(string SubtopicName) {
-            return base.Channel.DeleteSubtopicAsync(SubtopicName);
-        }
-        
-        public void AddAnswer(int QuestionID, string Answer, bool IC) {
-            base.Channel.AddAnswer(QuestionID, Answer, IC);
-        }
-        
-        public System.Threading.Tasks.Task AddAnswerAsync(int QuestionID, string Answer, bool IC) {
-            return base.Channel.AddAnswerAsync(QuestionID, Answer, IC);
         }
     }
 }

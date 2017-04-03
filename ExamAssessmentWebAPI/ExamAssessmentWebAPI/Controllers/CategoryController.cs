@@ -18,7 +18,7 @@ namespace LMS1701.EA.Controllers
         // GET: api/Category
         public List <WCF.Category> Get()
         {
-            var info = client.GetAllSubject();
+            var info = client.GetAllSubject().ToList();
             List <WCF.Category> Cat = new List<WCF.Category>();
             
             foreach (WCF.Subject item in info)
