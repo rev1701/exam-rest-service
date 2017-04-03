@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Service1" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://ec2-54-215-138-178.us-west-1.compute.amazonaws.com/ExamAssessmentWCF/Service1.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://ec2-54-215-138-178.us-west-1.compute.amazonaws.com/ExamAssessmentWCF/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://ec2-54-215-138-178.us-west-1.compute.amazonaws.com/ExamAssessmentWCF/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/LMS1701.EA.SOAPAPI" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IService1_GetData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetData" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetSubtopicList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSubtopicList" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetSubtopicList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSubtopicListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAnswersQuestion_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAnswersQuestion" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAnswersQuestion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAnswersQuestionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAllSubject_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSubject" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAllSubject_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSubjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getExamTemplate_InputMessage">
+    <wsdl:part name="parameters" element="tns:getExamTemplate" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getExamTemplate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getExamTemplateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAllQuestions_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllQuestions" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAllQuestions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllQuestionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_spAddExistingCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:spAddExistingCategory" />
+  </wsdl:message>
+  <wsdl:message name="IService1_spAddExistingCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:spAddExistingCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_spAddExistingSubtopicToCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:spAddExistingSubtopicToCategory" />
+  </wsdl:message>
+  <wsdl:message name="IService1_spAddExistingSubtopicToCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:spAddExistingSubtopicToCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_spAddNewCategoryType_InputMessage">
+    <wsdl:part name="parameters" element="tns:spAddNewCategoryType" />
+  </wsdl:message>
+  <wsdl:message name="IService1_spAddNewCategoryType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:spAddNewCategoryTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_spAddQuestionAsExamQuestion_InputMessage">
+    <wsdl:part name="parameters" element="tns:spAddQuestionAsExamQuestion" />
+  </wsdl:message>
+  <wsdl:message name="IService1_spAddQuestionAsExamQuestion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:spAddQuestionAsExamQuestionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_spAddQuestionCategories_InputMessage">
+    <wsdl:part name="parameters" element="tns:spAddQuestionCategories" />
+  </wsdl:message>
+  <wsdl:message name="IService1_spAddQuestionCategories_OutputMessage">
+    <wsdl:part name="parameters" element="tns:spAddQuestionCategoriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_spAddQuestionToAnswer_InputMessage">
+    <wsdl:part name="parameters" element="tns:spAddQuestionToAnswer" />
+  </wsdl:message>
+  <wsdl:message name="IService1_spAddQuestionToAnswer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:spAddQuestionToAnswerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_spAddQuestionToExam_InputMessage">
+    <wsdl:part name="parameters" element="tns:spAddQuestionToExam" />
+  </wsdl:message>
+  <wsdl:message name="IService1_spAddQuestionToExam_OutputMessage">
+    <wsdl:part name="parameters" element="tns:spAddQuestionToExamResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_spAddSubtopicType_InputMessage">
+    <wsdl:part name="parameters" element="tns:spAddSubtopicType" />
+  </wsdl:message>
+  <wsdl:message name="IService1_spAddSubtopicType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:spAddSubtopicTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_spDeleteQuestionCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:spDeleteQuestionCategory" />
+  </wsdl:message>
+  <wsdl:message name="IService1_spDeleteQuestionCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:spDeleteQuestionCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_spRemoveAnswerFromQuestion_InputMessage">
+    <wsdl:part name="parameters" element="tns:spRemoveAnswerFromQuestion" />
+  </wsdl:message>
+  <wsdl:message name="IService1_spRemoveAnswerFromQuestion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:spRemoveAnswerFromQuestionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_spRemoveCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:spRemoveCategory" />
+  </wsdl:message>
+  <wsdl:message name="IService1_spRemoveCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:spRemoveCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_spRemoveQuestionAsExamQuestion_InputMessage">
+    <wsdl:part name="parameters" element="tns:spRemoveQuestionAsExamQuestion" />
+  </wsdl:message>
+  <wsdl:message name="IService1_spRemoveQuestionAsExamQuestion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:spRemoveQuestionAsExamQuestionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_spRemoveQuestionFromExam_InputMessage">
+    <wsdl:part name="parameters" element="tns:spRemoveQuestionFromExam" />
+  </wsdl:message>
+  <wsdl:message name="IService1_spRemoveQuestionFromExam_OutputMessage">
+    <wsdl:part name="parameters" element="tns:spRemoveQuestionFromExamResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IService1">
+    <wsdl:operation name="GetData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetData" message="tns:IService1_GetData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetDataResponse" message="tns:IService1_GetData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSubtopicList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetSubtopicList" message="tns:IService1_GetSubtopicList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetSubtopicListResponse" message="tns:IService1_GetSubtopicList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAnswersQuestion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAnswersQuestion" message="tns:IService1_GetAnswersQuestion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAnswersQuestionResponse" message="tns:IService1_GetAnswersQuestion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllSubject">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAllSubject" message="tns:IService1_GetAllSubject_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAllSubjectResponse" message="tns:IService1_GetAllSubject_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getExamTemplate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getExamTemplate" message="tns:IService1_getExamTemplate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getExamTemplateResponse" message="tns:IService1_getExamTemplate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllQuestions">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAllQuestions" message="tns:IService1_GetAllQuestions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAllQuestionsResponse" message="tns:IService1_GetAllQuestions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="spAddExistingCategory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/spAddExistingCategory" message="tns:IService1_spAddExistingCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/spAddExistingCategoryResponse" message="tns:IService1_spAddExistingCategory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="spAddExistingSubtopicToCategory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/spAddExistingSubtopicToCategory" message="tns:IService1_spAddExistingSubtopicToCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/spAddExistingSubtopicToCategoryResponse" message="tns:IService1_spAddExistingSubtopicToCategory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="spAddNewCategoryType">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/spAddNewCategoryType" message="tns:IService1_spAddNewCategoryType_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/spAddNewCategoryTypeResponse" message="tns:IService1_spAddNewCategoryType_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="spAddQuestionAsExamQuestion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/spAddQuestionAsExamQuestion" message="tns:IService1_spAddQuestionAsExamQuestion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/spAddQuestionAsExamQuestionResponse" message="tns:IService1_spAddQuestionAsExamQuestion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="spAddQuestionCategories">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/spAddQuestionCategories" message="tns:IService1_spAddQuestionCategories_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/spAddQuestionCategoriesResponse" message="tns:IService1_spAddQuestionCategories_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="spAddQuestionToAnswer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/spAddQuestionToAnswer" message="tns:IService1_spAddQuestionToAnswer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/spAddQuestionToAnswerResponse" message="tns:IService1_spAddQuestionToAnswer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="spAddQuestionToExam">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/spAddQuestionToExam" message="tns:IService1_spAddQuestionToExam_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/spAddQuestionToExamResponse" message="tns:IService1_spAddQuestionToExam_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="spAddSubtopicType">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/spAddSubtopicType" message="tns:IService1_spAddSubtopicType_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/spAddSubtopicTypeResponse" message="tns:IService1_spAddSubtopicType_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="spDeleteQuestionCategory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/spDeleteQuestionCategory" message="tns:IService1_spDeleteQuestionCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/spDeleteQuestionCategoryResponse" message="tns:IService1_spDeleteQuestionCategory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="spRemoveAnswerFromQuestion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/spRemoveAnswerFromQuestion" message="tns:IService1_spRemoveAnswerFromQuestion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/spRemoveAnswerFromQuestionResponse" message="tns:IService1_spRemoveAnswerFromQuestion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="spRemoveCategory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/spRemoveCategory" message="tns:IService1_spRemoveCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/spRemoveCategoryResponse" message="tns:IService1_spRemoveCategory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="spRemoveQuestionAsExamQuestion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/spRemoveQuestionAsExamQuestion" message="tns:IService1_spRemoveQuestionAsExamQuestion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/spRemoveQuestionAsExamQuestionResponse" message="tns:IService1_spRemoveQuestionAsExamQuestion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="spRemoveQuestionFromExam">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/spRemoveQuestionFromExam" message="tns:IService1_spRemoveQuestionFromExam_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/spRemoveQuestionFromExamResponse" message="tns:IService1_spRemoveQuestionFromExam_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetData">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSubtopicList">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetSubtopicList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAnswersQuestion">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetAnswersQuestion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllSubject">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetAllSubject" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getExamTemplate">
+      <soap:operation soapAction="http://tempuri.org/IService1/getExamTemplate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllQuestions">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetAllQuestions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spAddExistingCategory">
+      <soap:operation soapAction="http://tempuri.org/IService1/spAddExistingCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spAddExistingSubtopicToCategory">
+      <soap:operation soapAction="http://tempuri.org/IService1/spAddExistingSubtopicToCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spAddNewCategoryType">
+      <soap:operation soapAction="http://tempuri.org/IService1/spAddNewCategoryType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spAddQuestionAsExamQuestion">
+      <soap:operation soapAction="http://tempuri.org/IService1/spAddQuestionAsExamQuestion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spAddQuestionCategories">
+      <soap:operation soapAction="http://tempuri.org/IService1/spAddQuestionCategories" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spAddQuestionToAnswer">
+      <soap:operation soapAction="http://tempuri.org/IService1/spAddQuestionToAnswer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spAddQuestionToExam">
+      <soap:operation soapAction="http://tempuri.org/IService1/spAddQuestionToExam" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spAddSubtopicType">
+      <soap:operation soapAction="http://tempuri.org/IService1/spAddSubtopicType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spDeleteQuestionCategory">
+      <soap:operation soapAction="http://tempuri.org/IService1/spDeleteQuestionCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spRemoveAnswerFromQuestion">
+      <soap:operation soapAction="http://tempuri.org/IService1/spRemoveAnswerFromQuestion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spRemoveCategory">
+      <soap:operation soapAction="http://tempuri.org/IService1/spRemoveCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spRemoveQuestionAsExamQuestion">
+      <soap:operation soapAction="http://tempuri.org/IService1/spRemoveQuestionAsExamQuestion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spRemoveQuestionFromExam">
+      <soap:operation soapAction="http://tempuri.org/IService1/spRemoveQuestionFromExam" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service1">
+    <wsdl:port name="BasicHttpBinding_IService1" binding="tns:BasicHttpBinding_IService1">
+      <soap:address location="http://ec2-54-215-138-178.us-west-1.compute.amazonaws.com/ExamAssessmentWCF/Service1.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
