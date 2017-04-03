@@ -24,9 +24,8 @@ namespace LMS1701.EA.Controllers
             {
                 Answer a = new Models.Answer();
                 a.DisplayedAnswer = item.Answer1;
-                a.IsCorrect = item.correct.isCorrect;
+                //a.IsCorrect = item.Correct.IsCorrect;     UPDATE SERVICE REFEREENCE
                 a.PKID = item.PKID;
-                //a.ProgrammingLanguage = item    to be implemented
                 ans.Add(a);
             }
             return ans;
@@ -36,6 +35,7 @@ namespace LMS1701.EA.Controllers
         // POST: api/Answer
         public void Post([FromBody]string value)
         {
+           var results = client.AddQuestion()
         }
 
         // PUT: api/Answer/5

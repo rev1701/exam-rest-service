@@ -80,7 +80,7 @@ namespace LMS1701.EA.Controllers
             return ex;
             */
             var result = client.getExamTemplate(id);
-            return result; result.ExamQuestions.
+            return result;
         }
 
                // GETapi/ExamTemplate/GetExamSubjects/id
