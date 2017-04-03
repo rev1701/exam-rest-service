@@ -6,23 +6,24 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using LMS1701.EA.Models;
-
 using WCF = ExamAssessmentWebAPI.ExamWCF;
+
 namespace LMS1701.EA.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class SubjectController : ApiController
     {
         WCF.Service1Client client = new WCF.Service1Client();
-    
         // GET: api/Subject
         public IEnumerable<WCF.Subject> Get()
         {
-           
-            List<WCF.Subject> result = client.GetAllSubject().ToList();
-
-           
-            return result;
+            List<WCF.Subject> test = new List<WCF.Subject>();
+            var allsubjects = client.GetAllSubject();
+            foreach(var item in allsubjects)
+            {
+                test.Add(item);
+            }
+            return test;
         }
 
         // POST: api/Subject

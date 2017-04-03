@@ -6,19 +6,21 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using LMS1701.EA.Models;
+using WCF = ExamAssessmentWebAPI.ExamWCF;
 
 namespace LMS1701.EA.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class ExamTemplateController : ApiController
-    { 
-
+    {
+        WCF.Service1Client client = new WCF.Service1Client();
         // GET: api/ExamTemplate/5
         [HttpGet]
         [ActionName("GetExam")]
-        public ExamTemplate Get(int id)
+        public WCF.ExamTemplate Get(string id)
         {
-            //Mock Data Exam Template
+            //Mock Data Exam Template 
+            /*
             ExamTemplate ex = new ExamTemplate();
             ex.ExamTemplateID = "Training_1";
             ex.ExamTemplateName = "Training Test";
@@ -76,13 +78,20 @@ namespace LMS1701.EA.Controllers
                 ex.ExamQuestions.Add(q1);
                 }
             return ex;
+            */
+            var result = client.getExamTemplate(id);
+            return result; result.ExamQuestions.
         }
 
-        //     // GETapi/ExamTemplate/GetExamSubjects/id
+               // GETapi/ExamTemplate/GetExamSubjects/id
         [ActionName("GetExamSubjects")]
         public List<Subject> GetExamSubjects(int id)
         {
-            return new List<Subject>();
+
+            //var results = client.GetAllSubject();
+            
+            return null;
+            
         }
 
 

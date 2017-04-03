@@ -6,16 +6,30 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using LMS1701.EA.Models;
+using WCF = ExamAssessmentWebAPI.ExamWCF;
 
 namespace LMS1701.EA.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class AnswerController : ApiController
     {
+        WCF.Service1Client client = new WCF.Service1Client();
+
         // GET: api/Answer/id
-        public IEnumerable<Answer> Get(int SubquestionID)
+        public List<Answer> Get(int SubquestionID)
         {
-            return new List<Answer>();
+            var results = client.GetAnswersQuestion(SubquestionID).ToList();
+            List<Answer> ans = new List<Answer>();
+            foreach(WCF.Answers item in results)
+            {
+                Answer a = new Models.Answer();
+                a.DisplayedAnswer = item.Answer1;
+                a.IsCorrect = item.correct.isCorrect;
+                a.PKID = item.PKID;
+                //a.ProgrammingLanguage = item    to be implemented
+                ans.Add(a);
+            }
+            return ans;
         }
 
 
