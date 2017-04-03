@@ -177,8 +177,6 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
-    <None Include="Service References\ExamWCF\configuration91.svcinfo" />
-    <None Include="Service References\ExamWCF\configuration.svcinfo" />
     <Content Include="Service References\ExamWCF\ExamAssessmentWebAPI.ExamWCF.Answers.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -197,6 +195,9 @@
     <Content Include="Service References\ExamWCF\ExamAssessmentWebAPI.ExamWCF.SubTopic.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <None Include="Service References\ExamWCF\Service1.disco" />
+    <None Include="Service References\ExamWCF\configuration91.svcinfo" />
+    <None Include="Service References\ExamWCF\configuration.svcinfo" />
     <None Include="Service References\ExamWCF\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
