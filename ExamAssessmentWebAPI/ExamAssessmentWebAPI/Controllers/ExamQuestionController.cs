@@ -143,7 +143,7 @@ namespace LMS1701.EA.Controllers
 
         //POST: api/ExamQuestion/AddCategoryToQuestoin/id
         [ActionName("AddCategoryToQuestion")]
-        public HttpResponseMessage AddCategoryToQuestion(string questionID, [FromBody]int categoryID)
+        public HttpResponseMessage AddCategoryToQuestion([FromUri]string questionID, [FromUri]int categoryID)
         {
             try
             {
@@ -164,9 +164,23 @@ namespace LMS1701.EA.Controllers
 
         //DELETE: api/RemoveCategoryFromQuestion/id
         [ActionName("RemoveCategoryFromQuestion")]
-        public HttpResponseMessage RemoveCategoryFromQuestion(string questionID, [FromBody]int categoryID)
+        public HttpResponseMessage RemoveCategoryFromQuestion([FromUri]string questionID, [FromUri]string categoryID)
         {
-            
+            try
+            {
+                if (questionID == null || categoryID == null || questionID == "" || categoryID == "")
+                {
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid input");
+                }
+
+                client.spDeleteQuestionCategory(categoryID, questionID);
+
+                return Request.CreateResponse(HttpStatusCode.OK);
+
+            } catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
         }
 
         // DELETE: api/ExamQuestion/5
