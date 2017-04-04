@@ -16,72 +16,172 @@ namespace LMS1701.EA.Controllers
     {
         WCF.Service1Client client = new WCF.Service1Client();
 
-        // GET: api/ExamQuestion/GetQuestionSubjects/id
-        [ActionName("GetQuestionSubjects")]
-        public List <Subject> GetQuestionSubjects(string questionID)
+        /**
+         *  Returns all of the subjects in a specific question
+         **/
+        [HttpGet]
+        [ActionName("GetSpecificQuestionSubjects")]
+        [Route("GetSpecificQuestionSubjects/{questionID}")]
+        public HttpResponseMessage GetSpecificQuestionSubjects([FromUri] string questionID)
         {
-           /*var ques = client.GetAllQuestions().ToList(); not the right client call but will be implemented
-            List<Subject> sub = new List<Subject>();
-            foreach(var item in ques)
+            try
             {
-                //Subject c = new Subject();
-                //c.SubjectName = item.
+                //inefficient fuck it code
+                WCF.ExamQuestion examQuestion = GetSpecificExQuest(questionID);
+                List<WCF.Subject> subjects    = client.GetAllSubject().ToList();
+                List<WCF.Subject> specificQuestionSubjects = null;
+
+                if (examQuestion == null || subjects == null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, "Not able to retrieve exam question");
+                }
+
+                if (subjects == null || subjects.Count <= 0)
+                {
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, "Not able to retrieve Subjects");
+                }
+
+                //don't ever do this in real life. not ever. This is dumb as all get out. But fuck it.
+                foreach(WCF.Subject subject in subjects)
+                {
+                    foreach(WCF.Category cat in subject.listCat)
+                    {
+                        foreach(WCF.Category category in examQuestion.ExamQuestion_Categories)
+                        {
+                            if (cat == category)
+                            {
+                                specificQuestionSubjects.Add(subject);
+                            }
+                        }
+                    }
+                }
+
+                return Request.CreateResponse(HttpStatusCode.OK, specificQuestionSubjects);
             }
-            */
-            return new List<Subject>();
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
         }
+
         // GET: api/ExamQuestion
-        public IEnumerable<ExamQuestion> Get()
+        // return IEnumerable<ExamQuestion>
+        [HttpGet]
+        [ActionName("GetAllExamQuestions")]
+        [Route("GetAllExamQuestions/")]
+        public HttpResponseMessage GetAllExamQuestions()
         {
-            /* Get all Exam Questions implementations needed var exques = client.().ToList();
-            List<ExamQuestion> exqueslist = new List<ExamQuestion>();
-            foreach (WCF.ExamQuestion item in exques)
+            try
             {
-                Answer a = new Models.Answer();
-                a.DisplayedAnswer = item.Answer1;
-                a.IsCorrect = item.correct.isCorrect;
-                a.PKID = item.PKID;
-                //a.ProgrammingLanguage = item    to be implemented
-                ans.Add(a);
+                List<WCF.ExamQuestion> examQuestionList = client.GetAllExamQuestion().ToList();
+
+                if (examQuestionList == null || examQuestionList.Count <= 0)
+                {
+                    return Request.CreateResponse(HttpStatusCode.BadRequest);
+                }
+
+                return Request.CreateResponse(HttpStatusCode.OK, examQuestionList);
             }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+        } 
 
-    */
-
-            return new List<ExamQuestion>();
-        }
-
+        [HttpGet]
+        [ActionName("GetSpecificExamQuestion")]
+        [Route("GetSpecificExamQuestion/{questionID}")]
         // GET: api/ExamQuestion/5
-        public ExamQuestion Get(string questionID)
+        public HttpResponseMessage GetSpecificExamQuestion(string questionID)
         {
-            return new ExamQuestion();
+            try
+            {
+                WCF.ExamQuestion examQuestion = GetSpecificExQuest(questionID);
+
+                if (examQuestion == null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, "Exam question does not exist");
+                }
+
+                return Request.CreateResponse(HttpStatusCode.OK, examQuestion);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
         }
 
         // POST: api/ExamQuestion
-        public void Post([FromBody]ExamQuestion question)
+ 
+        public HttpResponseMessage Post([FromBody]ExamQuestion question)
         {
+            try
+            {
+                if (question.ExamQuestionID == null || question.ExamQuestionName == null || question.Type == null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid Exam Question");
+                }
 
+                client.AddExamQuestion(question);
+
+                return Request.CreateResponse(HttpStatusCode.OK);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
         }
 
         // PUT: api/ExamQuestion/ChangeCorrectAnswer/id
+        [HttpPut]
         [ActionName("ChangeCorrectAnswer")]
-        public void ChangeCorrectAnswer(string questionID, [FromBody]Answer value)
+        [Route("ChangeCorrectAnswer/{questionID}")]
+        // GET: api/ExamQuestion/5
+        public HttpResponseMessage ChangeCorrectAnswer(string questionID, [FromBody]Answer value)
         {
+            
         }
+
         //PUT: api/ExamQuestion/AddCategoryToQuestoin/id
         [ActionName("AddCategoryToQuestion")]
-        public void AddCategoryToQuestion(string questionID, [FromBody]int categoryID)
+        public HttpResponseMessage AddCategoryToQuestion(string questionID, [FromBody]int categoryID)
         {
+
         }
+
         //PUT: api/RemoveCategoryFromQuestion/id
         [ActionName("RemoveCategoryFromQuestion")]
-        public void RemoveCategoryFromQuestion(string questionID, [FromBody]int categoryID)
+        public HttpResponseMessage RemoveCategoryFromQuestion(string questionID, [FromBody]int categoryID)
         {
+
         }
 
-
         // DELETE: api/ExamQuestion/5
-        public void Delete(string questionID)
+        public HttpResponseMessage Delete(string questionID)
         {
+
+        }
+
+        //returns a specific exam question
+        private WCF.ExamQuestion GetSpecificExQuest(string questionID)
+        {
+            try
+            {
+                List<WCF.ExamQuestion> examQuestions = client.GetAllExamQuestion().ToList();
+
+                if (examQuestions == null || examQuestions.Count <= 0)
+                {
+                    return null;
+                }
+
+                WCF.ExamQuestion examQuestion = examQuestions.FirstOrDefault(exQ => exQ.ExamQuestionName == questionID);
+
+                return examQuestion;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }
