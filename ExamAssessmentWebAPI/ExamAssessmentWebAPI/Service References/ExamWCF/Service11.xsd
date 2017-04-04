@@ -107,7 +107,6 @@
       <xs:element minOccurs="0" name="Answers" nillable="true" type="tns:ArrayOfAnswers" />
       <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="PKID" type="xs:int" />
-      <xs:element minOccurs="0" name="correct" nillable="true" type="tns:Correct" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Question" nillable="true" type="tns:Question" />

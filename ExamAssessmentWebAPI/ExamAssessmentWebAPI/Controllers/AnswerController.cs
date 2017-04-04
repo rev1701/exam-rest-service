@@ -39,9 +39,9 @@ namespace LMS1701.EA.Controllers
         }
 
         // PUT: api/Answer/5
-        public void Put(int answerid, [FromBody]string newdesc)
+        public void Put(int answerid, [FromBody]string answer)
         {
-            client.UpdateAnswer(answerid, newdesc);
+            client.UpdateAnswer(answerid, answer);
         }
 
         // DELETE: api/Answer/5

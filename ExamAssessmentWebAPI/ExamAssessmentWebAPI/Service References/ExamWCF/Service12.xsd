@@ -287,6 +287,18 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="AddExamQuestion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/LMS1701.EA.SOAPAPI" minOccurs="0" name="examQuestion" nillable="true" type="q7:ExamQuestion" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddExamQuestionResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
   <xs:element name="DeleteCategory">
     <xs:complexType>
       <xs:sequence>
@@ -346,6 +358,19 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="DeleteSubjectResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateAnswer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="answerid" type="xs:int" />
+        <xs:element minOccurs="0" name="newdesc" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateAnswerResponse">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>

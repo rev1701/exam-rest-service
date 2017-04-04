@@ -139,6 +139,12 @@
   <wsdl:message name="IService1_RemoveSubtopicFromCategory_OutputMessage">
     <wsdl:part name="parameters" element="tns:RemoveSubtopicFromCategoryResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_AddExamQuestion_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddExamQuestion" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddExamQuestion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddExamQuestionResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_DeleteCategory_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteCategory" />
   </wsdl:message>
@@ -168,6 +174,12 @@
   </wsdl:message>
   <wsdl:message name="IService1_DeleteSubject_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteSubjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateAnswer_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAnswer" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateAnswer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAnswerResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_DeleteExam_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteExam" />
@@ -264,6 +276,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/RemoveSubtopicFromCategory" message="tns:IService1_RemoveSubtopicFromCategory_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/RemoveSubtopicFromCategoryResponse" message="tns:IService1_RemoveSubtopicFromCategory_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="AddExamQuestion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/AddExamQuestion" message="tns:IService1_AddExamQuestion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AddExamQuestionResponse" message="tns:IService1_AddExamQuestion_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="DeleteCategory">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/DeleteCategory" message="tns:IService1_DeleteCategory_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/DeleteCategoryResponse" message="tns:IService1_DeleteCategory_OutputMessage" />
@@ -283,6 +299,10 @@
     <wsdl:operation name="DeleteSubject">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/DeleteSubject" message="tns:IService1_DeleteSubject_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/DeleteSubjectResponse" message="tns:IService1_DeleteSubject_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAnswer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UpdateAnswer" message="tns:IService1_UpdateAnswer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UpdateAnswerResponse" message="tns:IService1_UpdateAnswer_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="DeleteExam">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/DeleteExam" message="tns:IService1_DeleteExam_InputMessage" />
@@ -489,6 +509,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="AddExamQuestion">
+      <soap:operation soapAction="http://tempuri.org/IService1/AddExamQuestion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="DeleteCategory">
       <soap:operation soapAction="http://tempuri.org/IService1/DeleteCategory" style="document" />
       <wsdl:input>
@@ -527,6 +556,15 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteSubject">
       <soap:operation soapAction="http://tempuri.org/IService1/DeleteSubject" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAnswer">
+      <soap:operation soapAction="http://tempuri.org/IService1/UpdateAnswer" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

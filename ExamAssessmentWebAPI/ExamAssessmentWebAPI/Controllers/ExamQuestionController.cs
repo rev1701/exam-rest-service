@@ -23,7 +23,7 @@ namespace LMS1701.EA.Controllers
         [HttpGet]
         [ActionName("GetSpecificQuestionSubjects")]
         [Route("GetSpecificQuestionSubjects/{questionID}")]
-        public HttpResponseMessage GetSpecificQuestionSubjects([FromUri] string questionID
+        public HttpResponseMessage GetSpecificQuestionSubjects([FromUri] string questionID)
         {
             try
             {
@@ -113,11 +113,11 @@ namespace LMS1701.EA.Controllers
 
         // POST: api/ExamQuestion
  
-        public HttpResponseMessage Post([FromBody]ExamQuestion question)
+        public HttpResponseMessage Post([FromBody]WCF.ExamQuestion question)
         {
             try
             {
-                if (question.ExamQuestionID == null || question.ExamQuestionName == null || question.Type == null)
+                if (question.ExamQuestionID == null || question.ExamQuestionName == null || question.QuestionType == null)
                 {
                     return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid Exam Question");
                 }
@@ -133,11 +133,11 @@ namespace LMS1701.EA.Controllers
         }
 
         // PUT: api/ExamQuestion/ChangeCorrectAnswer/id
-        [HttpPut]
+     /*   [HttpPut]
         [ActionName("ChangeCorrectAnswer")]
         [Route("ChangeCorrectAnswer/{questionID}")]
         // GET: api/ExamQuestion/5
-        public HttpResponseMessage ChangeCorrectAnswer([FromUri]string questionID, [FromBody]Answer value)
+       public HttpResponseMessage ChangeCorrectAnswer([FromUri]string questionID, [FromBody]Answer value)
         {
             try
             {
@@ -145,7 +145,7 @@ namespace LMS1701.EA.Controllers
                 {
                     return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid Input");
                 }
-
+                            client.
                 //todo
 
             }
@@ -153,7 +153,7 @@ namespace LMS1701.EA.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
             }
-        }
+        }*/
 
         //POST: api/ExamQuestion/AddCategoryToQuestoin/id
         [HttpPost]
@@ -202,7 +202,7 @@ namespace LMS1701.EA.Controllers
         }
 
         // DELETE: api/ExamQuestion/5
-        public HttpResponseMessage Delete(string questionID)
+     /*   public HttpResponseMessage Delete(string questionID)
         {
             try
             {
@@ -218,7 +218,7 @@ namespace LMS1701.EA.Controllers
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
             }
             
-        }
+        } */
 
         //returns a specific exam question
         private WCF.ExamQuestion GetSpecificExQuest(string questionID)
