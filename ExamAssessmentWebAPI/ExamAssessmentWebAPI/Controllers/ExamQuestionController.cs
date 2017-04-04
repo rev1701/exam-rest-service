@@ -136,13 +136,15 @@ namespace LMS1701.EA.Controllers
         [ActionName("ChangeCorrectAnswer")]
         [Route("ChangeCorrectAnswer/{questionID}")]
         // GET: api/ExamQuestion/5
-        public HttpResponseMessage ChangeCorrectAnswer(string questionID, [FromBody]Answer value)
+        public HttpResponseMessage ChangeCorrectAnswer([FromUri]string questionID, [FromBody]Answer value)
         {
             
         }
 
         //POST: api/ExamQuestion/AddCategoryToQuestoin/id
+        [HttpPost]
         [ActionName("AddCategoryToQuestion")]
+        [Route("AddCategoryToQuestion/{questionID}/{categoryID}")]
         public HttpResponseMessage AddCategoryToQuestion([FromUri]string questionID, [FromUri]int categoryID)
         {
             try
@@ -163,7 +165,9 @@ namespace LMS1701.EA.Controllers
         }
 
         //DELETE: api/RemoveCategoryFromQuestion/id
+        [HttpDelete]
         [ActionName("RemoveCategoryFromQuestion")]
+        [Route("RemoveCategoryFromQuestion/{questionID}/{categoryID}")]
         public HttpResponseMessage RemoveCategoryFromQuestion([FromUri]string questionID, [FromUri]string categoryID)
         {
             try
