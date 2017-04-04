@@ -28,7 +28,7 @@ namespace LMS1701.EA.Controllers
             try
             {
                 WCF.ExamQuestion examQuestion = GetSpecificExQuest(questionID);
-                List<WCF.Subject> subjects    = client.GetAllSubject().ToList();
+                List<WCF.Subject> subjects = client.GetAllSubject().ToList();
                 List<WCF.Subject> specificQuestionSubjects = null;
 
                 if (examQuestion == null)
@@ -41,14 +41,14 @@ namespace LMS1701.EA.Controllers
                     return Request.CreateResponse(HttpStatusCode.BadRequest, "Not able to retrieve Subjects");
                 }
 
-             
-                foreach(WCF.Subject subject in subjects)
+
+                foreach (WCF.Subject subject in subjects)
                 {
-                    foreach(WCF.Category cat in subject.listCat)
+                    foreach (WCF.Category cat in subject.listCat)
                     {
-                        foreach(WCF.Category category in examQuestion.ExamQuestion_Categories)
+                        foreach (WCF.Category category in examQuestion.ExamQuestion_Categories)
                         {
-                            if (category.Categories_ID == category.Categories_ID)
+                            if (cat.Categories_ID == category.Categories_ID)
                             {
                                 specificQuestionSubjects.Add(subject);
                             }
@@ -68,13 +68,12 @@ namespace LMS1701.EA.Controllers
         // return IEnumerable<ExamQuestion>
         [HttpGet]
         [ActionName("GetAllExamQuestions")]
-        [Route("GetAllExamQuestions/")]
+        [Route("GetAllExamQuestions")]
         public HttpResponseMessage GetAllExamQuestions()
         {
             try
             {
                 List<WCF.ExamQuestion> examQuestionList = client.GetAllExamQuestion().ToList();
-
                 if (examQuestionList == null || examQuestionList.Count <= 0)
                 {
                     return Request.CreateResponse(HttpStatusCode.BadRequest);
@@ -86,7 +85,7 @@ namespace LMS1701.EA.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
             }
-        } 
+        }
 
         [HttpGet]
         [ActionName("GetSpecificExamQuestion")]
@@ -112,7 +111,7 @@ namespace LMS1701.EA.Controllers
         }
 
         // POST: api/ExamQuestion
- 
+
         public HttpResponseMessage Post([FromBody]WCF.ExamQuestion question)
         {
             try
@@ -133,27 +132,27 @@ namespace LMS1701.EA.Controllers
         }
 
         // PUT: api/ExamQuestion/ChangeCorrectAnswer/id
-     /*   [HttpPut]
-        [ActionName("ChangeCorrectAnswer")]
-        [Route("ChangeCorrectAnswer/{questionID}")]
-        // GET: api/ExamQuestion/5
-       public HttpResponseMessage ChangeCorrectAnswer([FromUri]string questionID, [FromBody]Answer value)
-        {
-            try
-            {
-                if (questionID == null || questionID == "" || value == null)
-                {
-                    return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid Input");
-                }
-                            client.
-                //todo
+        /*   [HttpPut]
+           [ActionName("ChangeCorrectAnswer")]
+           [Route("ChangeCorrectAnswer/{questionID}")]
+           // GET: api/ExamQuestion/5
+          public HttpResponseMessage ChangeCorrectAnswer([FromUri]string questionID, [FromBody]Answer value)
+           {
+               try
+               {
+                   if (questionID == null || questionID == "" || value == null)
+                   {
+                       return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid Input");
+                   }
+                               client.
+                   //todo
 
-            }
-            catch (Exception ex)
-            {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
-            }
-        }*/
+               }
+               catch (Exception ex)
+               {
+                   return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+               }
+           }*/
 
         //POST: api/ExamQuestion/AddCategoryToQuestoin/id
         [HttpPost]
@@ -172,7 +171,8 @@ namespace LMS1701.EA.Controllers
 
                 return Request.CreateResponse(HttpStatusCode.OK);
 
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
             }
@@ -195,30 +195,31 @@ namespace LMS1701.EA.Controllers
 
                 return Request.CreateResponse(HttpStatusCode.OK);
 
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
             }
         }
 
         // DELETE: api/ExamQuestion/5
-     /*   public HttpResponseMessage Delete(string questionID)
-        {
-            try
-            {
-                if (questionID == null || questionID == "")
-                {
-                    return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid Input");
-                }
+        /*   public HttpResponseMessage Delete(string questionID)
+           {
+               try
+               {
+                   if (questionID == null || questionID == "")
+                   {
+                       return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid Input");
+                   }
 
-                //todo
-            }
-            catch (Exception ex)
-            {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
-            }
-            
-        } */
+                   //todo
+               }
+               catch (Exception ex)
+               {
+                   return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+               }
+
+           } */
 
         //returns a specific exam question
         private WCF.ExamQuestion GetSpecificExQuest(string questionID)

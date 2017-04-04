@@ -103,28 +103,8 @@ namespace LMS1701.EA.Controllers
         public List<WCF.Subject> GetExamSubjects(String id)
         {
 
-            var subjectList = client.GetAllSubject();
-            var questionList = client.getExamTemplate(id).ExamQuestions;
-            List<WCF.Category> categoryList = new List<WCF.Category>();
-            foreach (var item in questionList)
-            {
-                foreach (var questioncategory in item.ExamQuestion_Categories)
-                {
-                    bool containsCategory = false;
-                    foreach (var examcategory in categoryList)
-                    {
-                        if (examcategory==questioncategory)
-                        {
-                            containsCategory = true;
-                            break;
-                        }
-                    }
-                    if (!containsCategory)
-                    {
-                        categoryList.Add(questioncategory);
-                    }
-                }
-            }
+            //var results = client.GetAllSubject();
+
             List<WCF.Subject> sub = new List<WCF.Subject>();
             List<WCF.Subject> result = new List<WCF.Subject>();
             sub = client.GetAllSubject().ToList();
@@ -151,9 +131,10 @@ namespace LMS1701.EA.Controllers
 
 
         // POST: api/ExamTemplate
-        public void Post([FromBody]WCF.ExamTemplate exam)
+        [ActionName("AddExam")]
+        public void Post([FromBody]string ExamTemplateName)
         {
-            //client.AddNewExam(exam.ExamTemplateName, exam.ExamTemplateID, exam.ExamType.ExamTypeName);
+            client.AddNewExam(ExamTemplateName, "b", "a");
         }
 
         // PUT: api/ExamTemplate/5
@@ -165,7 +146,7 @@ namespace LMS1701.EA.Controllers
         // DELETE: api/ExamTemplate/5
         public void Delete(string ETID)
         {
-         //   client.DeleteExam(ETID);
+            client.DeleteExam(ETID);
             
         }
     }
