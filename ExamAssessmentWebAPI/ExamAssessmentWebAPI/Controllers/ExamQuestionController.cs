@@ -141,24 +141,36 @@ namespace LMS1701.EA.Controllers
             
         }
 
-        //PUT: api/ExamQuestion/AddCategoryToQuestoin/id
+        //POST: api/ExamQuestion/AddCategoryToQuestoin/id
         [ActionName("AddCategoryToQuestion")]
         public HttpResponseMessage AddCategoryToQuestion(string questionID, [FromBody]int categoryID)
         {
+            try
+            {
+                if (questionID == null || questionID == "" || categoryID < 0)
+                {
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid input");
+                }
 
+                client.spAddQuestionCategories(questionID, categoryID);
+
+            } catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
         }
 
-        //PUT: api/RemoveCategoryFromQuestion/id
+        //DELETE: api/RemoveCategoryFromQuestion/id
         [ActionName("RemoveCategoryFromQuestion")]
         public HttpResponseMessage RemoveCategoryFromQuestion(string questionID, [FromBody]int categoryID)
         {
-
+            
         }
 
         // DELETE: api/ExamQuestion/5
         public HttpResponseMessage Delete(string questionID)
         {
-
+            
         }
 
         //returns a specific exam question
