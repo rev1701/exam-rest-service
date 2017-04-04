@@ -33,21 +33,21 @@ namespace LMS1701.EA.Controllers
 
 
         // POST: api/Answer
-        public void Post(int QuestionID, [FromBody]string value)
+        public void Post(int QuestionID, [FromBody]WCF.Answers answer)
         {
-           //client.AddAnswer(QuestionID, Answer);  Calls the delete answer Update The Service Reference 
+           client.AddAnswer(QuestionID, answer.Answer1,answer.correct.isCorrect);  //Calls the delete answer Update The Service Reference 
         }
 
         // PUT: api/Answer/5
-        public void Put(int id, [FromBody]string value)
+        public void Put(int answerid, [FromBody]string newdesc)
         {
-            
+            client.UpdateAnswer(answerid, newdesc);
         }
 
         // DELETE: api/Answer/5
-        public void Delete(int id)
+        public void Delete(string answerdescription)
         {
-            //client.DeleteAnswer(answerdesc);   Calls the delete answer Update the Service Reference
+           client.DeleteAnswer(answerdescription);  
         }
     }
 }
