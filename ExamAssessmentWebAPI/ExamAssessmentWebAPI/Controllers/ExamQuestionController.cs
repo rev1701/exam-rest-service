@@ -16,13 +16,14 @@ namespace LMS1701.EA.Controllers
     {
         WCF.Service1Client client = new WCF.Service1Client();
 
+
         /**
          *  Returns all of the subjects in a specific question
          **/
         [HttpGet]
         [ActionName("GetSpecificQuestionSubjects")]
         [Route("GetSpecificQuestionSubjects/{questionID}")]
-        public HttpResponseMessage GetSpecificQuestionSubjects([FromUri] string questionID)
+        public HttpResponseMessage GetSpecificQuestionSubjects([FromUri] string questionID
         {
             try
             {

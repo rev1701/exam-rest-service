@@ -996,6 +996,12 @@ namespace ExamAssessmentWebAPI.ExamWCF {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteSubject", ReplyAction="http://tempuri.org/IService1/DeleteSubjectResponse")]
         System.Threading.Tasks.Task DeleteSubjectAsync(string SubjectName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteExam", ReplyAction="http://tempuri.org/IService1/DeleteExamResponse")]
+        void DeleteExam(string SubjectName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteExam", ReplyAction="http://tempuri.org/IService1/DeleteExamResponse")]
+        System.Threading.Tasks.Task DeleteExamAsync(string SubjectName);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1239,6 +1245,14 @@ namespace ExamAssessmentWebAPI.ExamWCF {
         
         public System.Threading.Tasks.Task DeleteSubjectAsync(string SubjectName) {
             return base.Channel.DeleteSubjectAsync(SubjectName);
+        }
+        
+        public void DeleteExam(string SubjectName) {
+            base.Channel.DeleteExam(SubjectName);
+        }
+        
+        public System.Threading.Tasks.Task DeleteExamAsync(string SubjectName) {
+            return base.Channel.DeleteExamAsync(SubjectName);
         }
     }
 }
