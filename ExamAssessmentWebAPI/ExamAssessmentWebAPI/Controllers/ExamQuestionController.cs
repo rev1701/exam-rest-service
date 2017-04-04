@@ -154,6 +154,8 @@ namespace LMS1701.EA.Controllers
 
                 client.spAddQuestionCategories(questionID, categoryID);
 
+                return Request.CreateResponse(HttpStatusCode.OK);
+
             } catch (Exception ex)
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
