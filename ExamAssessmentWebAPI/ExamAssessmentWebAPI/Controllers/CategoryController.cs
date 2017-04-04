@@ -27,7 +27,8 @@ namespace LMS1701.EA.Controllers
                 {
                     foreach(WCF.Category caty in Cat)
                     {
-                        if (caty.Categories_Name.Equals(catx.Categories_Name)){
+                        if (caty.Categories_Name.Equals(catx.Categories_Name))
+                        {
                             continue;
                         }
                         else
