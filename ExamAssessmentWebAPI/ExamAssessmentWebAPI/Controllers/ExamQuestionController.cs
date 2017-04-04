@@ -30,7 +30,7 @@ namespace LMS1701.EA.Controllers
                 List<WCF.Subject> subjects    = client.GetAllSubject().ToList();
                 List<WCF.Subject> specificQuestionSubjects = null;
 
-                if (examQuestion == null || subjects == null)
+                if (examQuestion == null)
                 {
                     return Request.CreateResponse(HttpStatusCode.BadRequest, "Not able to retrieve exam question");
                 }
