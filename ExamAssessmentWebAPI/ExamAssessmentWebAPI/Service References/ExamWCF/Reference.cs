@@ -756,9 +756,6 @@ namespace ExamAssessmentWebAPI.ExamWCF {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int PKIDField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ExamAssessmentWebAPI.ExamWCF.Correct correctField;
-        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -804,19 +801,6 @@ namespace ExamAssessmentWebAPI.ExamWCF {
                 if ((this.PKIDField.Equals(value) != true)) {
                     this.PKIDField = value;
                     this.RaisePropertyChanged("PKID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public ExamAssessmentWebAPI.ExamWCF.Correct correct {
-            get {
-                return this.correctField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.correctField, value) != true)) {
-                    this.correctField = value;
-                    this.RaisePropertyChanged("correct");
                 }
             }
         }
@@ -967,6 +951,12 @@ namespace ExamAssessmentWebAPI.ExamWCF {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/RemoveSubtopicFromCategory", ReplyAction="http://tempuri.org/IService1/RemoveSubtopicFromCategoryResponse")]
         System.Threading.Tasks.Task RemoveSubtopicFromCategoryAsync(string SubtopicName, string CategoryName);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddExamQuestion", ReplyAction="http://tempuri.org/IService1/AddExamQuestionResponse")]
+        void AddExamQuestion(ExamAssessmentWebAPI.ExamWCF.ExamQuestion examQuestion);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddExamQuestion", ReplyAction="http://tempuri.org/IService1/AddExamQuestionResponse")]
+        System.Threading.Tasks.Task AddExamQuestionAsync(ExamAssessmentWebAPI.ExamWCF.ExamQuestion examQuestion);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteCategory", ReplyAction="http://tempuri.org/IService1/DeleteCategoryResponse")]
         void DeleteCategory(string CategoryName);
         
@@ -996,6 +986,18 @@ namespace ExamAssessmentWebAPI.ExamWCF {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteSubject", ReplyAction="http://tempuri.org/IService1/DeleteSubjectResponse")]
         System.Threading.Tasks.Task DeleteSubjectAsync(string SubjectName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateAnswer", ReplyAction="http://tempuri.org/IService1/UpdateAnswerResponse")]
+        void UpdateAnswer(int answerid, string newdesc);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateAnswer", ReplyAction="http://tempuri.org/IService1/UpdateAnswerResponse")]
+        System.Threading.Tasks.Task UpdateAnswerAsync(int answerid, string newdesc);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteExam", ReplyAction="http://tempuri.org/IService1/DeleteExamResponse")]
+        void DeleteExam(string SubjectName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteExam", ReplyAction="http://tempuri.org/IService1/DeleteExamResponse")]
+        System.Threading.Tasks.Task DeleteExamAsync(string SubjectName);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1201,6 +1203,14 @@ namespace ExamAssessmentWebAPI.ExamWCF {
             return base.Channel.RemoveSubtopicFromCategoryAsync(SubtopicName, CategoryName);
         }
         
+        public void AddExamQuestion(ExamAssessmentWebAPI.ExamWCF.ExamQuestion examQuestion) {
+            base.Channel.AddExamQuestion(examQuestion);
+        }
+        
+        public System.Threading.Tasks.Task AddExamQuestionAsync(ExamAssessmentWebAPI.ExamWCF.ExamQuestion examQuestion) {
+            return base.Channel.AddExamQuestionAsync(examQuestion);
+        }
+        
         public void DeleteCategory(string CategoryName) {
             base.Channel.DeleteCategory(CategoryName);
         }
@@ -1239,6 +1249,22 @@ namespace ExamAssessmentWebAPI.ExamWCF {
         
         public System.Threading.Tasks.Task DeleteSubjectAsync(string SubjectName) {
             return base.Channel.DeleteSubjectAsync(SubjectName);
+        }
+        
+        public void UpdateAnswer(int answerid, string newdesc) {
+            base.Channel.UpdateAnswer(answerid, newdesc);
+        }
+        
+        public System.Threading.Tasks.Task UpdateAnswerAsync(int answerid, string newdesc) {
+            return base.Channel.UpdateAnswerAsync(answerid, newdesc);
+        }
+        
+        public void DeleteExam(string SubjectName) {
+            base.Channel.DeleteExam(SubjectName);
+        }
+        
+        public System.Threading.Tasks.Task DeleteExamAsync(string SubjectName) {
+            return base.Channel.DeleteExamAsync(SubjectName);
         }
     }
 }

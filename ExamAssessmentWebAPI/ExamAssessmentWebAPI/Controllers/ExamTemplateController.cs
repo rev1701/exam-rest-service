@@ -17,7 +17,7 @@ namespace LMS1701.EA.Controllers
         
         
         // GET: api/ExamTemplate/Training_1
-        [HttpGet]
+    /*    [HttpGet]
         [ActionName("GetExam")]
         public ExamTemplate Get()
         {
@@ -85,9 +85,9 @@ namespace LMS1701.EA.Controllers
             #endregion
             
         }
+        */
 
-
-        /*
+        
         [HttpGet]
         [ActionName("GetExam")]
         public WCF.ExamTemplate Get(string id)
@@ -96,15 +96,35 @@ namespace LMS1701.EA.Controllers
             WCF.ExamTemplate template = client.getExamTemplate(id);
             return template;
         }
-        */
+        
 
           // GETapi/ExamTemplate/GetExamSubjects/id
         [ActionName("GetExamSubjects")]
         public List<WCF.Subject> GetExamSubjects(String id)
         {
 
-            //var results = client.GetAllSubject();
-
+            var subjectList = client.GetAllSubject();
+            var questionList = client.getExamTemplate(id).ExamQuestions;
+            List<WCF.Category> categoryList = new List<WCF.Category>();
+            foreach (var item in questionList)
+            {
+                foreach (var questioncategory in item.ExamQuestion_Categories)
+                {
+                    bool containsCategory = false;
+                    foreach (var examcategory in categoryList)
+                    {
+                        if (examcategory==questioncategory)
+                        {
+                            containsCategory = true;
+                            break;
+                        }
+                    }
+                    if (!containsCategory)
+                    {
+                        categoryList.Add(questioncategory);
+                    }
+                }
+            }
             List<WCF.Subject> sub = new List<WCF.Subject>();
             List<WCF.Subject> result = new List<WCF.Subject>();
             sub = client.GetAllSubject().ToList();
@@ -145,7 +165,8 @@ namespace LMS1701.EA.Controllers
         // DELETE: api/ExamTemplate/5
         public void Delete(string ETID)
         {
-            //client.DeleteExam(ETID);
+         //   client.DeleteExam(ETID);
+            
         }
     }
 }
