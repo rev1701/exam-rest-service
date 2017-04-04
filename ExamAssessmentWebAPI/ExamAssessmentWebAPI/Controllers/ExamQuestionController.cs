@@ -138,7 +138,20 @@ namespace LMS1701.EA.Controllers
         // GET: api/ExamQuestion/5
         public HttpResponseMessage ChangeCorrectAnswer([FromUri]string questionID, [FromBody]Answer value)
         {
-            
+            try
+            {
+                if (questionID == null || questionID == "" || value == null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid Input");
+                }
+
+                //todo
+
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
         }
 
         //POST: api/ExamQuestion/AddCategoryToQuestoin/id
@@ -190,6 +203,19 @@ namespace LMS1701.EA.Controllers
         // DELETE: api/ExamQuestion/5
         public HttpResponseMessage Delete(string questionID)
         {
+            try
+            {
+                if (questionID == null || questionID == "")
+                {
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid Input");
+                }
+
+                //todo
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
             
         }
 
