@@ -173,7 +173,7 @@ namespace LMS1701.EA.Controllers
                     return null;
                 }
 
-                WCF.ExamQuestion examQuestion = examQuestions.FirstOrDefault(exQ => exQ.ExamQuestionName == questionID);
+                WCF.ExamQuestion examQuestion = examQuestions.FirstOrDefault(exQ => exQ.ExamQuestionID == questionID);
 
                 return examQuestion;
             }
