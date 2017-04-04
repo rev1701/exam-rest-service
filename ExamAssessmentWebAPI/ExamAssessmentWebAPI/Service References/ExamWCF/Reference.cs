@@ -998,12 +998,6 @@ namespace ExamAssessmentWebAPI.ExamWCF {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteExam", ReplyAction="http://tempuri.org/IService1/DeleteExamResponse")]
         System.Threading.Tasks.Task DeleteExamAsync(string SubjectName);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddNewExam", ReplyAction="http://tempuri.org/IService1/AddNewExamResponse")]
-        void AddNewExam(string ExamTemplateName, string ExamTemplateID, string ExamTypeName);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddNewExam", ReplyAction="http://tempuri.org/IService1/AddNewExamResponse")]
-        System.Threading.Tasks.Task AddNewExamAsync(string ExamTemplateName, string ExamTemplateID, string ExamTypeName);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1271,14 +1265,6 @@ namespace ExamAssessmentWebAPI.ExamWCF {
         
         public System.Threading.Tasks.Task DeleteExamAsync(string SubjectName) {
             return base.Channel.DeleteExamAsync(SubjectName);
-        }
-        
-        public void AddNewExam(string ExamTemplateName, string ExamTemplateID, string ExamTypeName) {
-            base.Channel.AddNewExam(ExamTemplateName, ExamTemplateID, ExamTypeName);
-        }
-        
-        public System.Threading.Tasks.Task AddNewExamAsync(string ExamTemplateName, string ExamTemplateID, string ExamTypeName) {
-            return base.Channel.AddNewExamAsync(ExamTemplateName, ExamTemplateID, ExamTypeName);
         }
     }
 }
