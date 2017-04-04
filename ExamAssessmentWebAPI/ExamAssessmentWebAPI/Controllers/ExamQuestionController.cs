@@ -26,7 +26,6 @@ namespace LMS1701.EA.Controllers
         {
             try
             {
-                //inefficient fuck it code
                 WCF.ExamQuestion examQuestion = GetSpecificExQuest(questionID);
                 List<WCF.Subject> subjects    = client.GetAllSubject().ToList();
                 List<WCF.Subject> specificQuestionSubjects = null;
@@ -41,14 +40,14 @@ namespace LMS1701.EA.Controllers
                     return Request.CreateResponse(HttpStatusCode.BadRequest, "Not able to retrieve Subjects");
                 }
 
-                //don't ever do this in real life. not ever. This is dumb as all get out. But fuck it.
+             
                 foreach(WCF.Subject subject in subjects)
                 {
                     foreach(WCF.Category cat in subject.listCat)
                     {
                         foreach(WCF.Category category in examQuestion.ExamQuestion_Categories)
                         {
-                            if (cat == category)
+                            if (category.Categories_ID == category.Categories_ID)
                             {
                                 specificQuestionSubjects.Add(subject);
                             }
