@@ -886,10 +886,10 @@ namespace ExamAssessmentWebAPI.ExamWCF {
         System.Threading.Tasks.Task spAddQuestionAsExamQuestionAsync(string ExamQuestionID, int QuestionID, string name, int QuestionType);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/spAddQuestionCategories", ReplyAction="http://tempuri.org/IService1/spAddQuestionCategoriesResponse")]
-        void spAddQuestionCategories(string ExamQuestionID, int PKID);
+        void spAddQuestionCategories(string Categories, string ExamQuestionID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/spAddQuestionCategories", ReplyAction="http://tempuri.org/IService1/spAddQuestionCategoriesResponse")]
-        System.Threading.Tasks.Task spAddQuestionCategoriesAsync(string ExamQuestionID, int PKID);
+        System.Threading.Tasks.Task spAddQuestionCategoriesAsync(string Categories, string ExamQuestionID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/spAddQuestionToAnswer", ReplyAction="http://tempuri.org/IService1/spAddQuestionToAnswerResponse")]
         void spAddQuestionToAnswer(int QuestionID, int AnswerID, bool isCorrect);
@@ -1127,12 +1127,12 @@ namespace ExamAssessmentWebAPI.ExamWCF {
             return base.Channel.spAddQuestionAsExamQuestionAsync(ExamQuestionID, QuestionID, name, QuestionType);
         }
         
-        public void spAddQuestionCategories(string ExamQuestionID, int PKID) {
-            base.Channel.spAddQuestionCategories(ExamQuestionID, PKID);
+        public void spAddQuestionCategories(string Categories, string ExamQuestionID) {
+            base.Channel.spAddQuestionCategories(Categories, ExamQuestionID);
         }
         
-        public System.Threading.Tasks.Task spAddQuestionCategoriesAsync(string ExamQuestionID, int PKID) {
-            return base.Channel.spAddQuestionCategoriesAsync(ExamQuestionID, PKID);
+        public System.Threading.Tasks.Task spAddQuestionCategoriesAsync(string Categories, string ExamQuestionID) {
+            return base.Channel.spAddQuestionCategoriesAsync(Categories, ExamQuestionID);
         }
         
         public void spAddQuestionToAnswer(int QuestionID, int AnswerID, bool isCorrect) {

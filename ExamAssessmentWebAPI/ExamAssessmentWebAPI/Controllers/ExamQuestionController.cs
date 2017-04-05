@@ -169,16 +169,16 @@ namespace LMS1701.EA.Controllers
         [HttpPost]
         [ActionName("AddCategoryToQuestion")]
       //  [Route("AddCategoryToQuestion/{questionID}/{categoryID}")]
-        public HttpResponseMessage AddCategoryToQuestion([FromUri]int questionID, [FromUri]String category)
+        public HttpResponseMessage AddCategoryToQuestion([FromUri]string Category, [FromUri]String ExamQuestionID)
         {
             try
             {
-                if (category == null || category == "" || questionID < 0)
+                if (Category == null || Category == "" || ExamQuestionID =="" || ExamQuestionID == null)
                 {
                     return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid input");
                 }
 
-                client.spAddQuestionCategories(category, questionID);
+             //   client.addQuestionCategories(Category, ExamQuestionID);     update service reference
 
                 return Request.CreateResponse(HttpStatusCode.OK);
 
@@ -192,18 +192,18 @@ namespace LMS1701.EA.Controllers
         //DELETE: api/RemoveCategoryFromQuestion/id
         [HttpDelete]
         [ActionName("RemoveCategoryFromQuestion")]
-        [Route("RemoveCategoryFromQuestion/{questionID}/{categoryID}")]
-        public HttpResponseMessage RemoveCategoryFromQuestion([FromUri]string questionID, [FromUri]string categoryID)
+        
+        public HttpResponseMessage RemoveCategoryFromQuestion([FromUri]string ExamQuestionID, [FromUri]string category)
         {
             try
             {
-                if (questionID == null || categoryID == null || questionID == "" || categoryID == "")
+                if (ExamQuestionID == null || category == null || ExamQuestionID == "" || category == "")
                 {
                     return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid input");
                 }
 
-                client.spDeleteQuestionCategory(categoryID, questionID);
-
+                //client.DeleteQuestionCategory(category, ExamQuestionID); Update service reference
+                
                 return Request.CreateResponse(HttpStatusCode.OK);
 
             }
