@@ -96,6 +96,12 @@ namespace LMS1701.EA.Controllers
             WCF.ExamTemplate template = client.getExamTemplate(id);
             return template;
         }
+        [HttpGet]
+        [ActionName("GetIDList")]
+        public List<string> GetIDList()
+        {
+            return client.GetExamIDList().ToList();
+        }
         
 
           // GETapi/ExamTemplate/GetExamSubjects/id
@@ -134,7 +140,7 @@ namespace LMS1701.EA.Controllers
         [ActionName("AddExam")]
         public void Post([FromBody]string ExamTemplateName)
         {
-          //  client.AddNewExam(ExamTemplateName, "b", "a");
+            client.AddNewExam(ExamTemplateName, "b", "a");
         }
 
         // PUT: api/ExamTemplate/5
