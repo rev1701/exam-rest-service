@@ -33,9 +33,9 @@ namespace LMS1701.EA.Controllers
 
 
         // POST: api/Answer
-        public void Post(int QuestionID, [FromBody]WCF.Answers answer)
+        public void Post(int QuestionID, [FromBody]Answer answer)
         {
-           client.AddAnswer(QuestionID, answer.Answer1,answer.correct.isCorrect);  //Calls the delete answer Update The Service Reference 
+           client.AddAnswer(QuestionID, answer.DisplayedAnswer,answer.IsCorrect);  //Calls the delete answer Update The Service Reference 
         }
 
         // PUT: api/Answer/5

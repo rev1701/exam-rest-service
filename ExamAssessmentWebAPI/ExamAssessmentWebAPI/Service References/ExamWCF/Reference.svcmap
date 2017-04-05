@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="230b27f0-c7b3-47fb-91f5-d26a8bc5a5f1" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ee55aea2-c670-43a7-9dcd-b22d85e7f574" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,12 +22,12 @@
     <MetadataSource Address="http://ec2-54-215-138-178.us-west-1.compute.amazonaws.com/ExamAssessmentWCF/Service1.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Service1.xsd" MetadataType="Schema" ID="e0333e8b-bae9-49a3-a717-e05bccec3824" SourceId="1" SourceUrl="http://ec2-54-215-138-178.us-west-1.compute.amazonaws.com/ExamassessmentWCF/Service1.svc?xsd=xsd3" />
-    <MetadataFile FileName="Service1.disco" MetadataType="Disco" ID="a515866f-4af6-492a-9843-4f2501372e68" SourceId="1" SourceUrl="http://ec2-54-215-138-178.us-west-1.compute.amazonaws.com/ExamassessmentWCF/Service1.svc?disco" />
-    <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="80701883-59d8-4405-854a-aea0d4f3ed9d" SourceId="1" SourceUrl="http://ec2-54-215-138-178.us-west-1.compute.amazonaws.com/ExamassessmentWCF/Service1.svc?wsdl" />
-    <MetadataFile FileName="Service11.xsd" MetadataType="Schema" ID="82856654-cfe4-4d93-a4a2-423ad7d4f452" SourceId="1" SourceUrl="http://ec2-54-215-138-178.us-west-1.compute.amazonaws.com/ExamassessmentWCF/Service1.svc?xsd=xsd0" />
-    <MetadataFile FileName="Service12.xsd" MetadataType="Schema" ID="18acaddb-f974-4e7e-843d-c9e55e1bc1ff" SourceId="1" SourceUrl="http://ec2-54-215-138-178.us-west-1.compute.amazonaws.com/ExamassessmentWCF/Service1.svc?xsd=xsd1" />
-    <MetadataFile FileName="Service13.xsd" MetadataType="Schema" ID="b432a65e-9237-43bd-96fc-40379ce71347" SourceId="1" SourceUrl="http://ec2-54-215-138-178.us-west-1.compute.amazonaws.com/ExamassessmentWCF/Service1.svc?xsd=xsd2" />
+    <MetadataFile FileName="Service1.xsd" MetadataType="Schema" ID="caea1179-6d0b-4b7d-a205-9c95e832e020" SourceId="1" SourceUrl="http://ec2-54-215-138-178.us-west-1.compute.amazonaws.com/ExamassessmentWCF/Service1.svc?xsd=xsd3" />
+    <MetadataFile FileName="Service1.disco" MetadataType="Disco" ID="dfdd09c2-62ce-416b-b959-f5bb5cc0b894" SourceId="1" SourceUrl="http://ec2-54-215-138-178.us-west-1.compute.amazonaws.com/ExamassessmentWCF/Service1.svc?disco" />
+    <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="6e3ed5f8-73c5-4b99-be37-e62ee8b99446" SourceId="1" SourceUrl="http://ec2-54-215-138-178.us-west-1.compute.amazonaws.com/ExamassessmentWCF/Service1.svc?wsdl" />
+    <MetadataFile FileName="Service11.xsd" MetadataType="Schema" ID="9031cae0-e94a-45c8-b184-c1dfb3ae4f3d" SourceId="1" SourceUrl="http://ec2-54-215-138-178.us-west-1.compute.amazonaws.com/ExamassessmentWCF/Service1.svc?xsd=xsd0" />
+    <MetadataFile FileName="Service12.xsd" MetadataType="Schema" ID="97d18731-37d5-4966-b85c-5f034c91cdbc" SourceId="1" SourceUrl="http://ec2-54-215-138-178.us-west-1.compute.amazonaws.com/ExamassessmentWCF/Service1.svc?xsd=xsd1" />
+    <MetadataFile FileName="Service13.xsd" MetadataType="Schema" ID="dfc44c7e-8e23-465d-89d7-4a6393173891" SourceId="1" SourceUrl="http://ec2-54-215-138-178.us-west-1.compute.amazonaws.com/ExamassessmentWCF/Service1.svc?xsd=xsd2" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

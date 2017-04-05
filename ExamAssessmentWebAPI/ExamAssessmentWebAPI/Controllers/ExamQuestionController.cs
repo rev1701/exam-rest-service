@@ -22,7 +22,6 @@ namespace LMS1701.EA.Controllers
          **/
         [HttpGet]
         [ActionName("GetSpecificQuestionSubjects")]
-        [Route("GetSpecificQuestionSubjects/{questionID}")]
         public HttpResponseMessage GetSpecificQuestionSubjects([FromUri] string questionID)
         {
             try
@@ -68,28 +67,26 @@ namespace LMS1701.EA.Controllers
         // return IEnumerable<ExamQuestion>
         [HttpGet]
         [ActionName("GetAllExamQuestions")]
-        public List<WCF.ExamQuestion> GetAllExamQuestions()
+        public HttpResponseMessage GetAllExamQuestions()
         {
-            return client.GetAllExamQuestion().ToList();
-            //try
-            //{
-            //    List<WCF.ExamQuestion> examQuestionList = client.GetAllExamQuestion().ToList();
-            //    if (examQuestionList == null || examQuestionList.Count <= 0)
-            //    {
-            //        return Request.CreateResponse(HttpStatusCode.BadRequest);
-            //    }
+            try
+            {
+                List<WCF.ExamQuestion> examQuestionList = client.GetAllExamQuestion().ToList();
+                if (examQuestionList == null || examQuestionList.Count <= 0)
+                {
+                    return Request.CreateResponse(HttpStatusCode.BadRequest);
+                }
 
-            //    return Request.CreateResponse(HttpStatusCode.OK, examQuestionList);
-            //}
-            //catch (Exception ex)
-            //{
-            //    return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
-            //}
+                return Request.CreateResponse(HttpStatusCode.OK, examQuestionList);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
         }
 
         [HttpGet]
         [ActionName("GetSpecificExamQuestion")]
-        [Route("GetSpecificExamQuestion/{questionID}")]
         // GET: api/ExamQuestion/5
         public HttpResponseMessage GetSpecificExamQuestion(string questionID)
         {
@@ -132,27 +129,27 @@ namespace LMS1701.EA.Controllers
         }
 
         // PUT: api/ExamQuestion/ChangeCorrectAnswer/id
-        /*   [HttpPut]
-           [ActionName("ChangeCorrectAnswer")]
-           [Route("ChangeCorrectAnswer/{questionID}")]
-           // GET: api/ExamQuestion/5
-          public HttpResponseMessage ChangeCorrectAnswer([FromUri]string questionID, [FromBody]Answer value)
-           {
-               try
-               {
-                   if (questionID == null || questionID == "" || value == null)
-                   {
-                       return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid Input");
-                   }
-                               client.
-                   //todo
+        //[HttpPut]
+        //[ActionName("ChangeCorrectAnswer")]
+        //[Route("ChangeCorrectAnswer/{questionID}")]
+        //GET: api/ExamQuestion/5
+        //  public HttpResponseMessage ChangeCorrectAnswer([FromUri]string questionID, [FromBody]Answer value)
+        //{
+        //    try
+        //    {
+        //        if (questionID == null || questionID == "" || value == null)
+        //        {
+        //            return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid Input");
+        //        }
+        //        client.
+        //            //todo
 
-               }
-               catch (Exception ex)
-               {
-                   return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
-               }
-           }*/
+        //       }
+        //    catch (Exception ex)
+        //    {
+        //        return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+        //    }
+        //}
 
         //POST: api/ExamQuestion/AddCategoryToQuestoin/id
         [HttpPost]
