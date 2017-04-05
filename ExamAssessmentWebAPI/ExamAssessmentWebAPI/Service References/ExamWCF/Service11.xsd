@@ -149,8 +149,8 @@
   <xs:element name="spAddQuestionCategories">
     <xs:complexType>
       <xs:sequence>
+        <xs:element minOccurs="0" name="Categories" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="ExamQuestionID" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="PKID" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

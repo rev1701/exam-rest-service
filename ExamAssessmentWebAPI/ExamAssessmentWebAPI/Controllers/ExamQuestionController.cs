@@ -176,7 +176,7 @@ namespace LMS1701.EA.Controllers
                     return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid input");
                 }
 
-                client.spAddQuestionCategories(questionID, categoryID);
+           //     client.spAddQuestionCategories(questionID, categoryID);
 
                 return Request.CreateResponse(HttpStatusCode.OK);
 
