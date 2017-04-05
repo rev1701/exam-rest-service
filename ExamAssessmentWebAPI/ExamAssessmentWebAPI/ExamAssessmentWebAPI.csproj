@@ -283,6 +283,9 @@
     <None Include="Service References\ExamWCF\Service12.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\ExamWCF\Service13.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

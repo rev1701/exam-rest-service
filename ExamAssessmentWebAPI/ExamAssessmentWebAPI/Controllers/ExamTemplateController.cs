@@ -96,6 +96,12 @@ namespace LMS1701.EA.Controllers
             WCF.ExamTemplate template = client.getExamTemplate(id);
             return template;
         }
+        [HttpGet]
+        [ActionName("GetIDList")]
+        public List<string> GetIDList()
+        {
+            return client.GetExamIDList().ToList();
+        }
         
 
           // GETapi/ExamTemplate/GetExamSubjects/id
@@ -132,18 +138,19 @@ namespace LMS1701.EA.Controllers
 
         // POST: api/ExamTemplate
         [ActionName("AddExam")]
-        public void Post([FromBody]string ExamTemplateName)
+        public void Post([FromBody]WCF.ExamTemplate exam)
         {
-          //  client.AddNewExam(ExamTemplateName, "b", "a");
+            client.AddNewExam(exam.ExamTemplateName, exam.ExamTemplateID, exam.ExamType.ExamTypeName);
         }
 
         // PUT: api/ExamTemplate/5
-        public void Put(string extid, int weight, [FromBody] WCF.ExamQuestion exques)
+        [ActionName("AddQuestionToExam")]
+        public void Put(string extid, int weight, [FromBody] string exquesID)
         {
-            client.spAddQuestionToExam(extid, exques.ExamQuestionID, weight);
+            client.spAddQuestionToExam(extid, exquesID, weight);
         }
-        
-        // DELETE: api/ExamTemplate/5
+
+        // DELETE: api/ExamTemplate/?extid=***&weight=**
         public void Delete(string ETID)
         {
             client.DeleteExam(ETID);
