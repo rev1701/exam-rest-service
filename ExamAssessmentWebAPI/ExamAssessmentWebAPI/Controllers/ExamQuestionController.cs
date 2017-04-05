@@ -14,7 +14,7 @@ namespace LMS1701.EA.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class ExamQuestionController : ApiController
     {
-        WCF.Service1Client client = new WCF.Service1Client();
+        WCF.Service1Client client = new WCF.Service1Client(); //Readonly suggested
 
 
         /**
