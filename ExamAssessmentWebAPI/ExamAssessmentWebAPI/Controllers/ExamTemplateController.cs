@@ -138,9 +138,9 @@ namespace LMS1701.EA.Controllers
 
         // POST: api/ExamTemplate
         [ActionName("AddExam")]
-        public void Post([FromBody]string ExamTemplateName)
+        public void Post([FromBody]WCF.ExamTemplate exam)
         {
-            client.AddNewExam(ExamTemplateName, "b", "a");
+            client.AddNewExam(exam.ExamTemplateName, exam.ExamTemplateID, exam.ExamType.ExamTypeName);
         }
 
         // PUT: api/ExamTemplate/5
