@@ -5,6 +5,7 @@
       <xsd:import schemaLocation="http://ec2-54-215-138-178.us-west-1.compute.amazonaws.com/ExamassessmentWCF/Service1.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://ec2-54-215-138-178.us-west-1.compute.amazonaws.com/ExamassessmentWCF/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://ec2-54-215-138-178.us-west-1.compute.amazonaws.com/ExamassessmentWCF/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/LMS1701.EA.SOAPAPI" />
+      <xsd:import schemaLocation="http://ec2-54-215-138-178.us-west-1.compute.amazonaws.com/ExamassessmentWCF/Service1.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IService1_GetData_InputMessage">
@@ -187,6 +188,18 @@
   <wsdl:message name="IService1_DeleteExam_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteExamResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_AddNewExam_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddNewExam" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddNewExam_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddNewExamResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetExamIDList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetExamIDList" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetExamIDList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetExamIDListResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetData">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetData" message="tns:IService1_GetData_InputMessage" />
@@ -307,6 +320,14 @@
     <wsdl:operation name="DeleteExam">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/DeleteExam" message="tns:IService1_DeleteExam_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/DeleteExamResponse" message="tns:IService1_DeleteExam_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddNewExam">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/AddNewExam" message="tns:IService1_AddNewExam_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AddNewExamResponse" message="tns:IService1_AddNewExam_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetExamIDList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetExamIDList" message="tns:IService1_GetExamIDList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetExamIDListResponse" message="tns:IService1_GetExamIDList_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -574,6 +595,24 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteExam">
       <soap:operation soapAction="http://tempuri.org/IService1/DeleteExam" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddNewExam">
+      <soap:operation soapAction="http://tempuri.org/IService1/AddNewExam" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetExamIDList">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetExamIDList" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

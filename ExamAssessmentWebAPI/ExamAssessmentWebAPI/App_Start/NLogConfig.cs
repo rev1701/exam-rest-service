@@ -6,8 +6,8 @@ using NLog;
 
 namespace ExamAssessmentWebAPI.App_Start
 {
-    public class NLogConfig
+    public static class NLogConfig
     {
-        public static Logger logger = LogManager.GetCurrentClassLogger();
+        public static Logger logger = LogManager.GetCurrentClassLogger(); //suggested readonly
     }
 }
