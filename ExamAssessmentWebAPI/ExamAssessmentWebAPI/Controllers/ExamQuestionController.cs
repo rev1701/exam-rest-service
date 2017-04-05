@@ -21,6 +21,18 @@ namespace LMS1701.EA.Controllers
          *  Returns all of the subjects in a specific question
          **/
         [HttpGet]
+        [ActionName("GetExamQuestionIDs")]
+        public HttpResponseMessage GetAllExamQuestionIDs()
+        {
+            List<WCF.ExamQuestion> examQ = client.GetAllExamQuestion().ToList();
+            List<String> result = new List<String>();
+            for (int i = 0; i < examQ.Count; i++)
+            {
+                result.Add(examQ.ElementAt(i).ExamQuestionID);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+        [HttpGet]
         [ActionName("GetSpecificQuestionSubjects")]
         public HttpResponseMessage GetSpecificQuestionSubjects([FromUri] string questionID)
         {
