@@ -63,7 +63,18 @@ namespace LMS1701.EA.Controllers
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
             }
         }
-
+        [HttpGet]
+        [ActionName("GetExamQuestionIDs")]
+        public HttpResponseMessage GetAllExamQuestionIDs()
+        {
+            List < WCF.ExamQuestion > examQ = client.GetAllExamQuestion().ToList();
+            List<String> result = new List<String>();
+            for(int i = 0; i < examQ.Count; i++)
+            {
+                result.Add(examQ.ElementAt(i).ExamQuestionID);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
         // GET: api/ExamQuestion
         // return IEnumerable<ExamQuestion>
         [HttpGet]
@@ -89,17 +100,17 @@ namespace LMS1701.EA.Controllers
 
         [HttpGet]
         [ActionName("GetSpecificExamQuestion")]
-        [Route("GetSpecificExamQuestion/{questionID}")]
-        // GET: api/ExamQuestion/5
+       
         public HttpResponseMessage GetSpecificExamQuestion(string questionID)
         {
+          //  return Request.CreateResponse(HttpStatusCode.OK);
             try
             {
-                WCF.ExamQuestion examQuestion = GetSpecificExQuest(questionID);
+              WCF.ExamQuestion examQuestion = GetSpecificExQuest(questionID);
 
                 if (examQuestion == null)
                 {
-                    return Request.CreateResponse(HttpStatusCode.BadRequest, "Exam question does not exist");
+                   return Request.CreateResponse(HttpStatusCode.BadRequest, "Exam question does not exist");
                 }
 
                 return Request.CreateResponse(HttpStatusCode.OK, examQuestion);
@@ -157,17 +168,17 @@ namespace LMS1701.EA.Controllers
         //POST: api/ExamQuestion/AddCategoryToQuestoin/id
         [HttpPost]
         [ActionName("AddCategoryToQuestion")]
-        [Route("AddCategoryToQuestion/{questionID}/{categoryID}")]
-        public HttpResponseMessage AddCategoryToQuestion([FromUri]string questionID, [FromUri]int categoryID)
+      //  [Route("AddCategoryToQuestion/{questionID}/{categoryID}")]
+        public HttpResponseMessage AddCategoryToQuestion([FromUri]int questionID, [FromUri]String category)
         {
             try
             {
-                if (questionID == null || questionID == "" || categoryID < 0)
+                if (category == null || category == "" || questionID < 0)
                 {
                     return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid input");
                 }
 
-                client.spAddQuestionCategories(questionID, categoryID);
+                client.spAddQuestionCategories(category, questionID);
 
                 return Request.CreateResponse(HttpStatusCode.OK);
 
