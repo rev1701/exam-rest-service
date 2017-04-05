@@ -13,7 +13,7 @@ namespace LMS1701.EA.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class CategoryController : ApiController
     {
-        WCF.Service1Client client = new WCF.Service1Client();
+        WCF.Service1Client client = new WCF.Service1Client(); //readonly suggested
 
         // GET: api/Category
         public List <WCF.Category> Get()
