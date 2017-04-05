@@ -21,7 +21,7 @@ namespace LMS1701.EA.Controllers
         private MediaTypeWithQualityHeaderValue jsonMediaType = new MediaTypeWithQualityHeaderValue("application/json");
         
                                           // GET: api/Subtopic/
-    public List<WCF.SubTopic> Get()
+    public HttpResponseMessage Get()
         {
             var info = client.GetAllSubject();
             List<WCF.SubTopic> Sub = new List<WCF.SubTopic>();
@@ -50,7 +50,7 @@ namespace LMS1701.EA.Controllers
                 }
             }
             //Return the List of SubTopic Objects
-            return Sub;
+            return HttpStatusCode.OK;
         }
 
         // DELETE: api/Subtopic/5
