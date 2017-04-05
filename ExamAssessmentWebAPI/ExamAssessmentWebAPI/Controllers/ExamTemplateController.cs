@@ -16,77 +16,6 @@ namespace LMS1701.EA.Controllers
         WCF.Service1Client client = new WCF.Service1Client();
         
         
-        // GET: api/ExamTemplate/Training_1
-    /*    [HttpGet]
-        [ActionName("GetExam")]
-        public ExamTemplate Get()
-        {
-            #region newMap
-            //Mock Data Exam Template 
-            
-            ExamTemplate ex = new ExamTemplate();
-            ex.ExamTemplateID = "Training_1";
-            ex.ExamTemplateName = "Training Test";
-            ex.PKID = 1;
-            ex.Type = new ExamType();
-            ex.Type.PKID = 1;
-            ex.Type.ExamTypeName = "Training";
-            ExamQuestion q1 = new ExamQuestion();
-            QuestionType qt = new QuestionType();
-            SubQuestion sq = new SubQuestion();
-            Category ct = new Category();
-            Subtopic st = new Subtopic();
-            Answer ans = new Answer();
-            LanguageType ltype = new LanguageType();
-            Category cat = new Category();
-            Subtopic sub = new Subtopic();
-            qt.QuestionTypeName = "MultipleChoice";
-            q1.Weight = 1;
-                for (int i = 0; i < 10; i++)
-                {
-                    q1.ExamQuestionName = "Train" + Convert.ToString(i);
-                    q1.ExamQuestionID = "T" + Convert.ToString(i);
-                    q1.PKID = i;
-                    qt.PKID = i;
-                    q1.Type = qt;
-                    sq.PKID = i;
-                    sq.Description = "This is Question " + Convert.ToString(i);
-                    for (int k = 0; k < 4; k++) {
-                        ans.PKID = k;
-                        ltype.Language = "Normal";
-                        ltype.PKID = k;
-                        ans.ProgrammingLanguage = ltype;
-                        if (i == 0)
-                            ans.DisplayedAnswer = "This is Answer A";
-                        if (i == 1)
-                            ans.DisplayedAnswer = "This is Answer B";
-                        if (i == 2)
-                            ans.DisplayedAnswer = "This is Answer C";
-                        if (i == 3)
-                            ans.DisplayedAnswer = "This is Answer D";
-                        sq.Answers = new List<Answer>();
-                        sq.Answers.Add(ans); 
-                    }
-                q1.QuestionList = new List<SubQuestion>();
-                q1.QuestionList.Add(sq);
-                cat.Categoryname = "C#";
-                cat.PKID = i;
-                sub.Subtopic_ID = i;
-                sub.Subtopic_Name = "ADO.NET";
-                cat.SubTopics = new List<Subtopic>();
-                cat.SubTopics.Add(sub);
-                q1.QuestionCategories = new List<Category>();
-                q1.QuestionCategories.Add(cat);
-                ex.ExamQuestions = new List<ExamQuestion>();
-                ex.ExamQuestions.Add(q1);
-                }
-            return ex;
-            
-            #endregion
-            
-        }
-        */
-
         
         [HttpGet]
         [ActionName("GetExam")]
@@ -105,8 +34,10 @@ namespace LMS1701.EA.Controllers
         
 
           // GETapi/ExamTemplate/GetExamSubjects/id
+
+        [HttpGet]
         [ActionName("GetExamSubjects")]
-        public List<WCF.Subject> GetExamSubjects(String id)
+        public HttpResponseMessage GetExamSubjects(String id)
         {
 
             //var results = client.GetAllSubject();
@@ -121,17 +52,38 @@ namespace LMS1701.EA.Controllers
                 {
                     for(int k =0; k < sub.Count(); k++)
                     {
-                        if(sub.ElementAt(k).listCat.Contains(template.ExamQuestions.ElementAt(i).ExamQuestion_Categories.ElementAt(j)))
+                        for(int jj =0; jj < sub.ElementAt(k).listCat.Count(); jj++)
                         {
-                            if(!result.Contains(sub.ElementAt(k)))
+                            if (sub.ElementAt(k).listCat.ElementAt(jj).Categories_Name == template.ExamQuestions.ElementAt(i).ExamQuestion_Categories.ElementAt(j).Categories_Name)
                             {
-                                result.Add(sub.ElementAt(k));
+                                
+                                    result.Add(sub.ElementAt(k));
+                              
                             }
                         }
+                        
                     }
                 }
             }
-            return result;
+            List<WCF.Subject> tempR = new List<WCF.Subject>();
+            tempR.AddRange(result);
+            for (int lop = 0; lop < 20; lop++)
+            {
+
+
+                for (int kk = 0; kk < result.Count; kk++)
+                {
+                    for (int ll = kk + 1; ll < result.Count; ll++)
+                    {
+                        if (result.ElementAt(kk).Subject_Name == result.ElementAt(ll).Subject_Name)
+                        {
+                            result.RemoveAt(ll);
+                        }
+                    }
+
+                }
+            }
+            return Request.CreateResponse(HttpStatusCode.OK,result);
             
         }
 
