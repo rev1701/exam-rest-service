@@ -14,7 +14,7 @@ namespace LMS1701.EA.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class ExamQuestionController : ApiController
     {
-        WCF.Service1Client client = new WCF.Service1Client();
+        WCF.Service1Client client = new WCF.Service1Client(); //Readonly suggested
 
 
         /**
@@ -68,23 +68,23 @@ namespace LMS1701.EA.Controllers
         // return IEnumerable<ExamQuestion>
         [HttpGet]
         [ActionName("GetAllExamQuestions")]
-        [Route("GetAllExamQuestions")]
-        public HttpResponseMessage GetAllExamQuestions()
+        public List<WCF.ExamQuestion> GetAllExamQuestions()
         {
-            try
-            {
-                List<WCF.ExamQuestion> examQuestionList = client.GetAllExamQuestion().ToList();
-                if (examQuestionList == null || examQuestionList.Count <= 0)
-                {
-                    return Request.CreateResponse(HttpStatusCode.BadRequest);
-                }
+            return client.GetAllExamQuestion().ToList();
+            //try
+            //{
+            //    List<WCF.ExamQuestion> examQuestionList = client.GetAllExamQuestion().ToList();
+            //    if (examQuestionList == null || examQuestionList.Count <= 0)
+            //    {
+            //        return Request.CreateResponse(HttpStatusCode.BadRequest);
+            //    }
 
-                return Request.CreateResponse(HttpStatusCode.OK, examQuestionList);
-            }
-            catch (Exception ex)
-            {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
-            }
+            //    return Request.CreateResponse(HttpStatusCode.OK, examQuestionList);
+            //}
+            //catch (Exception ex)
+            //{
+            //    return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            //}
         }
 
         [HttpGet]

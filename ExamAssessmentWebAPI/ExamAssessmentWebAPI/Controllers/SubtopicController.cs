@@ -17,11 +17,9 @@ namespace LMS1701.EA.Controllers
     
     public class SubtopicController : ApiController
     {
-        WCF.Service1Client client = new WCF.Service1Client();
-        private MediaTypeWithQualityHeaderValue jsonMediaType = new MediaTypeWithQualityHeaderValue("application/json");
-        
-                                          // GET: api/Subtopic/
-    public HttpResponseMessage Get()
+        WCF.Service1Client client = new WCF.Service1Client(); //Readonly suggested
+
+    public List<WCF.SubTopic> Get()
         {
             var info = client.GetAllSubject();
             List<WCF.SubTopic> Sub = new List<WCF.SubTopic>();
@@ -50,7 +48,7 @@ namespace LMS1701.EA.Controllers
                 }
             }
             //Return the List of SubTopic Objects
-            return HttpStatusCode.OK;
+            return Sub;
         }
 
         // DELETE: api/Subtopic/5

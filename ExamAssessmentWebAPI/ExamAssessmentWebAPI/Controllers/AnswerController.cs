@@ -13,7 +13,7 @@ namespace LMS1701.EA.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class AnswerController : ApiController
     {
-        WCF.Service1Client client = new WCF.Service1Client();
+        WCF.Service1Client client = new WCF.Service1Client(); //readonly suggeseted
 
         // GET: api/Answer/id
         public List<Answer> Get(int SubquestionID)
@@ -24,7 +24,7 @@ namespace LMS1701.EA.Controllers
             {
                 Answer a = new Models.Answer();
                 a.DisplayedAnswer = item.Answer1;
-                a.IsCorrect = item.correct.isCorrect;    //UPDATE SERVICE REFEREENCE
+                a.IsCorrect = item.correct.isCorrect;    
                 a.PKID = item.PKID;
                 ans.Add(a);
             }
