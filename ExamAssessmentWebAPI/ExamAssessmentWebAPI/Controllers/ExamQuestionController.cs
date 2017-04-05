@@ -63,7 +63,7 @@ namespace LMS1701.EA.Controllers
             }
         }
 
-        // GET: api/ExamQuestion
+        // GET: api/ExamQuestion/GetAllExamQuestions
         // return IEnumerable<ExamQuestion>
         [HttpGet]
         [ActionName("GetAllExamQuestions")]
