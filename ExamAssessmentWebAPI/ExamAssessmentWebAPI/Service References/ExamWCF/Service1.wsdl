@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Service1" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Service1" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
-      <xsd:import schemaLocation="http://ec2-54-215-138-178.us-west-1.compute.amazonaws.com/ExamassessmentWCF/Service1.svc?xsd=xsd0" namespace="http://tempuri.org/" />
-      <xsd:import schemaLocation="http://ec2-54-215-138-178.us-west-1.compute.amazonaws.com/ExamassessmentWCF/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://ec2-54-215-138-178.us-west-1.compute.amazonaws.com/ExamassessmentWCF/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/LMS1701.EA.SOAPAPI" />
-      <xsd:import schemaLocation="http://ec2-54-215-138-178.us-west-1.compute.amazonaws.com/ExamassessmentWCF/Service1.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:61379/Service1.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:61379/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:61379/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/LMS1701.EA.SOAPAPI" />
+      <xsd:import schemaLocation="http://localhost:61379/Service1.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IService1_GetData_InputMessage">
@@ -62,6 +62,12 @@
   <wsdl:message name="IService1_spAddExistingSubtopicToCategory_OutputMessage">
     <wsdl:part name="parameters" element="tns:spAddExistingSubtopicToCategoryResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_RemoveQuestionFromExam_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveQuestionFromExam" />
+  </wsdl:message>
+  <wsdl:message name="IService1_RemoveQuestionFromExam_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveQuestionFromExamResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_spAddNewCategoryType_InputMessage">
     <wsdl:part name="parameters" element="tns:spAddNewCategoryType" />
   </wsdl:message>
@@ -74,11 +80,11 @@
   <wsdl:message name="IService1_spAddQuestionAsExamQuestion_OutputMessage">
     <wsdl:part name="parameters" element="tns:spAddQuestionAsExamQuestionResponse" />
   </wsdl:message>
-  <wsdl:message name="IService1_spAddQuestionCategories_InputMessage">
-    <wsdl:part name="parameters" element="tns:spAddQuestionCategories" />
+  <wsdl:message name="IService1_AddQuestionCategories_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddQuestionCategories" />
   </wsdl:message>
-  <wsdl:message name="IService1_spAddQuestionCategories_OutputMessage">
-    <wsdl:part name="parameters" element="tns:spAddQuestionCategoriesResponse" />
+  <wsdl:message name="IService1_AddQuestionCategories_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddQuestionCategoriesResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_spAddQuestionToAnswer_InputMessage">
     <wsdl:part name="parameters" element="tns:spAddQuestionToAnswer" />
@@ -103,6 +109,12 @@
   </wsdl:message>
   <wsdl:message name="IService1_spDeleteQuestionCategory_OutputMessage">
     <wsdl:part name="parameters" element="tns:spDeleteQuestionCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteQuestionCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteQuestionCategory" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteQuestionCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteQuestionCategoryResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_spRemoveAnswerFromQuestion_InputMessage">
     <wsdl:part name="parameters" element="tns:spRemoveAnswerFromQuestion" />
@@ -237,6 +249,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/spAddExistingSubtopicToCategory" message="tns:IService1_spAddExistingSubtopicToCategory_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/spAddExistingSubtopicToCategoryResponse" message="tns:IService1_spAddExistingSubtopicToCategory_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="RemoveQuestionFromExam">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/RemoveQuestionFromExam" message="tns:IService1_RemoveQuestionFromExam_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/RemoveQuestionFromExamResponse" message="tns:IService1_RemoveQuestionFromExam_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="spAddNewCategoryType">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/spAddNewCategoryType" message="tns:IService1_spAddNewCategoryType_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/spAddNewCategoryTypeResponse" message="tns:IService1_spAddNewCategoryType_OutputMessage" />
@@ -245,9 +261,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/spAddQuestionAsExamQuestion" message="tns:IService1_spAddQuestionAsExamQuestion_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/spAddQuestionAsExamQuestionResponse" message="tns:IService1_spAddQuestionAsExamQuestion_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="spAddQuestionCategories">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/spAddQuestionCategories" message="tns:IService1_spAddQuestionCategories_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/spAddQuestionCategoriesResponse" message="tns:IService1_spAddQuestionCategories_OutputMessage" />
+    <wsdl:operation name="AddQuestionCategories">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/AddQuestionCategories" message="tns:IService1_AddQuestionCategories_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AddQuestionCategoriesResponse" message="tns:IService1_AddQuestionCategories_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="spAddQuestionToAnswer">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/spAddQuestionToAnswer" message="tns:IService1_spAddQuestionToAnswer_InputMessage" />
@@ -264,6 +280,10 @@
     <wsdl:operation name="spDeleteQuestionCategory">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/spDeleteQuestionCategory" message="tns:IService1_spDeleteQuestionCategory_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/spDeleteQuestionCategoryResponse" message="tns:IService1_spDeleteQuestionCategory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteQuestionCategory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/DeleteQuestionCategory" message="tns:IService1_DeleteQuestionCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/DeleteQuestionCategoryResponse" message="tns:IService1_DeleteQuestionCategory_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="spRemoveAnswerFromQuestion">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/spRemoveAnswerFromQuestion" message="tns:IService1_spRemoveAnswerFromQuestion_InputMessage" />
@@ -413,6 +433,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="RemoveQuestionFromExam">
+      <soap:operation soapAction="http://tempuri.org/IService1/RemoveQuestionFromExam" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="spAddNewCategoryType">
       <soap:operation soapAction="http://tempuri.org/IService1/spAddNewCategoryType" style="document" />
       <wsdl:input>
@@ -431,8 +460,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="spAddQuestionCategories">
-      <soap:operation soapAction="http://tempuri.org/IService1/spAddQuestionCategories" style="document" />
+    <wsdl:operation name="AddQuestionCategories">
+      <soap:operation soapAction="http://tempuri.org/IService1/AddQuestionCategories" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -469,6 +498,15 @@
     </wsdl:operation>
     <wsdl:operation name="spDeleteQuestionCategory">
       <soap:operation soapAction="http://tempuri.org/IService1/spDeleteQuestionCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteQuestionCategory">
+      <soap:operation soapAction="http://tempuri.org/IService1/DeleteQuestionCategory" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -623,7 +661,7 @@
   </wsdl:binding>
   <wsdl:service name="Service1">
     <wsdl:port name="BasicHttpBinding_IService1" binding="tns:BasicHttpBinding_IService1">
-      <soap:address location="http://ec2-54-215-138-178.us-west-1.compute.amazonaws.com/ExamassessmentWCF/Service1.svc" />
+      <soap:address location="http://localhost:61379/Service1.svc" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

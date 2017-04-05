@@ -142,8 +142,14 @@ namespace LMS1701.EA.Controllers
         {
             client.AddNewExam(exam.ExamTemplateName, exam.ExamTemplateID, exam.ExamType.ExamTypeName);
         }
-
+        [HttpPut]
+        [ActionName("RemoveQuestionFromExam")]
+        public void RemoveQuestionFromExam(string extid, [FromBody] string exquesID)
+        {
+            client.RemoveQuestionFromExam(extid, exquesID);
+        }
         // PUT: api/ExamTemplate/5
+        [HttpPut]
         [ActionName("AddQuestionToExam")]
         public void Put(string extid, int weight, [FromBody] string exquesID)
         {
