@@ -144,12 +144,13 @@ namespace LMS1701.EA.Controllers
         }
 
         // PUT: api/ExamTemplate/5
-        public void Put(string extid, int weight, [FromBody] WCF.ExamQuestion exques)
+        [ActionName("AddQuestionToExam")]
+        public void Put(string extid, int weight, [FromBody] string exquesID)
         {
-            client.spAddQuestionToExam(extid, exques.ExamQuestionID, weight);
+            client.spAddQuestionToExam(extid, exquesID, weight);
         }
-        
-        // DELETE: api/ExamTemplate/5
+
+        // DELETE: api/ExamTemplate/?extid=***&weight=**
         public void Delete(string ETID)
         {
             client.DeleteExam(ETID);
