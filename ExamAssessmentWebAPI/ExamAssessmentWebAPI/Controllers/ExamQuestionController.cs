@@ -75,27 +75,25 @@ namespace LMS1701.EA.Controllers
             }
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
-        // GET: api/ExamQuestion
-        // return IEnumerable<ExamQuestion>
+     
         [HttpGet]
         [ActionName("GetAllExamQuestions")]
-        public List<WCF.ExamQuestion> GetAllExamQuestions()
+        public HttpResponseMessage GetAllExamQuestions()
         {
-            return client.GetAllExamQuestion().ToList();
-            //try
-            //{
-            //    List<WCF.ExamQuestion> examQuestionList = client.GetAllExamQuestion().ToList();
-            //    if (examQuestionList == null || examQuestionList.Count <= 0)
-            //    {
-            //        return Request.CreateResponse(HttpStatusCode.BadRequest);
-            //    }
+            try
+            {
+                List<WCF.ExamQuestion> examQuestionList = client.GetAllExamQuestion().ToList();
+                if (examQuestionList == null || examQuestionList.Count <= 0)
+                {
+                    return Request.CreateResponse(HttpStatusCode.BadRequest);
+                }
 
-            //    return Request.CreateResponse(HttpStatusCode.OK, examQuestionList);
-            //}
-            //catch (Exception ex)
-            //{
-            //    return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
-            //}
+                return Request.CreateResponse(HttpStatusCode.OK, examQuestionList);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
         }
 
         [HttpGet]
