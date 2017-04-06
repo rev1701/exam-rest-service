@@ -19,7 +19,7 @@ namespace LMS1701.EA.Controllers
     {
         WCF.Service1Client client = new WCF.Service1Client(); //Readonly suggested
 
-    public List<WCF.SubTopic> Get()
+    public HttpResponseMessage Get()
         {
             var info = client.GetAllSubject();
             List<WCF.SubTopic> Sub = new List<WCF.SubTopic>();
@@ -48,7 +48,7 @@ namespace LMS1701.EA.Controllers
                 }
             }
             //Return the List of SubTopic Objects
-            return Sub;
+            return Request.CreateResponse(HttpStatusCode.OK,Sub);
         }
 
         // DELETE: api/Subtopic/5

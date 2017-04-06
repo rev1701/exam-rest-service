@@ -16,7 +16,7 @@ namespace LMS1701.EA.Controllers
         WCF.Service1Client client = new WCF.Service1Client(); //readonly suggested
 
         // GET: api/Category
-        public List <WCF.Category> Get()
+        public HttpResponseMessage  Get()
         {
             var info = client.GetAllSubject().ToList();
             List <WCF.Category> Cat = new List<WCF.Category>();
@@ -25,21 +25,32 @@ namespace LMS1701.EA.Controllers
             {
                 foreach (WCF.Category catx in item.listCat)
                 {
-                    foreach(WCF.Category caty in Cat)
-                    {
-                        if (caty.Categories_Name.Equals(catx.Categories_Name))
-                        {
-                            continue;
-                        }
-                        else
-                        {
-                            Cat.Add(catx);
-                        }
+                    
                         
-                    }
+                            Cat.Add(catx);
+                        
+                        
+                    
                 }
             }
-            return Cat;
+            for (int lop = 0; lop < 20; lop++)
+            {
+
+
+                for (int kk = 0; kk < Cat.Count; kk++)
+                {
+                    for (int ll = kk + 1; ll < Cat.Count; ll++)
+                    {
+                        if (Cat.ElementAt(kk).Categories_ID == Cat.ElementAt(ll).Categories_ID)
+                        {
+                            Cat.RemoveAt(ll);
+                        }
+                    }
+
+                }
+            }
+
+            return Request.CreateResponse(HttpStatusCode.OK,Cat);
         }
 
         // POST: api/Category
