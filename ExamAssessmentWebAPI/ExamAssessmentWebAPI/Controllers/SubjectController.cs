@@ -32,14 +32,14 @@ namespace LMS1701.EA.Controllers
             client.AddSubject(SubjectName);
         }
 
-        // PUT:
+        // POST:
         [ActionName("AddExistingCategory")]
         public void AddNewCategory(string SubjectName, [FromBody]string CategoryName)
         {
             client.spAddExistingCategory(SubjectName, CategoryName);
         }
            
-        // PUT:
+        // Delete:
         [ActionName("RemoveCategory")]
         public void RemoveCategory(string SubjectName, [FromBody]string CategoryName)
         {

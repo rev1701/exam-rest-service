@@ -90,15 +90,39 @@ namespace LMS1701.EA.Controllers
 
         // POST: api/ExamTemplate
         [ActionName("AddExam")]
-        public void Post([FromBody]WCF.ExamTemplate exam)
+        public HttpResponseMessage Post([FromBody]WCF.ExamTemplate exam)
         {
-            client.AddNewExam(exam.ExamTemplateName, exam.ExamTemplateID, exam.ExamType.ExamTypeName);
+            try
+            {
+                if(exam==null || exam.ExamTemplateID==null||exam.ExamTemplateID==""||exam.ExamTemplateName==null||exam.ExamTemplateName=="")
+                {
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid Exam Template");
+                }
+                client.AddNewExam(exam.ExamTemplateName, exam.ExamTemplateID, exam.ExamType.ExamTypeName);
+                return Request.CreateResponse(HttpStatusCode.OK,"Template Added");
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
         }
         [HttpPut]
         [ActionName("RemoveQuestionFromExam")]
-        public void RemoveQuestionFromExam(string extid, [FromBody] string exquesID)
+        public HttpResponseMessage RemoveQuestionFromExam(string extid, [FromBody] string exquesID)
         {
-            client.RemoveQuestionFromExam(extid, exquesID);
+            try
+            {
+                if (extid==null||extid==""||exquesID==""||exquesID==null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid Parameters");
+                }
+                client.RemoveQuestionFromExam(extid, exquesID);
+                return Request.CreateResponse(HttpStatusCode.OK,$"Question {exquesID} removed from exam {extid}");
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest,ex.Message);
+            }
         }
         // PUT: api/ExamTemplate/5
         [HttpPut]
