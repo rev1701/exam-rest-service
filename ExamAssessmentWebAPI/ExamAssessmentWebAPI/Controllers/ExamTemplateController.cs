@@ -10,6 +10,9 @@ using WCF = ExamAssessmentWebAPI.ExamWCF;
 
 namespace LMS1701.EA.Controllers
 {
+    /// <summary>
+    /// Controller that will handle the responsibilities of all things related to an ExamTemplate.
+    /// </summary>
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class ExamTemplateController : ApiController
     {
@@ -83,7 +86,7 @@ namespace LMS1701.EA.Controllers
         /// Method will allow you to input a ExamTemplateID and it will return a full Exam Template that matches that ID
         /// Exam Template will include all questions associated with it as well as each category attached to those questions.
         /// </summary>
-        /// <param name="id">examtemplateID (NOT PKID)</param>
+        /// <param name="id">string examtemplateID (NOT PKID)</param>
         /// <endpoint>[HttpGet]:api/ExamTemplate/GetExam/{id}</endpoint>
         /// <returns>HTTP Response Message along with JSON Result of the Exam</returns>
         [HttpGet]
@@ -218,6 +221,7 @@ namespace LMS1701.EA.Controllers
         /// <param name="ETID">string ExamTemplateID</param>
         /// <endpoint>[HttpDelete]api/ExamTemplate/{id}</endpoint>
         /// <returns>HTTP Response message on success or failure</returns>
+        [HttpDelete]
         public HttpResponseMessage Delete(string ETID)
         {
             try
