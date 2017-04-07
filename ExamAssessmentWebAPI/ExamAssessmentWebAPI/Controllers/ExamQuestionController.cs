@@ -20,6 +20,8 @@ namespace LMS1701.EA.Controllers
         /**
          *  Returns all of the subjects in a specific question
          **/
+
+        
         [HttpGet]
         [ActionName("GetSpecificQuestionSubjects")]
         [Route("GetSpecificQuestionSubjects/{questionID}")]
@@ -63,48 +65,63 @@ namespace LMS1701.EA.Controllers
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
             }
         }
+
+
+        /// <summary>
+        /// This method gets the exam question ID's for all Exam Questions 
+        /// </summary>
+        /// <returns>HTTP Response Message</returns>
         [HttpGet]
         [ActionName("GetExamQuestionIDs")]
         public HttpResponseMessage GetAllExamQuestionIDs()
         {
-            List < WCF.ExamQuestion > examQ = client.GetAllExamQuestion().ToList();
-            List<String> result = new List<String>();
-            for(int i = 0; i < examQ.Count; i++)
+            List < WCF.ExamQuestion > examQ = client.GetAllExamQuestion().ToList(); //make the client call for the service and store it in a list of exam questions
+            List<String> result = new List<String>(); // make a new list of strings
+            for(int i = 0; i < examQ.Count; i++) // loop through the list of WCF Exam Questions
             {
-                result.Add(examQ.ElementAt(i).ExamQuestionID);
+                result.Add(examQ.ElementAt(i).ExamQuestionID); // Add to the results list the current ExamQuestionID
             }
-            return Request.CreateResponse(HttpStatusCode.OK, result);
+            return Request.CreateResponse(HttpStatusCode.OK, result); //Return Status code that it connected correctly and the result
         }
-     
+        
+        /// <summary>
+        /// Get Method to get all of the Exam Questions in the Database and returns a response code if it worked or not 
+        /// </summary>
+        /// <returns>HTTP Response Code</returns>
         [HttpGet]
         [ActionName("GetAllExamQuestions")]
         public HttpResponseMessage GetAllExamQuestions()
         {
             try
             {
-                List<WCF.ExamQuestion> examQuestionList = client.GetAllExamQuestion().ToList();
-                if (examQuestionList == null || examQuestionList.Count <= 0)
+                List<WCF.ExamQuestion> examQuestionList = client.GetAllExamQuestion().ToList(); // the client calls the ExamQuestionList Table and stores it as a list of ExamQuestion
+                if (examQuestionList == null || examQuestionList.Count <= 0) // If the ExamQuestionList is null or if there are no elements in the list
                 {
-                    return Request.CreateResponse(HttpStatusCode.BadRequest);
+                    return Request.CreateResponse(HttpStatusCode.BadRequest); //Send back a bad request
                 }
 
-                return Request.CreateResponse(HttpStatusCode.OK, examQuestionList);
+                return Request.CreateResponse(HttpStatusCode.OK, examQuestionList); //If not empty send back a good request with list of All Exam Questions
             }
             catch (Exception ex)
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message); //Some other error caught send bad request
             }
         }
 
+        /// <summary>
+        /// Get Method that returns a specific Exam Question using the ExamQuestionID
+        /// </summary>
+        /// <param name="questionID">ExamQuestionID</param>
+        /// <returns>Http Response Message</returns>
         [HttpGet]
         [ActionName("GetSpecificExamQuestion")]
-       
+        
         public HttpResponseMessage GetSpecificExamQuestion(string questionID)
         {
           //  return Request.CreateResponse(HttpStatusCode.OK);
             try
             {
-              WCF.ExamQuestion examQuestion = GetSpecificExQuest(questionID);
+              WCF.ExamQuestion examQuestion = GetSpecificExQuest(questionID); //Makes a WCF ExamQuestion object 
 
                 if (examQuestion == null)
                 {
