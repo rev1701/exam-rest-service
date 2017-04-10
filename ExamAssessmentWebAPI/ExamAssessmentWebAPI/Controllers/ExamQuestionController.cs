@@ -11,18 +11,30 @@ using WCF = ExamAssessmentWebAPI.ExamWCF;
 
 namespace LMS1701.EA.Controllers
 {
+    /// <summary>
+    /// Controller that will handle the responsibilities of all things related to an ExamQuestion.
+    /// </summary>
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class ExamQuestionController : ApiController
     {
         WCF.Service1Client client = new WCF.Service1Client(); //Readonly suggested
 
+        #region TODO
 
-        /**
-         *  Returns all of the subjects in a specific question
-         **/
+        // TODO:complete methods inside this region.
+        // TODO:Add NLog to each method inside the entire controller (not just this region).  Each Controller should have its own log file
+        // TODO:Add Unit Tests for each method inside this controller.  There is already a Unit Test Library in this project with a class already made for this controller
+        // TODO: Add a new Method that will return a list of questions that belong under a certain subject
+
+        /// TODO: Test This Method: Unsure of Results
+        /// <summary>
+        ///  Method will return subjects related to a specific question
+        /// </summary>
+        /// <param name="questionID">string ExamQuestionID</param>
+        /// <endpoint>[HttpGet]: api/ExamQuestion/GetSpecificQuestionSubjects/{id}</endpoint>
+        /// <returns>HTTP Response message along with JSON result of the Subject List< </returns>
         [HttpGet]
         [ActionName("GetSpecificQuestionSubjects")]
-        [Route("GetSpecificQuestionSubjects/{questionID}")]
         public HttpResponseMessage GetSpecificQuestionSubjects([FromUri] string questionID)
         {
             try
@@ -63,66 +75,14 @@ namespace LMS1701.EA.Controllers
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
             }
         }
-        [HttpGet]
-        [ActionName("GetExamQuestionIDs")]
-        public HttpResponseMessage GetAllExamQuestionIDs()
-        {
-            List < WCF.ExamQuestion > examQ = client.GetAllExamQuestion().ToList();
-            List<String> result = new List<String>();
-            for(int i = 0; i < examQ.Count; i++)
-            {
-                result.Add(examQ.ElementAt(i).ExamQuestionID);
-            }
-            return Request.CreateResponse(HttpStatusCode.OK, result);
-        }
-        // GET: api/ExamQuestion
-        // return IEnumerable<ExamQuestion>
-        [HttpGet]
-        [ActionName("GetAllExamQuestions")]
-        public List<WCF.ExamQuestion> GetAllExamQuestions()
-        {
-            return client.GetAllExamQuestion().ToList();
-            //try
-            //{
-            //    List<WCF.ExamQuestion> examQuestionList = client.GetAllExamQuestion().ToList();
-            //    if (examQuestionList == null || examQuestionList.Count <= 0)
-            //    {
-            //        return Request.CreateResponse(HttpStatusCode.BadRequest);
-            //    }
 
-            //    return Request.CreateResponse(HttpStatusCode.OK, examQuestionList);
-            //}
-            //catch (Exception ex)
-            //{
-            //    return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
-            //}
-        }
-
-        [HttpGet]
-        [ActionName("GetSpecificExamQuestion")]
-       
-        public HttpResponseMessage GetSpecificExamQuestion(string questionID)
-        {
-          //  return Request.CreateResponse(HttpStatusCode.OK);
-            try
-            {
-              WCF.ExamQuestion examQuestion = GetSpecificExQuest(questionID);
-
-                if (examQuestion == null)
-                {
-                   return Request.CreateResponse(HttpStatusCode.BadRequest, "Exam question does not exist");
-                }
-
-                return Request.CreateResponse(HttpStatusCode.OK, examQuestion);
-            }
-            catch (Exception ex)
-            {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
-            }
-        }
-
-        // POST: api/ExamQuestion
-
+        /// TODO: further testing requried on this method.  Not always excepting question object in request body.
+        /// <summary>
+        ///  Method should post an entire brand new question to the database.  Including adding in the subquestions and answers.
+        /// </summary>
+        /// <param name="question">ExamQuestion Object in Request Body</param>
+        /// <endpoint>[HttpPost]: api/ExamQuestion</endpoint>
+        /// <returns>HTTP Response on success or failure of the method</returns>
         public HttpResponseMessage Post([FromBody]WCF.ExamQuestion question)
         {
             try
@@ -142,43 +102,53 @@ namespace LMS1701.EA.Controllers
             }
         }
 
-        // PUT: api/ExamQuestion/ChangeCorrectAnswer/id
-        /*   [HttpPut]
-           [ActionName("ChangeCorrectAnswer")]
-           [Route("ChangeCorrectAnswer/{questionID}")]
-           // GET: api/ExamQuestion/5
+        /// TODO:function not working yet, requires refactoring
+        /// <summary>
+        ///  Function will change what the correct answer is assigned to the ExamQuestion
+        /// </summary>
+        /// <param name="questionID">string questionID</param>
+        /// <param name="value">Answer Object From Request Body</param>
+        /// <endpoint> [HttpPut]: api/ExamQuestion/ChangeCorrectAnswer/id</endpoint>
+        /// <returns>HTTP Response on success or failure of the method </returns>
+        [HttpPut]
+        [ActionName("ChangeCorrectAnswer")]
           public HttpResponseMessage ChangeCorrectAnswer([FromUri]string questionID, [FromBody]Answer value)
-           {
-               try
-               {
-                   if (questionID == null || questionID == "" || value == null)
-                   {
-                       return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid Input");
-                   }
-                               client.
-                   //todo
-
-               }
-               catch (Exception ex)
-               {
-                   return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
-               }
-           }*/
-
-        //POST: api/ExamQuestion/AddCategoryToQuestoin/id
-        [HttpPost]
-        [ActionName("AddCategoryToQuestion")]
-      //  [Route("AddCategoryToQuestion/{questionID}/{categoryID}")]
-        public HttpResponseMessage AddCategoryToQuestion([FromUri]string Category, [FromUri]String ExamQuestionID)
         {
             try
             {
-                if (Category == null || Category == "" || ExamQuestionID =="" || ExamQuestionID == null)
+                if (questionID == null || questionID == "" || value == null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid Input");
+                }
+                return Request.CreateResponse(HttpStatusCode.OK, "");
+
+               }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+        }
+
+        /// TODO: Method is not tested and requires refactoring
+        /// <summary>
+        ///  method will add an existing category to an existing exam question
+        /// </summary>
+        /// <param name="Category">string Category Name</param>
+        /// <param name="ExamQuestionID">string ExamQuestionID</param>
+        /// <endpoint>[HttpPost]: api/ExamQuestion/AddCategoryToQuestoin/id</endpoint>
+        /// <returns>returns HTTP Response message on success or failure</returns>
+        [HttpPost]
+        [ActionName("AddCategoryToQuestion")]
+        public HttpResponseMessage AddCategoryToQuestion([FromUri]string Category, [FromUri]string ExamQuestionID)
+        {
+            try
+            {
+                if (Category == null || Category == "" || ExamQuestionID == "" || ExamQuestionID == null)
                 {
                     return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid input");
                 }
 
-             //   client.addQuestionCategories(Category, ExamQuestionID);     update service reference
+                //   client.addQuestionCategories(Category, ExamQuestionID);    
 
                 return Request.CreateResponse(HttpStatusCode.OK);
 
@@ -189,10 +159,16 @@ namespace LMS1701.EA.Controllers
             }
         }
 
-        //DELETE: api/RemoveCategoryFromQuestion/id
-        [HttpDelete]
+        /// TODO:Method needs testing and possible refactoring
+        /// <summary>
+        ///  will remove an existing category from an existing question
+        /// </summary>
+        /// <param name="ExamQuestionID"></param>
+        /// <param name="category"></param>
+        /// <endpoint>[HttpPut]: api/RemoveCategoryFromQuestion/{id}</endpoint>
+        /// <returns>Returns HTTP Response on success or failure</returns> 
+        [HttpPut]
         [ActionName("RemoveCategoryFromQuestion")]
-        
         public HttpResponseMessage RemoveCategoryFromQuestion([FromUri]string ExamQuestionID, [FromUri]string category)
         {
             try
@@ -203,7 +179,7 @@ namespace LMS1701.EA.Controllers
                 }
 
                 //client.DeleteQuestionCategory(category, ExamQuestionID); Update service reference
-                
+
                 return Request.CreateResponse(HttpStatusCode.OK);
 
             }
@@ -213,26 +189,105 @@ namespace LMS1701.EA.Controllers
             }
         }
 
-        // DELETE: api/ExamQuestion/5
-        /*   public HttpResponseMessage Delete(string questionID)
-           {
-               try
-               {
-                   if (questionID == null || questionID == "")
-                   {
-                       return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid Input");
-                   }
+        /// TODO:Method incomplete
+        /// <summary>
+        ///   Method will delete an exam question given the ExamQuestionID
+        /// </summary>
+        /// <param name="questionID">string QuestionID</param>
+        /// <endpoint>[HttpDelete]api/ExamQuestion/{id}</endpoint>
+        /// <returns></returns>
+        [HttpDelete]
+        public HttpResponseMessage Delete(string questionID)
+        {
+            try
+            {
+                if (questionID == null || questionID == "")
+                {
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid Input");
+                }
 
-                   //todo
+                return Request.CreateResponse(HttpStatusCode.OK, "");
                }
-               catch (Exception ex)
-               {
-                   return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
-               }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
 
-           } */
+        }
 
-        //returns a specific exam question
+        #endregion TODO
+
+        /// <summary>
+        ///  Method will return a list of all ExamQuestionIDs in the database
+        /// </summary>
+        /// <endpoint>[HttpGet]: api/ExamQuestion/GetExamQuestionIDs</endpoint>
+        /// <returns>HTTP Response message along with JSON result of the ExamQuestionIDs</returns>
+        [HttpGet]
+        [ActionName("GetExamQuestionIDs")]
+        public HttpResponseMessage GetAllExamQuestionIDs()
+        {
+            List < WCF.ExamQuestion > examQ = client.GetAllExamQuestion().ToList();
+            List<String> result = new List<string>();
+            for(int i = 0; i < examQ.Count; i++)
+            {
+                result.Add(examQ.ElementAt(i).ExamQuestionID);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        /// <summary>
+        ///  returns a list of all ExamQuestions in the database
+        /// </summary>
+        /// <endpoint>[HttpGet]: api/ExamQuestion/GetAllExamQuestions</endpoint>
+        /// <returns>HTTP Response message along with JSON result of the ExamQuestion List</returns>
+        [HttpGet]
+        [ActionName("GetAllExamQuestions")]
+        public HttpResponseMessage GetAllExamQuestions()
+        {
+            try
+            {
+                List<WCF.ExamQuestion> examQuestionList = client.GetAllExamQuestion().ToList();
+                if (examQuestionList == null || examQuestionList.Count <= 0)
+                {
+                    return Request.CreateResponse(HttpStatusCode.BadRequest);
+                }
+
+                return Request.CreateResponse(HttpStatusCode.OK, examQuestionList);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+        }
+
+        /// <summary>
+        ///  Returns a specific exam question given an ExamQuestionID
+        /// </summary>
+        /// <param name="questionID">string ExamQuestionID</param>
+        /// <endpoint>[HttpGet]: api/ExamTemplate/GetSpecificExamQuestion</endpoint>
+        /// <returns>HTTP Response message along with JSON result of the ExamQuestion</returns>
+        [HttpGet]
+        [ActionName("GetSpecificExamQuestion")]
+        public HttpResponseMessage GetSpecificExamQuestion(string questionID)
+        {
+            try
+            {
+              WCF.ExamQuestion examQuestion = GetSpecificExQuest(questionID);
+
+                if (examQuestion == null)
+                {
+                   return Request.CreateResponse(HttpStatusCode.BadRequest, "Exam question does not exist");
+                }
+
+                return Request.CreateResponse(HttpStatusCode.OK, examQuestion);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+        }
+
+        //returns a specific exam question, private method used inside public method
         private WCF.ExamQuestion GetSpecificExQuest(string questionID)
         {
             try

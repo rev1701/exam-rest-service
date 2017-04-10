@@ -86,4 +86,20 @@ Create Table[LanguageType] (
 [PKID] int IDENTITY(1,1) NOT NULL,
 [LanguageName] varchar(100)
 CONSTRAINT PK_LanguageType Primary Key Clustered (PKID)
-)
+
+Select * From Categories_Subtopic
+Select * From QuestionAnswers
+Select * From ExamTemplate
+Select * From ExamType
+Select * From ExamQuestion
+Delete From Question where PKID=14
+select * From QuestionType
+Select * From ExamQuestionList
+Select * From Question
+
+Select * From ExamTemplateQuestions
+Select * From Answer
+Select * From Subject
+Select * From Subject_Categories
+Delete From ExamType where PKID=5
+Insert into ExamType (ExamTypeName) Values ('Market')

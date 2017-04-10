@@ -873,6 +873,12 @@ namespace ExamAssessmentWebAPI.ExamWCF {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/spAddExistingSubtopicToCategory", ReplyAction="http://tempuri.org/IService1/spAddExistingSubtopicToCategoryResponse")]
         System.Threading.Tasks.Task spAddExistingSubtopicToCategoryAsync(string subtopic, string category);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/RemoveQuestionFromExam", ReplyAction="http://tempuri.org/IService1/RemoveQuestionFromExamResponse")]
+        void RemoveQuestionFromExam(string ExamID, string ExamQuestionID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/RemoveQuestionFromExam", ReplyAction="http://tempuri.org/IService1/RemoveQuestionFromExamResponse")]
+        System.Threading.Tasks.Task RemoveQuestionFromExamAsync(string ExamID, string ExamQuestionID);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/spAddNewCategoryType", ReplyAction="http://tempuri.org/IService1/spAddNewCategoryTypeResponse")]
         void spAddNewCategoryType(string subject, string category);
         
@@ -1115,6 +1121,14 @@ namespace ExamAssessmentWebAPI.ExamWCF {
         
         public System.Threading.Tasks.Task spAddExistingSubtopicToCategoryAsync(string subtopic, string category) {
             return base.Channel.spAddExistingSubtopicToCategoryAsync(subtopic, category);
+        }
+        
+        public void RemoveQuestionFromExam(string ExamID, string ExamQuestionID) {
+            base.Channel.RemoveQuestionFromExam(ExamID, ExamQuestionID);
+        }
+        
+        public System.Threading.Tasks.Task RemoveQuestionFromExamAsync(string ExamID, string ExamQuestionID) {
+            return base.Channel.RemoveQuestionFromExamAsync(ExamID, ExamQuestionID);
         }
         
         public void spAddNewCategoryType(string subject, string category) {

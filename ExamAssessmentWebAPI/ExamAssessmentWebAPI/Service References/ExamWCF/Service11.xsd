@@ -118,6 +118,19 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="RemoveQuestionFromExam">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ExamID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ExamQuestionID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveQuestionFromExamResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
   <xs:element name="spAddNewCategoryType">
     <xs:complexType>
       <xs:sequence>
