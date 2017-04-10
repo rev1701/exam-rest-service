@@ -270,7 +270,6 @@ namespace LMS1701.EA.Controllers
         [ActionName("GetSpecificExamQuestion")]
         public HttpResponseMessage GetSpecificExamQuestion(string questionID)
         {
-          //  return Request.CreateResponse(HttpStatusCode.OK);
             try
             {
               WCF.ExamQuestion examQuestion = GetSpecificExQuest(questionID);
