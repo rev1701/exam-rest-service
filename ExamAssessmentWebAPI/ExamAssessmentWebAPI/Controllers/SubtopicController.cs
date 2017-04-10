@@ -51,8 +51,19 @@ namespace LMS1701.EA.Controllers
             return Request.CreateResponse(HttpStatusCode.OK,Sub);
         }
 
+        /// <summary>
+        ///  Will Add a new Subtopic
+        /// </summary>
+        /// <param name="CategoryName"></param>
+        /// <param name="SubtopicName"></param>
+        [ActionName("AddNewSubtopic")]
+        public void AddNewSubtopic(string CategoryName, [FromBody]string SubtopicName)
+        {
+            client.spAddNewCategoryType(SubtopicName, CategoryName);
+        }
+
         // DELETE: api/Subtopic/5
-        
+
         public void Delete(string subtopicName)
         {
             client.DeleteSubtopic(subtopicName);

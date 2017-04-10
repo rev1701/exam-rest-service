@@ -15,24 +15,84 @@ namespace LMS1701.EA.Controllers
     {
         WCF.Service1Client client = new WCF.Service1Client(); //readonly suggested
 
-        // GET: api/Category
+        #region TODO
+
+        // TODO:complete methods inside this region.
+        // TODO: Add HTTP Response as return type for any methods that don't have it.
+        // TODO:Add NLog to each method inside the entire controller (not just this region).  Each Controller should have its own log file
+        // TODO:Add Unit Tests for each method inside this controller.  There is already a Unit Test Library in this project with a class already made for this controller
+
         /// <summary>
-        /// Gets All of the Categories in the database
+        ///  Method will add a brand new category to the database.  Required to be associated with a Subject.
         /// </summary>
-        /// <returns>HTTP Response if it worked or not with the List of WCF.Categories</returns>
+        /// <param name="subjectName">string subjectName</param>
+        /// <param name="categoryName">string categoryName</param>
+        /// <endpoint>PUT: api/Category/?subjectName={id}</endpoint>
+        /// <returns></returns>
+        /// 
+        [HttpPut]
+        public void AddCategory(string subjectName, [FromBody]string categoryName)
+        {
+            client.spAddNewCategoryType(subjectName, categoryName);
+        }
+
+        /// <summary>
+        ///  Add an Existing Subtopic to a category
+        /// </summary>
+        /// <param name="CategoryName">string CategoryName</param>
+        /// <param name="SubtopicName">string SubtopicName (inside request body)</param>
+        /// <endpoint>api/Category/AddExistingSubtopic/?CategoryName={id}</endpoint>
+        /// <returns></returns>
+        [ActionName("AddExistingSubtopic")]
+        public void AddExistingSubtopic(string CategoryName, [FromBody]string SubtopicName)
+        {
+            client.spAddExistingSubtopicToCategory(SubtopicName, CategoryName);
+        }
+
+        /// <summary>
+        ///  Will Remove a subtopic from the category
+        /// </summary>
+        /// <param name="CategoryName">string CategoryName</param>
+        /// <param name="SubtopicName">string SubtopicName (In Request Body)</param>
+        /// <endpoint>api/Category/RemoveSubtopic/?CategoryName={id}/endpoint>
+        [ActionName("RemoveSubtopic")]
+        public void RemoveSubtopic(string CategoryName, [FromBody]string SubtopicName)
+        {
+            client.RemoveSubtopicFromCategory(SubtopicName, CategoryName);
+        }
+
+        /// <summary>
+        ///  Will Remove a Category from the database along with all references to the category
+        /// </summary>
+        /// <param name="CategoryName">string CategoryName</param>
+        /// <endpoint>DELETE: api/Category/CategoryName={id}</endpoint>\
+        [HttpDelete]
+        public void Delete(string CategoryName)
+        {
+            client.DeleteCategory(CategoryName);
+        }
+
+        #endregion TODO
+
+        /// <summary>
+        ///  Will return every category in the database.  Will return only unique values.
+        /// </summary>
+        /// <endpoint>GET: api/Category</endpoint>
+        /// <returns>HTTP Response message along with JSON result of the Category List</returns>
         public HttpResponseMessage  Get()
         {
+            // Uses the get All Subject method to get all of the categories since all categories will be attached to a subject.  The method filters through all of the subjects and only keeps unique values.
             var info = client.GetAllSubject().ToList();
             List <WCF.Category> Cat = new List<WCF.Category>();
             
-            foreach (WCF.Subject item in info) //loop through the subjects
+            foreach (WCF.Subject item in info)
             {
-                foreach (WCF.Category catx in item.listCat) //loop through the categories
+                foreach (WCF.Category catx in item.listCat)
                 {
                       Cat.Add(catx);
                 }
             }
-            for (int lop = 0; lop < 20; lop++) //Gets rid of Duplicates
+            for (int lop = 0; lop < 20; lop++)
             {
                 for (int kk = 0; kk < Cat.Count; kk++)
                 {
@@ -49,61 +109,6 @@ namespace LMS1701.EA.Controllers
             return Request.CreateResponse(HttpStatusCode.OK,Cat);
         }
 
-        /// <summary>
-        /// The HTTP Post method that lets you add a new category attached to a subject
-        /// </summary>
-        /// <param name="subjectName">The attached subject name  </param>
-        /// <param name="categoryName">The new category name</param>
 
-        public void Post([FromBody]string subjectName, string categoryName)
-        {
-            client.spAddNewCategoryType(subjectName, categoryName); //client call from SOAP service
-        }
-
-
-        /// <summary>
-        /// Adds a new Subtopic attached to a Category
-        /// </summary>
-        /// <param name="CategoryName">The name of the attached category </param>
-        /// <param name="SubtopicName">The New subtopic name</param>
-        [ActionName("AddNewSubtopic")]
-        public void AddNewSubtopic(string CategoryName, [FromBody]string SubtopicName)
-        {
-            client.spAddNewCategoryType(SubtopicName, CategoryName); //client call from SOAP service
-        }
-
-        /// <summary>
-        /// Adds an existing subtopic to an existing category
-        /// </summary>
-        /// <param name="CategoryName">Name of the Category </param>
-        /// <param name="SubtopicName">Subtopic Name</param>
-        [ActionName("AddExistingSubtopic")]
-        public void AddExistingSubtopic(string CategoryName, [FromBody]string SubtopicName)
-        {
-            client.spAddExistingSubtopicToCategory(SubtopicName, CategoryName); //client call from SOAP service
-        }
-       
-
-
-            /// <summary>
-            /// Removes a subtopic attached to a category
-            /// </summary>
-            /// <param name="CategoryName">attached Category Name</param>
-            /// <param name="SubtopicName">Subtopic Name</param>
-        [ActionName("RemoveSubtopic")]
-        public void RemoveSubtopic(string CategoryName, [FromBody]string SubtopicName)
-        {
-            client.RemoveSubtopicFromCategory( SubtopicName,  CategoryName); //client call from SOAP service
-        }
-
-        // DELETE: api/Category/5
-        /// <summary>
-        /// Deletes a category
-        /// </summary>
-        /// <param name="CategoryName">Category Name</param>
-        public void Delete(string CategoryName)
-        {
-            client.DeleteCategory(CategoryName); //client call from SOAP service
-        }
     }
 }
