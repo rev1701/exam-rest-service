@@ -485,9 +485,6 @@ namespace ExamAssessmentWebAPI.ExamWCF {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ExamAssessmentWebAPI.ExamWCF.ExamTemplate[] ExamTemplatesField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ExamTypeNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -500,19 +497,6 @@ namespace ExamAssessmentWebAPI.ExamWCF {
             }
             set {
                 this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public ExamAssessmentWebAPI.ExamWCF.ExamTemplate[] ExamTemplates {
-            get {
-                return this.ExamTemplatesField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ExamTemplatesField, value) != true)) {
-                    this.ExamTemplatesField = value;
-                    this.RaisePropertyChanged("ExamTemplates");
-                }
             }
         }
         
