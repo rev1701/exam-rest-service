@@ -41,7 +41,7 @@ REST web service to manage exams and questions.
  |	PUT |	api/Subquestion?SubquestionId={SubquestionId} |	SubquestionId |	Answer | none | add answer to question |
  |	POST |	api/Subject |	none |	SubjectName	 | none |	create new subject |
  |	GET |	api/Subject |	none |	none | List of Subjects | return all subjects |
- | POST | api/Subject/AddExistingCategory?SubjectName={SubjectName} | CategoryName | none | add an existing category to a existing subject |
+ | POST | api/Subject/AddExistingCategory?SubjectName={SubjectName} | SubjectName | CategoryName | add an existing category to a existing subject |
  | DELETE | api/Subject?SubjectName={SubjectName} | SubjectName | none | none | deletes a subject |
  |	DELETE |	api/Subject/RemoveCategory/?CategoryName={CategoryName} |	CategoryName |	none | none |		remove category from subject |
  |	POST |	api/Category | none | subjectName, CategoryName | none | add a brand new category attached to a subject
