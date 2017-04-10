@@ -885,11 +885,11 @@ namespace ExamAssessmentWebAPI.ExamWCF {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/spAddQuestionAsExamQuestion", ReplyAction="http://tempuri.org/IService1/spAddQuestionAsExamQuestionResponse")]
         System.Threading.Tasks.Task spAddQuestionAsExamQuestionAsync(string ExamQuestionID, int QuestionID, string name, int QuestionType);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/spAddQuestionCategories", ReplyAction="http://tempuri.org/IService1/spAddQuestionCategoriesResponse")]
-        void spAddQuestionCategories(string Categories, string ExamQuestionID);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddQuestionCategories", ReplyAction="http://tempuri.org/IService1/AddQuestionCategoriesResponse")]
+        void AddQuestionCategories(string Categories, string ExamQuestionID);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/spAddQuestionCategories", ReplyAction="http://tempuri.org/IService1/spAddQuestionCategoriesResponse")]
-        System.Threading.Tasks.Task spAddQuestionCategoriesAsync(string Categories, string ExamQuestionID);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddQuestionCategories", ReplyAction="http://tempuri.org/IService1/AddQuestionCategoriesResponse")]
+        System.Threading.Tasks.Task AddQuestionCategoriesAsync(string Categories, string ExamQuestionID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/spAddQuestionToAnswer", ReplyAction="http://tempuri.org/IService1/spAddQuestionToAnswerResponse")]
         void spAddQuestionToAnswer(int QuestionID, int AnswerID, bool isCorrect);
@@ -914,6 +914,12 @@ namespace ExamAssessmentWebAPI.ExamWCF {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/spDeleteQuestionCategory", ReplyAction="http://tempuri.org/IService1/spDeleteQuestionCategoryResponse")]
         System.Threading.Tasks.Task spDeleteQuestionCategoryAsync(string Categories, string ExamID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteQuestionCategory", ReplyAction="http://tempuri.org/IService1/DeleteQuestionCategoryResponse")]
+        void DeleteQuestionCategory(string Category, string ExamQID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteQuestionCategory", ReplyAction="http://tempuri.org/IService1/DeleteQuestionCategoryResponse")]
+        System.Threading.Tasks.Task DeleteQuestionCategoryAsync(string Category, string ExamQID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/spRemoveAnswerFromQuestion", ReplyAction="http://tempuri.org/IService1/spRemoveAnswerFromQuestionResponse")]
         void spRemoveAnswerFromQuestion(int QuestionID, int AnswerID);
@@ -1127,12 +1133,12 @@ namespace ExamAssessmentWebAPI.ExamWCF {
             return base.Channel.spAddQuestionAsExamQuestionAsync(ExamQuestionID, QuestionID, name, QuestionType);
         }
         
-        public void spAddQuestionCategories(string Categories, string ExamQuestionID) {
-            base.Channel.spAddQuestionCategories(Categories, ExamQuestionID);
+        public void AddQuestionCategories(string Categories, string ExamQuestionID) {
+            base.Channel.AddQuestionCategories(Categories, ExamQuestionID);
         }
         
-        public System.Threading.Tasks.Task spAddQuestionCategoriesAsync(string Categories, string ExamQuestionID) {
-            return base.Channel.spAddQuestionCategoriesAsync(Categories, ExamQuestionID);
+        public System.Threading.Tasks.Task AddQuestionCategoriesAsync(string Categories, string ExamQuestionID) {
+            return base.Channel.AddQuestionCategoriesAsync(Categories, ExamQuestionID);
         }
         
         public void spAddQuestionToAnswer(int QuestionID, int AnswerID, bool isCorrect) {
@@ -1165,6 +1171,14 @@ namespace ExamAssessmentWebAPI.ExamWCF {
         
         public System.Threading.Tasks.Task spDeleteQuestionCategoryAsync(string Categories, string ExamID) {
             return base.Channel.spDeleteQuestionCategoryAsync(Categories, ExamID);
+        }
+        
+        public void DeleteQuestionCategory(string Category, string ExamQID) {
+            base.Channel.DeleteQuestionCategory(Category, ExamQID);
+        }
+        
+        public System.Threading.Tasks.Task DeleteQuestionCategoryAsync(string Category, string ExamQID) {
+            return base.Channel.DeleteQuestionCategoryAsync(Category, ExamQID);
         }
         
         public void spRemoveAnswerFromQuestion(int QuestionID, int AnswerID) {

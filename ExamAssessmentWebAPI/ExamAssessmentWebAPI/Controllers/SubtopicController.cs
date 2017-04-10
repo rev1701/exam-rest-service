@@ -33,20 +33,31 @@ namespace LMS1701.EA.Controllers
                     foreach (WCF.SubTopic subx in catx.subtopics)
                     {
                         //Iterate through the Subtopic return list to see and prevent if any duplicates are added
-                        foreach (WCF.SubTopic suby in Sub)
-                            if (suby.Subtopic_Name.Equals(subx.Subtopic_Name))
-                            {
-                                //The subtopic is already in the List
-                                continue;
-                            }
-                            else
-                            {
-                                //Add the non duplicate Subtopic in the list
+                        
+                        
                                 Sub.Add(subx);
-                            }
+                            
                     }
                 }
             }
+            for (int lop = 0; lop < 20; lop++)
+            {
+
+
+                for (int kk = 0; kk < Sub.Count; kk++)
+                {
+                    for (int ll = kk + 1; ll < Sub.Count; ll++)
+                    {
+                        if (Sub.ElementAt(kk).Subtopic_ID == Sub.ElementAt(ll).Subtopic_ID)
+                        {
+                            Sub.RemoveAt(ll);
+                        }
+                    }
+
+                }
+            }
+          
+            Sub.OrderByDescending(S => S.Subtopic_ID);
             //Return the List of SubTopic Objects
             return Request.CreateResponse(HttpStatusCode.OK,Sub);
         }
