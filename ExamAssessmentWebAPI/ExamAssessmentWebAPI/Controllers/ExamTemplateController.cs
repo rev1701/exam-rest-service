@@ -18,10 +18,11 @@ namespace LMS1701.EA.Controllers
     {
         WCF.Service1Client client = new WCF.Service1Client();
         #region TODO
-        // TODO:complete methods inside this region.
-        // TODO:Add NLog to each method inside the entire controller (not just this region).  Each Controller should have its own log file
-        // TODO:Add Unit Tests for each method inside this controller.  There is already a Unit Test Library in this project with a class already made for this controller
-        /// <TODO>Currently not working properly.  Needs to be refactored. Only returning empty sets</TODO>
+        /// <TODO>: add error message if id is invalid</TODO>
+        /// <TODO>:Add NLog to each method inside the entire controller (not just this region).  Each Controller should have its own log file</TODO>
+        /// <TODO>:Add Unit Tests for each method inside this controller.  There is already a Unit Test Library in this project with a class already made for this controller</TODO>
+        #endregion TODO
+
         /// <summary>
         /// Method is supposed to return a list of Subjects related to a specified Exam
         /// </summary>
@@ -32,55 +33,45 @@ namespace LMS1701.EA.Controllers
         [ActionName("GetExamSubjects")]
         public HttpResponseMessage GetExamSubjects(string id)
         {
-
-            //var results = client.GetAllSubject();
-
-            List<WCF.Subject> sub = new List<WCF.Subject>();
-            List<WCF.Subject> result = new List<WCF.Subject>();
-            sub = client.GetAllSubject().ToList();
-            WCF.ExamTemplate template = client.getExamTemplate(id);
-            for (int i = 0; i < template.ExamQuestions.Count(); i++)
+            try
             {
-                for (int j = 0; j < template.ExamQuestions.ElementAt(i).ExamQuestion_Categories.Count(); j++)
+                List<WCF.Subject> sub = client.GetAllSubject().ToList();  // all the subjects
+                List<WCF.Subject> result = new List<WCF.Subject>();  // the results of the subjects
+                WCF.ExamTemplate template = client.getExamTemplate(id);
+
+                foreach (var subject in sub)
                 {
-                    for (int k = 0; k < sub.Count(); k++)
+                    bool foundSubject = false;
+                    foreach (var subjectcategory in subject.listCat)
                     {
-                        for (int jj = 0; jj < sub.ElementAt(k).listCat.Count(); jj++)
+                        foreach (var examquestion in template.ExamQuestions)
                         {
-                            if (sub.ElementAt(k).listCat.ElementAt(jj).Categories_Name == template.ExamQuestions.ElementAt(i).ExamQuestion_Categories.ElementAt(j).Categories_Name)
+                            foreach (var category in examquestion.ExamQuestion_Categories)
                             {
-
-                                result.Add(sub.ElementAt(k));
-
+                                if (subjectcategory.Categories_ID == category.Categories_ID)
+                                {
+                                    if (foundSubject == false)
+                                    {
+                                        result.Add(subject);
+                                        foundSubject = true;
+                                    }
+                                }
                             }
                         }
-
                     }
                 }
+
+                return Request.CreateResponse(HttpStatusCode.OK, result.Distinct().ToList());
             }
-            List<WCF.Subject> tempR = new List<WCF.Subject>();
-            tempR.AddRange(result);
-            for (int lop = 0; lop < 20; lop++)
+            catch (System.ServiceModel.FaultException)
             {
-
-
-                for (int kk = 0; kk < result.Count; kk++)
-                {
-                    for (int ll = kk + 1; ll < result.Count; ll++)
-                    {
-                        if (result.ElementAt(kk).Subject_Name == result.ElementAt(ll).Subject_Name)
-                        {
-                            result.RemoveAt(ll);
-                        }
-                    }
-
-                }
+                return Request.CreateResponse(HttpStatusCode.BadRequest, "There is no exam template with this ID. Enter a correct exam template ID.");
             }
-            return Request.CreateResponse(HttpStatusCode.OK, result);
-
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
         }
-
-        #endregion TODO
 
         /// <summary>
         /// Method will allow you to input a ExamTemplateID and it will return a full Exam Template that matches that ID
@@ -95,12 +86,12 @@ namespace LMS1701.EA.Controllers
         {
             try
             {
-                WCF.ExamTemplate template = client.getExamTemplate(id);
                 if (id == null || id == "")
                 {
                     return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid examID");
                 }
 
+                WCF.ExamTemplate template = client.getExamTemplate(id);
                 return Request.CreateResponse(HttpStatusCode.OK, template);
             }
             catch (Exception ex)
