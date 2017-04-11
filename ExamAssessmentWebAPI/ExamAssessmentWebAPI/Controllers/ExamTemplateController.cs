@@ -18,10 +18,11 @@ namespace LMS1701.EA.Controllers
     {
         WCF.Service1Client client = new WCF.Service1Client();
         #region TODO
-        // TODO: add error message if id is invalid
-        // TODO:Add NLog to each method inside the entire controller (not just this region).  Each Controller should have its own log file
-        // TODO:Add Unit Tests for each method inside this controller.  There is already a Unit Test Library in this project with a class already made for this controller
-        /// <TODO>Currently not working properly.  Needs to be refactored. Only returning empty sets</TODO>
+        /// <TODO>: add error message if id is invalid</TODO>
+        /// <TODO>:Add NLog to each method inside the entire controller (not just this region).  Each Controller should have its own log file</TODO>
+        /// <TODO>:Add Unit Tests for each method inside this controller.  There is already a Unit Test Library in this project with a class already made for this controller</TODO>
+        #endregion TODO
+
         /// <summary>
         /// Method is supposed to return a list of Subjects related to a specified Exam
         /// </summary>
@@ -62,13 +63,15 @@ namespace LMS1701.EA.Controllers
 
                 return Request.CreateResponse(HttpStatusCode.OK, result.Distinct().ToList());
             }
-            catch(Exception ex)
+            catch (System.ServiceModel.FaultException)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, "There is no exam template with this ID. Enter a correct exam template ID.");
+            }
+            catch (Exception ex)
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
             }
         }
-
-        #endregion TODO
 
         /// <summary>
         /// Method will allow you to input a ExamTemplateID and it will return a full Exam Template that matches that ID
