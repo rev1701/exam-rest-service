@@ -1,11 +1,12 @@
-﻿using System;
+﻿using ExamAssessmentWebAPI.App_Start;
+using NLog;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
-using LMS1701.EA.Models;
 using WCF = ExamAssessmentWebAPI.ExamWCF;
 
 namespace LMS1701.EA.Controllers
@@ -18,7 +19,6 @@ namespace LMS1701.EA.Controllers
     {
         WCF.Service1Client client = new WCF.Service1Client();
         #region TODO
-        /// <TODO>: add error message if id is invalid</TODO>
         /// <TODO>:Add NLog to each method inside the entire controller (not just this region).  Each Controller should have its own log file</TODO>
         /// <TODO>:Add Unit Tests for each method inside this controller.  There is already a Unit Test Library in this project with a class already made for this controller</TODO>
         #endregion TODO
@@ -54,6 +54,7 @@ namespace LMS1701.EA.Controllers
                                     {
                                         result.Add(subject);
                                         foundSubject = true;
+                                        NLogConfig.logger.Log(new LogEventInfo(LogLevel.Info, "WebAPILogger", $"{subject.Subject_Name} is a subject in the {id} exam template"));
                                     }
                                 }
                             }
@@ -63,12 +64,14 @@ namespace LMS1701.EA.Controllers
 
                 return Request.CreateResponse(HttpStatusCode.OK, result.Distinct().ToList());
             }
-            catch (System.ServiceModel.FaultException)
+            catch (System.ServiceModel.FaultException ex)
             {
+                NLogConfig.logger.Error(ex, "There is no exam template with this ID. Enter a correct exam template ID.");
                 return Request.CreateResponse(HttpStatusCode.BadRequest, "There is no exam template with this ID. Enter a correct exam template ID.");
             }
             catch (Exception ex)
             {
+                NLogConfig.logger.Error(ex, ex.Message);
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
             }
         }
@@ -88,14 +91,22 @@ namespace LMS1701.EA.Controllers
             {
                 if (id == null || id == "")
                 {
+                    NLogConfig.logger.Error("Invalid examID");
                     return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid examID");
                 }
 
                 WCF.ExamTemplate template = client.getExamTemplate(id);
+                NLogConfig.logger.Log(new LogEventInfo(LogLevel.Info, "WebAPILogger", $"Retreived {id} exam template"));
                 return Request.CreateResponse(HttpStatusCode.OK, template);
+            }
+            catch (System.ServiceModel.FaultException ex)
+            {
+                NLogConfig.logger.Error(ex, "This exam template does not exist.");
+                return Request.CreateResponse(HttpStatusCode.BadRequest, "This exam template does not exist.");
             }
             catch (Exception ex)
             {
+                NLogConfig.logger.Error(ex, ex.Message);
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
             }
 
@@ -113,18 +124,18 @@ namespace LMS1701.EA.Controllers
             try
             {
                 var ExamIdList = client.GetExamIDList().ToList();
-                if (ExamIdList.Count<=0 || ExamIdList==null)
+                if (ExamIdList.Count <= 0 || ExamIdList == null)
                 {
-                    return Request.CreateResponse(HttpStatusCode.BadRequest,"Exam Id's Not Found" );
-                    
+                    NLogConfig.logger.Error("Exam Id's Not Found");
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, "Exam Id's Not Found");
                 }
-                return Request.CreateResponse(HttpStatusCode.OK,ExamIdList);
-
-            }catch(Exception ex)
+                NLogConfig.logger.Log(new LogEventInfo(LogLevel.Info, "WebAPILogger", $"All the exam template IDs have been returned."));
+                return Request.CreateResponse(HttpStatusCode.OK, ExamIdList);
+            }
+            catch (Exception ex)
             {
-
+                NLogConfig.logger.Error(ex, ex.Message);
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
-
             }
         }
 
@@ -139,15 +150,18 @@ namespace LMS1701.EA.Controllers
         {
             try
             {
-                if(exam==null || exam.ExamTemplateID==null||exam.ExamTemplateID==""||exam.ExamTemplateName==null||exam.ExamTemplateName=="")
+                if (exam == null || exam.ExamTemplateID == null || exam.ExamTemplateID == "" || exam.ExamTemplateName == null || exam.ExamTemplateName == "")
                 {
+                    NLogConfig.logger.Error("Invalid Exam Template.");
                     return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid Exam Template");
                 }
                 client.AddNewExam(exam.ExamTemplateName, exam.ExamTemplateID, exam.ExamType.ExamTypeName);
-                return Request.CreateResponse(HttpStatusCode.OK,"Template Added");
+                NLogConfig.logger.Log(new LogEventInfo(LogLevel.Info, "WebAPILogger", $"{exam.ExamTemplateID} was added as an exam template."));
+                return Request.CreateResponse(HttpStatusCode.OK, "Template Added");
             }
             catch (Exception ex)
             {
+                NLogConfig.logger.Error(ex, "Invalid Exam Template");
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
             }
         }
@@ -165,16 +179,19 @@ namespace LMS1701.EA.Controllers
         {
             try
             {
-                if (extid==null||extid==""||exquesID==""||exquesID==null)
+                if (extid == null || extid == "" || exquesID == "" || exquesID == null)
                 {
+                    NLogConfig.logger.Error("Invalid Parameters");
                     return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid Parameters");
                 }
                 client.RemoveQuestionFromExam(extid, exquesID);
-                return Request.CreateResponse(HttpStatusCode.OK,$"Question {exquesID} removed from exam {extid}");
+                NLogConfig.logger.Log(new LogEventInfo(LogLevel.Info, "WebAPILogger", $"Question {exquesID} was removed from exam {extid}."));
+                return Request.CreateResponse(HttpStatusCode.OK, $"Question {exquesID} was removed from exam {extid}");
             }
             catch (Exception ex)
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest,ex.Message);
+                NLogConfig.logger.Error("Invalid Parameters");
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
             }
         }
 
@@ -192,18 +209,21 @@ namespace LMS1701.EA.Controllers
         {
             try
             {
-                if (extid==null||extid=="" || weight==0||exquesID==null||exquesID=="")
+                if (extid == null || extid == "" || weight == 0 || exquesID == null || exquesID == "")
                 {
+                    NLogConfig.logger.Error("Invalid Entries.");
                     return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid Entries");
                 }
                 client.spAddQuestionToExam(extid, exquesID, weight);
+                NLogConfig.logger.Log(new LogEventInfo(LogLevel.Info, "WebAPILogger", $"Question {exquesID} added to Exam {extid} with weight of {weight}."));
                 return Request.CreateResponse(HttpStatusCode.OK, $"Question {exquesID} added to Exam {extid} with weight of {weight}");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
+                NLogConfig.logger.Error("Invalid Entries.");
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
             }
-            
+
         }
 
         /// <summary>
@@ -217,21 +237,20 @@ namespace LMS1701.EA.Controllers
         {
             try
             {
-                if (ETID==null || ETID=="")
+                if (ETID == null || ETID == "")
                 {
+                    NLogConfig.logger.Error("Invalid ID.");
                     return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid ID");
                 }
                 client.DeleteExam(ETID);
+                NLogConfig.logger.Log(new LogEventInfo(LogLevel.Info, "WebAPILogger", $"Exam {ETID} Deleted from database"));
                 return Request.CreateResponse(HttpStatusCode.OK, $"Exam {ETID} Deleted from database");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
+                NLogConfig.logger.Error("Invalid ID.");
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
             }
-            
         }
-
-
-
     }
 }
