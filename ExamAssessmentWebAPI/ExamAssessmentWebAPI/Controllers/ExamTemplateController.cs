@@ -1,11 +1,12 @@
-﻿using System;
+﻿using ExamAssessmentWebAPI.App_Start;
+using NLog;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
-using LMS1701.EA.Models;
 using WCF = ExamAssessmentWebAPI.ExamWCF;
 
 namespace LMS1701.EA.Controllers
@@ -18,7 +19,6 @@ namespace LMS1701.EA.Controllers
     {
         WCF.Service1Client client = new WCF.Service1Client();
         #region TODO
-        /// <TODO>: add error message if id is invalid</TODO>
         /// <TODO>:Add NLog to each method inside the entire controller (not just this region).  Each Controller should have its own log file</TODO>
         /// <TODO>:Add Unit Tests for each method inside this controller.  There is already a Unit Test Library in this project with a class already made for this controller</TODO>
         #endregion TODO
@@ -54,6 +54,8 @@ namespace LMS1701.EA.Controllers
                                     {
                                         result.Add(subject);
                                         foundSubject = true;
+                                        Logger logger = LogManager.GetCurrentClassLogger();
+                                        logger.Log(new LogEventInfo(LogLevel.Info, "WebAPILogger", $"{subject.Subject_Name} is a subject in the {id} exam template"));
                                     }
                                 }
                             }
@@ -63,12 +65,16 @@ namespace LMS1701.EA.Controllers
 
                 return Request.CreateResponse(HttpStatusCode.OK, result.Distinct().ToList());
             }
-            catch (System.ServiceModel.FaultException)
+            catch (System.ServiceModel.FaultException ex)
             {
+                Logger logger = LogManager.GetCurrentClassLogger();
+                logger.Error(ex, "There is no exam template with this ID. Enter a correct exam template ID.");
                 return Request.CreateResponse(HttpStatusCode.BadRequest, "There is no exam template with this ID. Enter a correct exam template ID.");
             }
             catch (Exception ex)
             {
+                Logger logger = LogManager.GetCurrentClassLogger();
+                logger.Error(ex, "Whoops!");
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
             }
         }
@@ -88,14 +94,18 @@ namespace LMS1701.EA.Controllers
             {
                 if (id == null || id == "")
                 {
+                    NLogConfig.logger.Error("Invalid examID");
                     return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid examID");
                 }
 
                 WCF.ExamTemplate template = client.getExamTemplate(id);
+                NLogConfig.logger.Log(new LogEventInfo(LogLevel.Info, "WebAPILogger", $"Retreived {id} exam template"));
                 return Request.CreateResponse(HttpStatusCode.OK, template);
             }
             catch (Exception ex)
             {
+                Logger logger = LogManager.GetCurrentClassLogger();
+                logger.Error(ex, "Whoops!");
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
             }
 
@@ -115,16 +125,16 @@ namespace LMS1701.EA.Controllers
                 var ExamIdList = client.GetExamIDList().ToList();
                 if (ExamIdList.Count<=0 || ExamIdList==null)
                 {
+
                     return Request.CreateResponse(HttpStatusCode.BadRequest,"Exam Id's Not Found" );
-                    
                 }
                 return Request.CreateResponse(HttpStatusCode.OK,ExamIdList);
-
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
-
+                Logger logger = LogManager.GetCurrentClassLogger();
+                logger.Error(ex, "Whoops!");
                 return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
-
             }
         }
 
