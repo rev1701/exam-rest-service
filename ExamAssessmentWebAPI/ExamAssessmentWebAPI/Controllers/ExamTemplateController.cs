@@ -76,6 +76,21 @@ namespace LMS1701.EA.Controllers
             }
         }
 
+        [HttpGet]
+        [ActionName("GetExamName")]
+        public HttpResponseMessage GetExamName(string id)
+        {
+            try
+            {
+                string examname = client.getExamTemplate(id).ExamTemplateName;
+                return Request.CreateResponse(HttpStatusCode.OK, examname);
+            }catch(Exception ex)
+            {
+               return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+        }
+
+
         /// <summary>
         /// Method will allow you to input a ExamTemplateID and it will return a full Exam Template that matches that ID
         /// Exam Template will include all questions associated with it as well as each category attached to those questions.
