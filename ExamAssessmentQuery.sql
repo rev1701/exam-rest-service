@@ -91,10 +91,11 @@ Select * From Categories_Subtopic
 Select * From QuestionAnswers
 Select * From ExamTemplate
 Select * From ExamType
-Select * From ExamQuestion
-Delete From Question where PKID=14
+
+Delete From ExamTemplate where PKID=23
 select * From QuestionType
 Select * From ExamQuestionList
+Select * From ExamQuestion
 Select * From Question
 
 Select * From ExamTemplateQuestions
