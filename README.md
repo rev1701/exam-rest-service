@@ -9,7 +9,6 @@ REST web service to manage exams and questions.
 - JSON
 - C#
 
-
 ---
 # team
 (EA) Exam Assessment
@@ -22,35 +21,36 @@ REST web service to manage exams and questions.
 # EndPoints
  | HTTP Method | Endpoint | URI Params | Body Params| Result Set | Description
  | --- | --- | --- | --- | --- | ---| 
- |	POST |	api/ExamTemplate |	none |	ExamTemplate | non |	CreateNew Exam Template
- | 	PUT |	api/ExamTemplate/{id} | ExamTemplateID | ExamQuestionID | none | Add Question to Test
- |	DELETE |	api/ExamTemplate/{id} |	ExamTemplateID | ExamTemplateID | none | none |	Delete ExamTemplate
- |	GET |	api/ExamTemplate/{id} |	ExamTemplateID| none | Exam Template | Return Full Exam Template |
- |	GET |	api/ExamTemplate/GetExamSubjects/{id} |	ExamTemplateID |	none | List of Subjects | Return All Subjects in an Examtemplate |
+ |	POST |	api/ExamTemplate/AddExam |	none |	ExamTemplate | non |	CreateNew Exam Template |
+ | 	PUT |	api/ExamTemplate/AddQuestionToExam?extid={id}&weight={weight} | ExamTemplateID, Weight | ExamQuestionID | none | Add Question to Test |
+ |	DELETE |	api/ExamTemplate/{id} |	ExamTemplateID | none | none |	Delete ExamTemplate |
+ |	GET |	api/ExamTemplate/GetExam?id={id} |	ExamTemplateID| none | Exam Template | Return Full Exam Template |
+ |	GET |	api/ExamTemplate/GetExamSubjects?id={id} |	ExamTemplateID |	none | List of Subjects | Return All Subjects in an Exam Template |
  |	DELETE |	api/ExamQuestion/{ID} |	QuestionID |	None |	None |	delete question |
  |	GET |	api/ExamQuestion/{id} |	questionID |	none |	ExamQuestion |	Return specific question |
- |	GET |	api/ExamQuestion |	none |	none |	ListOfExamQuestions |	 return each question in database |
- |	GET |	api/ExamQuestion/GetQuestionSubjects/{id} |	questionID |	none |	ListOFSubjects |	return all subjects in a question |
- |	POST |	api/ExamQuestion/{id} |	QuestionID |	ExamQuestion |	None |	Create New Question |
- |	PUT |	api/ExamQuestion/ChangeCorrectAnswer/{id} |	questionID |	Answer |	none |	Change Correct Answer |
- |	PUT |	api/ExamQuestion/AddCategoryToQuestion/{id} |	questionID |	categoryID |	None |	add category to question |
- |	PUT |	api/ExamQuestion/RemoveCategoryFromQuestion/{id} |	questionID |	categoryID |	None |	remove category from question |
- |	POST |	api/Answer |	none |	Answer | none | create new answer |
- |	GET |	api/Answer/{id} |	SubquestionId |	none | Answer |	get a specific answer
- |	PUT |	api/Subquestion |	SubquestionId |	Subquestion | none | add answer to question |
- |	POST |	api/Subject |	none |	Subject	 | none |	create new subject |
+ | GET | api/ExamQuestion/GetExamQuestionIDs | none | none| List of Exam Question IDs | Return list of all Exam Question IDs |
+ |	GET |	api/ExamQuestion/GetAllExamQuestions |	none |	none |	ListOfExamQuestions |	 return each question in database |
+ |	GET |	api/ExamQuestion/GetSpecificQuestionSubjects?questionID={ExamQuestionID} |	ExamQuestionID |	none |	ListOFSubjects |	return all subjects in a question |
+ |	POST |	api/ExamQuestion/{id} |	none |	ExamQuestion |	None |	Create New Question |
+ |	PUT |	api/ExamQuestion/AddCategoryToQuestion/?questionID={ExamQuestionID}&categoryID={categoryID} |	questionID, categoryID | none |	HTTP Response Message |	add category to question |
+ |	Delete |	api/ExamQuestion/RemoveCategoryFromQuestion/?questionID={ExamQuestionID}&categoryID={categoryID} |	questionID,categoryID |	|	none | HTTP Response Message |	remove category from question |
+ |	POST |	api/Answer?QuestionID={QuestionID} |	QuestionID |	Answer | none | create new answer |
+ |	GET |	api/Answer?SubquestionID={SubquestionID} |	SubquestionId |	none | Answer |	get a specific answer |
+ | PUT | api/Answer?answerid={answerid} | answerid | answer | none | edit an answer |
+ | GET | api/Subquestion | none | none | List of subquestion | returns all the subquestions |
+ |	PUT |	api/Subquestion?SubquestionId={SubquestionId} |	SubquestionId |	Answer | none | add answer to question |
+ |	POST |	api/Subject |	none |	SubjectName	 | none |	create new subject |
  |	GET |	api/Subject |	none |	none | List of Subjects | return all subjects |
- |	PUT |	api/AddCategory/{id} |	SubjectId |	Category | none | add category to subject |
- |	PUT |	api/RemoveCategory/{id} |	SubjectId |	Category | none |		remove category from subject |
- |	DELETE |	api/Subject/{id} |	SubjectId |	none | none| 		delete subtopic |
- |	POST |	api/Category |	SubjectId |	Category | none |		create new category |
- |	GET |	api/Category/{id} |	none |	none | List of Categories |		return all categories |
- |	PUT |	api/Category/AddSubtopic/{id} |	CategoryId |	subtopic | none | add subtopic to category |
- |	DELETE |	api/Category/{id} |	CategoryId	none | none | none |		delete category |
- |	PUT |	api/Category/RemoveSubtopic/{id} |	CategoryId |	subtopic| none |		remove subtopic from category |
- |	POST |	api/Subtopic/{id} |	CategoryId |	subtopic | none |	Subtopic and Category attached to	create new subtopic |
+ | POST | api/Subject/AddExistingCategory?SubjectName={SubjectName} | SubjectName | CategoryName | add an existing category to a existing subject |
+ | DELETE | api/Subject?SubjectName={SubjectName} | SubjectName | none | none | deletes a subject |
+ |	DELETE |	api/Subject/RemoveCategory/?CategoryName={CategoryName} |	CategoryName |	none | none |		remove category from subject |
+ |	POST |	api/Category | none | subjectName, CategoryName | none | add a brand new category attached to a subject
+ |	GET |	api/Category/ |	none |	none | List of Categories |		return all categories |
+ |	POST |	api/Category/AddNewSubtopic?CategoryName={CategoryName} |	CategoryName |	SubtopicName | none | add brand new subtopic to category |
+ |	DELETE |	api/Category/?CategoryName={CategoryName}|	CategoryName |	none | none |		delete category |
+ |	DELETE |	api/Category/RemoveSubtopic?|	CategoryId |	subtopic| none |		remove subtopic from category |
  |	GET |	api/Subtopic |	none |	none |	List of Subtopics |	return all subtopics |
- |	DELETE |	api/Subtopic/{id} |	int SubtopicId |	none |	Subtopic that was deleted | delete subtopic |
+ |	DELETE |	api/Subtopic/SubtopicId={SubtopicId} |	SubtopicId |	none | none | delete subtopic |
 ---
 # license
 Apache 2.0 (https://github.com/rev1701/exam-rest-service/blob/master/LICENSE)
